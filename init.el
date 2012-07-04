@@ -161,7 +161,7 @@
 (ap:add-project
  :name 'python
  :look-for '(".git")
- :include-regexp '("\\.py$" "\\.html$")
+ :include-regexp '("\\.js$" "\\.rb$" "\\.py$" "\\.html$")
   )
 
 
