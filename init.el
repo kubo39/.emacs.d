@@ -153,6 +153,19 @@
 (require 'anything-match-plugin)
 (define-key global-map "\C-x\;" 'anything)
 
+;;; anything-project
+(require 'anything-project)
+;(global-set-key (kbd "C-c C-f") 'anything-project)
+(global-set-key (kbd "M-t") 'anything-project)
+
+(ap:add-project
+ :name 'python
+ :look-for '(".git")
+ :include-regexp '("\\.py$" "\\.html$")
+  )
+
+
+
 ;;; kill-summry
 ; yankをべんりに
 ; C-n とC-pが大事。「.」でyankポインタを変更。
@@ -267,7 +280,6 @@
 ;;haml-mode
 (require 'haml-mode)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
-
 
 ;; =====================================================
 ;;
