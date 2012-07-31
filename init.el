@@ -100,18 +100,12 @@
 ;;; 現在行を目立たせる
 ;(global-hl-line-mode)
 
-;;; カーソルの位置が何行目かを表示する
-;(line-number-mode t)
-
 ;;; カーソルの位置が何文字目かを表示する
 (column-number-mode t)
 
 ;; 行番号表示
 (global-linum-mode)
 (setq linum-format "%4d")
-
-;; モードラインに時刻を表示させる
-;(display-time)
 
 ;;; スクロールバーを消す
 (toggle-scroll-bar nil)
@@ -155,7 +149,6 @@
 
 ;;; anything-project
 (require 'anything-project)
-;(global-set-key (kbd "C-c C-f") 'anything-project)
 (global-set-key (kbd "M-t") 'anything-project)
 
 (ap:add-project
@@ -163,7 +156,6 @@
  :look-for '(".git")
  :include-regexp '("\\.js$" "\\.rb$" "\\.py$" "\\.html$")
   )
-
 
 
 ;;; kill-summry
@@ -175,6 +167,29 @@
 ; wdired
 ;(require 'wdired)
 ;(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+
+;; =====================================================
+;;
+;; org-mode
+;;
+;; =====================================================
+
+;;
+(require 'org-install)
+;; キーバインドの設定
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-cr" 'org-remember)
+;; 拡張子がorgのファイルを開いた時，自動的にorg-modeにする
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+;; org-modeでの強調表示を可能にする
+(add-hook 'org-mode-hook 'turn-on-font-lock)
+;; 見出しの余分な*を消す
+(setq org-hide-leading-stars t)
+;; org-default-notes-fileのディレクトリ
+(setq org-directory "~/org/")
+;; org-default-notes-fileのファイル名
+(setq org-default-notes-file "notes.org")
 
 
 ;; =====================================================
@@ -327,7 +342,7 @@
 	   (local-file (file-relative-name
 			temp-file
 			(file-name-directory buffer-file-name))))
-      (list "~/bin/pychecker"  (list local-file))))
+      (list "~/pycheckers"  (list local-file))))
   (add-to-list 'flymake-allowed-file-name-masks
 	       '("\\.py\\'" flymake-pyflakes-init)))
 (load-library "flymake-cursor")
