@@ -18,10 +18,6 @@
 
 
 ;-------------------------------------------
-(setq user-full-name "Hiroki Noda")
-(setq user-main-address "kubo39@gmail.com")
-
-;-------------------------------------------
 
 ;;; auto-install.el
 ;(when (require 'auto-install nil t)
