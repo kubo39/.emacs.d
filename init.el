@@ -93,8 +93,14 @@
 ;;; 対応する括弧を強調
 (show-paren-mode t)
 
+;;; 透明度の設定
+;(set-frame-parameter nil 'alpha '80)
+
 ;;; 現在行を目立たせる
 ;(global-hl-line-mode)
+
+;;; C-c C-c でregionをコメントアウト
+(global-set-key "\C-c\C-c" 'comment-region)
 
 ;;; カーソルの位置が何文字目かを表示する
 (column-number-mode t)
@@ -142,6 +148,7 @@
 (require 'anything-config)
 (require 'anything-match-plugin)
 (define-key global-map "\C-x\;" 'anything)
+(add-to-list 'anything-sources 'anything-c-source-emacs-commands)
 
 ;;; anything-project
 (require 'anything-project)
@@ -153,12 +160,19 @@
  :include-regexp '("\\.js$" "\\.rb$" "\\.py$" "\\.html$")
   )
 
+;;; yasnippet
+;(add-to-list 'load-path "~/.emacs.d/elisp/yasnippet/")
+;(require 'yasnippet)
+;(yas/initialize)
+;(yas/load-directory "~/.emacs.d/elisp/snippets")
+;(yas/global-mode t)
+
 
 ;;; kill-summry
 ; yankをべんりに
 ; C-n とC-pが大事。「.」でyankポインタを変更。
-;(require 'kill-summary) ;"kill-summary" nil t)
-;(define-key global-map "\ey" 'kill-summary)
+(require 'kill-summary) ;"kill-summary" nil t)
+(define-key global-map "\ey" 'kill-summary)
 
 ; wdired
 ;(require 'wdired)
