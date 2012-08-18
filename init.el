@@ -119,7 +119,7 @@
 (setq backup-inhibited t)
 
 ;;; C-k で行全体を削除
-(setq kill-whole-line t)
+;(setq kill-whole-line t)
 
 ;; BackspaceをC-hに割り当て
 (keyboard-translate ?\C-h ?\C-?)
@@ -131,7 +131,7 @@
 (setq system-uses-terminfo nil)
 
 ;;; バッテリー残量
-(display-battery-mode t)
+;(display-battery-mode t)
 
 ;;; 文字列置換
 (global-set-key (kbd "C-r") 'replace-string)
