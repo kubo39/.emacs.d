@@ -17,13 +17,14 @@
 (setq load-path (cons "~/.emacs.d/elisp" load-path))
 
 
-;-------------------------------------------
+;-------------------------------------------------------
+
 
 ;;; auto-install.el
-;(when (require 'auto-install nil t)
-; (setq auto-install-directory "~/.emacs.d/elisp/")
-; (auto-install-update-emacswiki-package-name t)
-; (auto-install-compatibility-setup))
+;; (when (require 'auto-install nil t)
+;;  (setq auto-install-directory "~/.emacs.d/elisp/")
+;;  (auto-install-update-emacswiki-package-name t)
+;;  (auto-install-compatibility-setup))
 
 ;;; ターミナルエミュレータのシェルを bash に設定
 (when (require 'multi-term nil t)
@@ -34,9 +35,21 @@
   (setq w (selected-window))
   (setq w2 (split-window w nil t))
   (select-window w)
-  (multi-term)
+;  (multi-term)
+  (eshell)
   (select-window w2))
 (add-hook 'after-init-hook (lambda()(split-window-and-run-term)))
+
+;;; eshell関連
+;; 確認なしでヒストリ保存
+(setq eshell-ask-to-save-history (quote always))
+;; 補完時にサイクルする
+(setq eshell-cmpl-cycle-completions t)
+;;補完候補がこの数値以下だとサイクルせずに候補表示
+(setq eshell-cmpl-cycle-cutoff-length 5)
+
+;; 履歴で重複を無視する
+(setq eshell-hist-ignoredups t)
 
 ;;; スクリーン最大化
 ;(set-frame-parameter nil 'fullscreen 'maximized)
@@ -90,6 +103,9 @@
 (setq truncate-lines t)
 (setq truncate-partial-width-windows nil)
 
+;; スクロール
+(setq scroll-step 1)
+
 ;;; 対応する括弧を強調
 (show-paren-mode t)
 
@@ -114,6 +130,12 @@
 
 ;;; メニューバーを消す
 (menu-bar-mode nil)
+
+;;; OccurをC-, にバインド
+(global-set-key (kbd "C-,") 'occur)
+
+;;; goto-line C-: に
+(global-set-key (kbd "C-:") 'goto-line)
 
 ;;; バックアップファイルを作らない
 (setq backup-inhibited t)
@@ -142,13 +164,12 @@
 ;;; yes と入力するのは面倒なので y でokにする
 (fset 'yes-or-no-p 'y-or-n-p)
 
-
 ;;; anything
 (require 'anything)
 (require 'anything-config)
 (require 'anything-match-plugin)
 (define-key global-map "\C-x\;" 'anything)
-(add-to-list 'anything-sources 'anything-c-source-emacs-commands)
+;; (add-to-list 'anything-sources 'anything-c-source-emacs-commands)
 
 ;;; anything-project
 (require 'anything-project)
@@ -157,8 +178,8 @@
 (ap:add-project
  :name 'python
  :look-for '(".git")
- :include-regexp '("\\.js$" "\\.rb$" "\\.py$" "\\.html$")
-  )
+ :include-regexp '("\\.c$" "\\.h$" "\\.js$" "\\.rb$" "\\.py$" "\\.html$")
+ )
 
 ;;; yasnippet
 ;(add-to-list 'load-path "~/.emacs.d/elisp/yasnippet/")
@@ -166,7 +187,6 @@
 ;(yas/initialize)
 ;(yas/load-directory "~/.emacs.d/elisp/snippets")
 ;(yas/global-mode t)
-
 
 ;;; kill-summry
 ; yankをべんりに
@@ -261,7 +281,6 @@
 ;;; turn on syntax highlighting
 (global-font-lock-mode 1)
 
-
 ;;; Groovy
 (add-to-list 'load-path "~/.emacs.d/groovy-mode")
 ;;; use groovy-mode when file ends in .groovy or has #!/bin/groovy at start
@@ -275,7 +294,6 @@
              (require 'groovy-electric)
              (groovy-electric-mode)))
 
-
 ;;; D-Language
 ;; .d を java-mode と関連付け
 (setq auto-mode-alist (cons
@@ -285,13 +303,11 @@
 (setq java-deep-indent-paren-style nil)
 ;(add-hook 'java-mode-hook '(lambda () (inf-java-keys)))
 
-
 ;;; *.ru
 (setq auto-mode-alist (cons
  '("\\.ru$" . ruby-mode) auto-mode-alist))
 (setq interpreter-mode-alist (append
  '(("ruby" . ruby-mode)) interpreter-mode-alist)x)
-
 
 ;;; *.tac, *.pyx
 (setq auto-mode-alist (cons
@@ -315,10 +331,9 @@
 ;; GUIの警告は表示しない
 (setq flymake-gui-warnings-enabled nil)
 
+(load "flymake")
 
 ;;;;  flymake for ruby
-(when (load "flymake" t)
-; (require 'flymake)
 ;; I don't like the default colors :)
 (set-face-background 'flymake-errline "red4")
 (set-face-background 'flymake-warnline "dark slate blue")
@@ -335,24 +350,23 @@
   (add-to-list 'flymake-allowed-file-name-masks
 	       '("\\.ru\\'" flymake-ruby-init))
   (add-to-list 'flymake-allowed-file-name-masks
-	       '("Rakefile$" flymake-ruby-init)))
+	       '("Rakefile$" flymake-ruby-init))
 (add-hook
  'ruby-mode-hook
  '(lambda ()
     ;; Don't want flymake mode for ruby regions in rhtml files
     (if (not (null buffer-file-name)) (flymake-mode))))
 
-
 ;;; python: flymake + pyflakes + pep8
 (add-hook 'find-file-hook 'flymake-find-file-hook)
-(when (load "flymake" t)
   (defun flymake-pyflakes-init ()
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
 		       'flymake-create-temp-inplace))
 	   (local-file (file-relative-name
 			temp-file
 			(file-name-directory buffer-file-name))))
-      (list "~/pycheckers"  (list local-file))))
+      ;; (list "~/pycheckers"  (list local-file))
+      ))
   (add-to-list 'flymake-allowed-file-name-masks
-	       '("\\.py\\'" flymake-pyflakes-init)))
+	       '("\\.py\\'" flymake-pyflakes-init))
 (load-library "flymake-cursor")
