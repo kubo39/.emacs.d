@@ -291,7 +291,7 @@ Bind `anything-use-migemo' = t in COMMAND."
                                     '(anything-compile-source--candidates-in-buffer
                                       anything-compile-source--match-plugin
                                       anything-compile-source--migemo))))
-      (expect '(("FOO" ("日本��入力")))
+      (expect '(("FOO" ("日本語入力")))
         (let ((anything-use-migemo nil))
           (anything-test-candidates '(((name . "FOO")
                                        (init
