@@ -188,7 +188,7 @@
 ;(yas/load-directory "~/.emacs.d/elisp/snippets")
 ;(yas/global-mode t)
 
-;;; kill-summry
+;;; kill-summary
 ; yankをべんりに
 ; C-n とC-pが大事。「.」でyankポインタを変更。
 (require 'kill-summary) ;"kill-summary" nil t)
