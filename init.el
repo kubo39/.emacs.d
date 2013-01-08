@@ -171,15 +171,23 @@
 (define-key global-map "\C-x\;" 'anything)
 ;; (add-to-list 'anything-sources 'anything-c-source-emacs-commands)
 
-;;; anything-project
-(require 'anything-project)
-(global-set-key (kbd "M-t") 'anything-project)
+;; バッファ切り替えをanythingに
+(define-key global-map (kbd "\C-x b") 'anything)
 
-(ap:add-project
- :name 'python
- :look-for '(".git")
- :include-regexp '("\\.c$" "\\.h$" "\\.js$" "\\.rb$" "\\.py$" "\\.html$")
- )
+
+;;; anything-project
+;; (require 'anything-project)
+;; (global-set-key (kbd "M-t") 'anything-project)
+
+;; (ap:add-project
+;;  :name 'python
+;;  :look-for '(".git")
+;;  :include-regexp '("\\.c$" "\\.h$" "\\.js$" "\\.rb$" "\\.py$" "\\.html$")
+;;  )
+
+;; ヘルプバッファや補完バッファをポップアップで表示
+(require 'popwin)
+(setq display-buffer-function 'popwin:display-buffer)
 
 ;;; yasnippet
 ;(add-to-list 'load-path "~/.emacs.d/elisp/yasnippet/")
@@ -365,7 +373,7 @@
 	   (local-file (file-relative-name
 			temp-file
 			(file-name-directory buffer-file-name))))
-      ;; (list "~/pycheckers"  (list local-file))
+      (list "~/pycheckers"  (list local-file))
       ))
   (add-to-list 'flymake-allowed-file-name-masks
 	       '("\\.py\\'" flymake-pyflakes-init))
