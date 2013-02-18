@@ -117,7 +117,10 @@
 ;(global-hl-line-mode)
 
 ;;; C-c C-c でregionをコメントアウト
-(global-set-key "\C-c\C-c" 'comment-region)
+(global-set-key (kbd "C-c C-c") 'comment-region)
+
+;;; C-c C-v でregionをコメントアウト解除
+(global-set-key (kbd "C-c C-v") 'uncomment-region)
 
 ;;; カーソルの位置が何文字目かを表示する
 (column-number-mode t)
