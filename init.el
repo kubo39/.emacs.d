@@ -31,14 +31,15 @@
   (setq multi-term-program "/bin/bash"))
 
 ;;; 起動時にバッファ２分割、左側に bash 表示
-(defun split-window-and-run-term()
-  (setq w (selected-window))
-  (setq w2 (split-window w nil t))
-  (select-window w)
-;  (multi-term)
-  (eshell)
-  (select-window w2))
-(add-hook 'after-init-hook (lambda()(split-window-and-run-term)))
+;; (defun split-window-and-run-term()
+;;   (setq w (selected-window))
+;;   (setq w2 (split-window w nil t))
+;;   (select-window w)
+;; ;  (multi-term)
+;;   (eshell)
+;;   (select-window w2))
+;; (add-hook 'after-init-hook (lambda()(split-window-and-run-term)))
+(eshell)
 
 ;;; eshell関連
 ;; 確認なしでヒストリ保存
@@ -314,6 +315,8 @@
 ;;; *.ru
 (setq auto-mode-alist (cons
  '("\\.ru$" . ruby-mode) auto-mode-alist))
+(setq auto-mode-alist (cons
+ '("\\.gemspec$" . ruby-mode) auto-mode-alist))
 (setq interpreter-mode-alist (append
  '(("ruby" . ruby-mode)) interpreter-mode-alist)x)
 
@@ -357,6 +360,8 @@
 	       '("\\.rb\\'" flymake-ruby-init))
   (add-to-list 'flymake-allowed-file-name-masks
 	       '("\\.ru\\'" flymake-ruby-init))
+  (add-to-list 'flymake-allowed-file-name-masks
+	       '("\\.gemspec\\'" flymake-ruby-init))
   (add-to-list 'flymake-allowed-file-name-masks
 	       '("Rakefile$" flymake-ruby-init))
 (add-hook
