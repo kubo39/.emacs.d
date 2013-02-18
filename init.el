@@ -160,7 +160,7 @@
 ;(display-battery-mode t)
 
 ;;; 文字列置換
-(global-set-key (kbd "C-r") 'replace-string)
+(global-set-key (kbd "C-r") 'replace-regexp)
 
 ;;; shift+カーソルキーで分割ウィンドウの切り替え
 ;(windmove-default-keybindings)
