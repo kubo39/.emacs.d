@@ -1,1 +1,1 @@
-This is my .emacs.d.
+# kubo39's .emacs.d
