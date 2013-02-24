@@ -135,6 +135,9 @@
 ;;; メニューバーを消す
 (menu-bar-mode nil)
 
+;;; アイコンバーを消す
+(tool-bar-mode nil)
+
 ;;; OccurをC-, にバインド
 (global-set-key (kbd "C-,") 'occur)
 
