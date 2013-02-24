@@ -206,6 +206,10 @@
 (require 'kill-summary) ;"kill-summary" nil t)
 (define-key global-map "\ey" 'kill-summary)
 
+;; Emacsのkill-ringsをクリップボードに対応
+(global-set-key "\M-w" 'clipboard-kill-ring-save)
+(global-set-key "\C-w" 'clipboard-kill-region)
+
 ; wdired
 ;(require 'wdired)
 ;(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
