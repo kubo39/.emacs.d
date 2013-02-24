@@ -315,7 +315,7 @@
 (setq java-deep-indent-paren-style nil)
 ;(add-hook 'java-mode-hook '(lambda () (inf-java-keys)))
 
-;;; *.ru
+;;; *.ru *.gemspec
 (setq auto-mode-alist (cons
  '("\\.ru$" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons
