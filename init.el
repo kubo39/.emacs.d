@@ -113,9 +113,6 @@
 ;;; 透明度の設定
 ;(set-frame-parameter nil 'alpha '80)
 
-;;; 現在行を目立たせる
-;(global-hl-line-mode)
-
 ;;; C-c C-c でregionをコメントアウト
 (global-set-key (kbd "C-c C-c") 'comment-region)
 
@@ -146,9 +143,6 @@
 
 ;;; バックアップファイルを作らない
 (setq backup-inhibited t)
-
-;;; C-k で行全体を削除
-;(setq kill-whole-line t)
 
 ;; BackspaceをC-hに割り当て
 (keyboard-translate ?\C-h ?\C-?)
@@ -223,7 +217,6 @@
 ;;
 ;; =====================================================
 
-;;
 (require 'org-install)
 ;; キーバインドの設定
 (define-key global-map "\C-cl" 'org-store-link)
