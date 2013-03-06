@@ -315,11 +315,13 @@
 (setq java-deep-indent-paren-style nil)
 ;(add-hook 'java-mode-hook '(lambda () (inf-java-keys)))
 
-;;; *.ru *.gemspec
+;;; *.ru *.gemspec Rakefile
 (setq auto-mode-alist (cons
  '("\\.ru$" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons
  '("\\.gemspec$" . ruby-mode) auto-mode-alist))
+(setq auto-mode-alist (cons
+ '("Rakefile$" . ruby-mode) auto-mode-alist))
 (setq interpreter-mode-alist (append
  '(("ruby" . ruby-mode)) interpreter-mode-alist)x)
 
