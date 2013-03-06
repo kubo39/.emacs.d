@@ -336,6 +336,11 @@
 (require 'haml-mode)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
 
+
+;; go mode
+(require 'go-mode-load)
+
+
 ;; =====================================================
 ;;
 ;; flymake mode
