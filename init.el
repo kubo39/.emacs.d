@@ -34,22 +34,22 @@
                tabbar-scroll-right-button))
   (set btn (cons (cons "" nil)
                  (cons "" nil))))
-;; 色設定
+;; tabber色設定
 (set-face-attribute ; バー自体の色
   'tabbar-default nil
-   :background "white"
+   :background "black"
    :family "Inconsolata"
    :height 1.0)
 (set-face-attribute ; アクティブなタブ
   'tabbar-selected nil
    :background "black"
-   :foreground "white"
+   :foreground "green"
    :weight 'bold
    :box nil)
 (set-face-attribute ; 非アクティブなタブ
   'tabbar-unselected nil
-   :background "white"
-   :foreground "black"
+   :background "black"
+   :foreground "red"
    :box nil)
 
 ;;; auto-install.el
