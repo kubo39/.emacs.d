@@ -54,9 +54,9 @@
 
 ;;; auto-install.el
 ;; (when (require 'auto-install nil t)
-;;  (setq auto-install-directory "~/.emacs.d/elisp/")
-;;  (auto-install-update-emacswiki-package-name t)
-;;  (auto-install-compatibility-setup))
+;; (setq auto-install-directory "~/.emacs.d/elisp/")
+;; ;(auto-install-update-emacswiki-package-name t)
+;; (auto-install-compatibility-setup))
 
 ;;; ターミナルエミュレータのシェルを bash に設定
 (when (require 'multi-term nil t)
@@ -412,6 +412,7 @@
     ;; Don't want flymake mode for ruby regions in rhtml files
     (if (not (null buffer-file-name)) (flymake-mode))))
 
+
 ;;; python: flymake + pyflakes + pep8
 (add-hook 'find-file-hook 'flymake-find-file-hook)
   (defun flymake-pyflakes-init ()
@@ -424,4 +425,9 @@
       ))
   (add-to-list 'flymake-allowed-file-name-masks
 	       '("\\.py\\'" flymake-pyflakes-init))
+;;; jedi - python autocompletion
+(autoload 'jedi:setup "jedi" nil t)
+(add-hook 'python-mode-hook 'jedi:setup)
+
+
 (load-library "flymake-cursor")
