@@ -423,8 +423,9 @@
 			(file-name-directory buffer-file-name))))
       (list "~/.emacs.d/pycheckers"  (list local-file))
       ))
-  (add-to-list 'flymake-allowed-file-name-masks
-	       '("\\.py\\'" flymake-pyflakes-init))
+(add-to-list 'flymake-allowed-file-name-masks
+	     '("\\.py\\'" flymake-pyflakes-init))
+
 ;;; jedi - python autocompletion
 (autoload 'jedi:setup "jedi" nil t)
 (add-hook 'python-mode-hook 'jedi:setup)
