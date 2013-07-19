@@ -375,6 +375,11 @@
 (require 'go-mode-load)
 
 
+;; clojure-mode
+(require 'clojure-mode)
+(add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
+
+
 ;; =====================================================
 ;;
 ;; flymake mode
