@@ -59,8 +59,8 @@
 ;; (auto-install-compatibility-setup))
 
 ;;; ターミナルエミュレータのシェルを bash に設定
-(when (require 'multi-term nil t)
-  (setq multi-term-program "/bin/bash"))
+;; (when (require 'multi-term nil t)
+;;   (setq multi-term-program "/bin/bash"))
 
 ;;; 起動時にバッファ２分割、左側に bash 表示
 ;; (defun split-window-and-run-term()
@@ -112,8 +112,8 @@
 ;;; 初期フレームの設定
 (setq initial-frame-alist
       (append
-       '((width    . 160)  ; フレーム幅(文字数)
-	 (height   . 40)   ; フレーム高(文字数)
+       '((width    . 100)  ; フレーム幅(文字数)
+	 (height   . 30)   ; フレーム高(文字数)
 	 (top      . 60)   ; 表示位置
 	 (left     . 80)   ; 表示位置
 	 (foreground-color . "azure3") ; 文字が白
@@ -419,21 +419,21 @@
 
 
 ;;; python: flymake + pyflakes + pep8
-(add-hook 'find-file-hook 'flymake-find-file-hook)
-  (defun flymake-pyflakes-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-		       'flymake-create-temp-inplace))
-	   (local-file (file-relative-name
-			temp-file
-			(file-name-directory buffer-file-name))))
-      (list "~/.emacs.d/pycheckers"  (list local-file))
-      ))
-(add-to-list 'flymake-allowed-file-name-masks
-	     '("\\.py\\'" flymake-pyflakes-init))
+;; (add-hook 'find-file-hook 'flymake-find-file-hook)
+;;   (defun flymake-pyflakes-init ()
+;;     (let* ((temp-file (flymake-init-create-temp-buffer-copy
+;; 		       'flymake-create-temp-inplace))
+;; 	   (local-file (file-relative-name
+;; 			temp-file
+;; 			(file-name-directory buffer-file-name))))
+;;       (list "~/.emacs.d/pycheckers"  (list local-file))
+;;       ))
+;; (add-to-list 'flymake-allowed-file-name-masks
+;; 	     '("\\.py\\'" flymake-pyflakes-init))
 
 ;;; jedi - python autocompletion
-(autoload 'jedi:setup "jedi" nil t)
-(add-hook 'python-mode-hook 'jedi:setup)
+;; (autoload 'jedi:setup "jedi" nil t)
+;; (add-hook 'python-mode-hook 'jedi:setup)
 
 
 (load-library "flymake-cursor")
