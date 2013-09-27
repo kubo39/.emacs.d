@@ -91,20 +91,6 @@
 (require 'auto-save-buffers)
 (run-with-idle-timer 0.5 t 'auto-save-buffers)
 
-; 自動略語補完
-(require 'auto-complete)
-(global-auto-complete-mode t)
-
-(defcustom ac-modes
-  '(emacs-lisp-mode lisp-interaction-mode
-                    c-mode c++-mode java-mode
-                    perl-mode cperl-mode python-mode ruby-mode
-                    makefile-mode sh-mode fortran-mode f90-mode ada-mode
-                    xml-mode sgml-mode)
-  "Majo modes `auto-complete-mode' can run on."
-  :type '(list symbol)
-  :group 'auto-complete)
-
 ;;; region の色
 (set-face-background 'region "SkyBlue")
 (set-face-foreground 'region "black")
@@ -338,14 +324,22 @@
              (require 'groovy-electric)
              (groovy-electric-mode)))
 
+
 ;;; D-Language
-;; .d を java-mode と関連付け
+
+;;(add-to-list 'load-path "~/.emacs.d/d-mode")
+;; (autoload 'd-mode "d-mode" "Major mode for editing D code." t)
+;; (setq auto-mode-alist (cons
+;;  '("\\.d$" . d-mode) auto-mode-alist))
+
+;; .d を java-mode と関連付け(補完ほしい)
 (setq auto-mode-alist (cons
- '("\\.d$" . java-mode) auto-mode-alist))
+  '("\\.d$" . java-mode) auto-mode-alist))
 (setq interpreter-mode-alist (append
- '(("java" . java-mode)) interpreter-mode-alist))
+  '(("java" . java-mode)) interpreter-mode-alist))
 (setq java-deep-indent-paren-style nil)
 ;(add-hook 'java-mode-hook '(lambda () (inf-java-keys)))
+
 
 ;;; *.ru *.gemspec Rakefile
 (setq auto-mode-alist (cons
@@ -432,8 +426,24 @@
 ;; 	     '("\\.py\\'" flymake-pyflakes-init))
 
 ;;; jedi - python autocompletion
-;; (autoload 'jedi:setup "jedi" nil t)
-;; (add-hook 'python-mode-hook 'jedi:setup)
+(autoload 'jedi:setup "jedi" nil t)
+(add-hook 'python-mode-hook 'jedi:setup)
 
 
 (load-library "flymake-cursor")
+
+;;============================================================
+
+; 自動略語補完
+(require 'auto-complete)
+(global-auto-complete-mode t)
+
+(defcustom ac-modes
+  '(emacs-lisp-mode lisp-interaction-mode
+                    c-mode c++-mode java-mode go-mode d-mode
+                    perl-mode cperl-mode python-mode ruby-mode
+                    makefile-mode sh-mode fortran-mode f90-mode ada-mode
+                    xml-mode sgml-mode)
+  "Majo modes `auto-complete-mode' can run on."
+  :type '(list symbol)
+  :group 'auto-complete)
