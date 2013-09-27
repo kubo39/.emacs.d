@@ -81,6 +81,22 @@
 ;;補完候補がこの数値以下だとサイクルせずに候補表示
 (setq eshell-cmpl-cycle-cutoff-length 5)
 
+
+; 自動略語補完
+(require 'auto-complete)
+(global-auto-complete-mode t)
+
+(defcustom ac-modes
+  '(emacs-lisp-mode lisp-interaction-mode
+                    c-mode c++-mode java-mode go-mode d-mode
+                    perl-mode cperl-mode python-mode ruby-mode
+                    makefile-mode sh-mode fortran-mode f90-mode ada-mode
+                    xml-mode sgml-mode)
+  "Majo modes `auto-complete-mode' can run on."
+  :type '(list symbol)
+  :group 'auto-complete)
+
+
 ;; 履歴で重複を無視する
 (setq eshell-hist-ignoredups t)
 
@@ -431,19 +447,3 @@
 
 
 (load-library "flymake-cursor")
-
-;;============================================================
-
-; 自動略語補完
-(require 'auto-complete)
-(global-auto-complete-mode t)
-
-(defcustom ac-modes
-  '(emacs-lisp-mode lisp-interaction-mode
-                    c-mode c++-mode java-mode go-mode d-mode
-                    perl-mode cperl-mode python-mode ruby-mode
-                    makefile-mode sh-mode fortran-mode f90-mode ada-mode
-                    xml-mode sgml-mode)
-  "Majo modes `auto-complete-mode' can run on."
-  :type '(list symbol)
-  :group 'auto-complete)
