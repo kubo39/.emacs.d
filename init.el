@@ -84,6 +84,7 @@
 
 ; 自動略語補完
 (require 'auto-complete)
+(require 'go-autocomplete)
 (global-auto-complete-mode t)
 
 (defcustom ac-modes
