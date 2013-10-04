@@ -344,17 +344,17 @@
 
 ;;; D-Language
 
-;;(add-to-list 'load-path "~/.emacs.d/d-mode")
-;; (autoload 'd-mode "d-mode" "Major mode for editing D code." t)
-;; (setq auto-mode-alist (cons
-;;  '("\\.d$" . d-mode) auto-mode-alist))
+(add-to-list 'load-path "~/.emacs.d/d-mode")
+(autoload 'd-mode "d-mode" "Major mode for editing D code." t)
+(setq auto-mode-alist (cons
+		       '("\\.d$" . d-mode) auto-mode-alist))
 
 ;; .d を java-mode と関連付け(補完ほしい)
-(setq auto-mode-alist (cons
-  '("\\.d$" . java-mode) auto-mode-alist))
-(setq interpreter-mode-alist (append
-  '(("java" . java-mode)) interpreter-mode-alist))
-(setq java-deep-indent-paren-style nil)
+;; (setq auto-mode-alist (cons
+;;   '("\\.d$" . java-mode) auto-mode-alist))
+;; (setq interpreter-mode-alist (append
+;;   '(("java" . java-mode)) interpreter-mode-alist))
+;; (setq java-deep-indent-paren-style nil)
 ;(add-hook 'java-mode-hook '(lambda () (inf-java-keys)))
 
 
