@@ -349,14 +349,6 @@
 (setq auto-mode-alist (cons
 		       '("\\.d$" . d-mode) auto-mode-alist))
 
-;; .d を java-mode と関連付け(補完ほしい)
-;; (setq auto-mode-alist (cons
-;;   '("\\.d$" . java-mode) auto-mode-alist))
-;; (setq interpreter-mode-alist (append
-;;   '(("java" . java-mode)) interpreter-mode-alist))
-;; (setq java-deep-indent-paren-style nil)
-;(add-hook 'java-mode-hook '(lambda () (inf-java-keys)))
-
 
 ;;; *.ru *.gemspec Rakefile
 (setq auto-mode-alist (cons
@@ -373,8 +365,6 @@
   '("\\.tac$" . python-mode) auto-mode-alist))
 (setq auto-mode-alist (cons
   '("\\.pyx$" . python-mode) auto-mode-alist))
-(setq interpreter-mode-alist (append
- '(("python" . python-mode)) interpreter-mode-alist))
 
 
 ;;haml-mode
