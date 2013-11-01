@@ -16,6 +16,8 @@
 ;;; load-path を通す
 (setq load-path (cons "~/.emacs.d/elisp" load-path))
 
+;;; tabサイズを4スペースに
+(setq-default tab-width 4 indent-tabs-mode nil)
 
 ;-------------------------------------------------------
 
