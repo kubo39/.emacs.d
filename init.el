@@ -383,6 +383,9 @@
 (add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
 
 
+;; rust-mode
+(require 'rust-mode)
+
 ;; =====================================================
 ;;
 ;; flymake mode
