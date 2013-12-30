@@ -386,6 +386,11 @@
 ;; rust-mode
 (require 'rust-mode)
 
+
+;; julia-mode
+(require 'julia-mode)
+
+
 ;; =====================================================
 ;;
 ;; flymake mode
