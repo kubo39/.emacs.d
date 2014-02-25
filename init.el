@@ -24,6 +24,52 @@
 (unless (server-running-p)
   (server-start))
 
+
+;package.el
+(require 'package)
+;; (add-to-list 'package-archives
+;;   '("melpa" . "http://melpa.milkbox.net/packages/") t) ;; meplaを追加
+;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t) ;;
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t) ;; elpaを追加
+; 初期化
+(package-initialize)
+
+(defvar installing-package-list
+  '(
+    markdown-mode
+    scss-mode
+    js2-mode
+    ruby-block
+    google-c-style
+    yaml-mode
+    flycheck
+    yasnippet
+    dropdown-list
+    migemo
+    open-junk-file
+    recentf-ext
+    popwin
+    google-translate
+    auto-complete
+    foreign-regexp
+    auto-highlight-symbol
+    highlight-symbol
+    slim-mode
+    apache-mode
+    zenburn-theme
+    ssh-config-mode
+    smarty-mode
+    go-mode
+    go-autocomplete
+    jade-mode
+    coffee-mode
+    haml-mode
+    ))
+
+
+;; melpa.el
+;; (require 'melpa)
+
 ;-------------------------------------------------------
 
 ;;; tabbar
@@ -60,10 +106,10 @@
    :box nil)
 
 ;;; auto-install.el
-;; (when (require 'auto-install nil t)
-;; (setq auto-install-directory "~/.emacs.d/elisp/")
-;; ;(auto-install-update-emacswiki-package-name t)
-;; (auto-install-compatibility-setup))
+(when (require 'auto-install nil t)
+  (setq auto-install-directory "~/.emacs.d/elisp/")
+ ;(auto-install-update-emacswiki-package-name t)
+  (auto-install-compatibility-setup))
 
 ;;; ターミナルエミュレータのシェルを bash に設定
 ;; (when (require 'multi-term nil t)
@@ -394,6 +440,13 @@
 
 ;; julia-mode
 (require 'julia-mode)
+
+
+;; markdown-mode
+(require 'markdown-mode)
+
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 
 ;; =====================================================
