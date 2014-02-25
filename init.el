@@ -120,11 +120,11 @@
 ;;   (setq w (selected-window))
 ;;   (setq w2 (split-window w nil t))
 ;;   (select-window w)
-;;;;  (multi-term)
-;;   (eshell)
+;;  (multi-term)
 ;;   (select-window w2))
 ;; (add-hook 'after-init-hook (lambda()(split-window-and-run-term)))
-;; (eshell)
+
+(eshell)
 
 ;;; eshell関連
 ;; 確認なしでヒストリ保存
