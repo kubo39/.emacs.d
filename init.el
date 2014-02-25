@@ -78,7 +78,7 @@
 ;;   (eshell)
 ;;   (select-window w2))
 ;; (add-hook 'after-init-hook (lambda()(split-window-and-run-term)))
-(eshell)
+;; (eshell)
 
 ;;; eshell関連
 ;; 確認なしでヒストリ保存
