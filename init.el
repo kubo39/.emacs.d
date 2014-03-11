@@ -425,10 +425,6 @@
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
 
 
-;; go mode
-(require 'go-mode-load)
-
-
 ;; clojure-mode
 (require 'clojure-mode)
 (add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
