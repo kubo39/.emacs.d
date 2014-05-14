@@ -261,7 +261,7 @@
 ;; (add-to-list 'anything-sources 'anything-c-source-emacs-commands)
 
 ;; バッファ切り替えをanythingに
-(define-key global-map (kbd "\C-x b") 'anything)
+;(define-key global-map (kbd "\C-x b") 'anything)
 
 
 ;;; anything-project
