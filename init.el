@@ -7,15 +7,6 @@
 (setq default-directory (expand-file-name "~/")) ; osx cocoa emacs workaround.
 
 
-;; カレントディレクトリが / になる対策
-(setq inhibit-splash-screen t)
-(defun cd-to-homedir-all-buffers ()
-  "Change every current directory of all buffers to the home directory."
-  (mapc
-   (lambda (buf) (set-buffer buf) (cd (expand-file-name "~"))) (buffer-list)))
-(add-hook 'after-init-hook 'cd-to-homedir-all-buffers)
-
-
 ;; EmacsのWindowを一番上に表示
 (if (eq window-system 'ns)
     (x-focus-frame nil))
