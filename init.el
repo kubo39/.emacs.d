@@ -4,6 +4,19 @@
 ;;
 ;; =====================================
 
+;; カレントディレクトリが / になる対策
+(setq inhibit-splash-screen t)
+(defun cd-to-homedir-all-buffers ()
+  "Change every current directory of all buffers to the home directory."
+  (mapc
+   (lambda (buf) (set-buffer buf) (cd (expand-file-name "~"))) (buffer-list)))
+(add-hook 'after-init-hook 'cd-to-homedir-all-buffers)
+
+
+;; EmacsのWindowを一番上に表示
+(if (eq window-system 'ns)
+    (x-focus-frame nil))
+
 ;; Language.
 (set-language-environment 'Japanese)
 
@@ -60,7 +73,7 @@
     ssh-config-mode
     smarty-mode
     go-mode
-    go-autocomplete
+;    go-autocomplete
     jade-mode
     coffee-mode
     haml-mode
@@ -137,7 +150,7 @@
 
 ; 自動略語補完
 (require 'auto-complete)
-(require 'go-autocomplete)
+;(require 'go-autocomplete)
 (global-auto-complete-mode t)
 
 (defcustom ac-modes
@@ -168,8 +181,8 @@
 ;;; 初期フレームの設定
 (setq initial-frame-alist
       (append
-       '((width    . 100)  ; フレーム幅(文字数)
-	 (height   . 30)   ; フレーム高(文字数)
+       '((width    . 120)  ; フレーム幅(文字数)
+	 (height   . 40)   ; フレーム高(文字数)
 	 (top      . 60)   ; 表示位置
 	 (left     . 80)   ; 表示位置
 	 (foreground-color . "azure3") ; 文字が白
@@ -261,7 +274,7 @@
 ;; (add-to-list 'anything-sources 'anything-c-source-emacs-commands)
 
 ;; バッファ切り替えをanythingに
-(define-key global-map (kbd "\C-x b") 'anything)
+;;(define-key global-map (kbd "\C-x b") 'anything)
 
 
 ;;; anything-project
@@ -298,6 +311,41 @@
 ; wdired
 ;(require 'wdired)
 ;(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+
+
+;; =====================================================
+;;
+;; IRC-mode: ERC
+;;
+;; =====================================================
+
+;; (require 'erc)
+;; (require 'flyspell)
+;; (require 'ispell)
+;; (eval-when-compile (require 'cl))
+;; (defun start-irc ()
+;;   "Connect to IRC."
+;;   (interactive)
+;;   (lexical-let* ((nickname "kubo39"))
+;;     (setq erc-autojoin-channels-alist '(("mixiwatcher.lo.mixi.jp"
+;;                                          "#graduates2014" "#hegemony-dev"))
+;;           erc-nick (append `(,nickname)
+;;                            (loop for i from ?a upto ?z
+;;                                  for string = (char-to-string i)
+;;                                  if (string-match "[a-z]" string)
+;;                                  collect (concat nickname (capitalize string)))))
+;;     ;; (erc-tls :server "irc.oftc.net" :port 6697
+;;     ;;          :full-name "you")
+;;     (erc :server "mixiwatcher.lo.mixi.jp" :port 6667
+;;          :full-name "kubo39"))
+;;   )
+;; ;; auto spell checker
+
+;; (add-hook 'erc-mode-hook
+;;           'flyspell-mode-on)
+;; (global-set-key (kbd "C-c i") 'start-irc)
+
+
 
 ;; =====================================================
 ;;
@@ -398,7 +446,7 @@
 ;;; D-Language
 
 (add-to-list 'load-path "~/.emacs.d/d-mode")
-(autoload 'd-mode "d-mode" "Major mode for editing D code." t)
+;; (autoload 'd-mode "d-mode" "Major mode for editing D code." t)
 (setq auto-mode-alist (cons
 		       '("\\.d$" . d-mode) auto-mode-alist))
 
@@ -452,53 +500,53 @@
 ;; =====================================================
 
 ;; GUIの警告は表示しない
-(setq flymake-gui-warnings-enabled nil)
+;; (setq flymake-gui-warnings-enabled nil)
 
-(load "flymake")
+;; (load "flymake")
 
 ;;;;  flymake for ruby
 ;; I don't like the default colors :)
-(set-face-background 'flymake-errline "red4")
-(set-face-background 'flymake-warnline "dark slate blue")
+;; (set-face-background 'flymake-errline "red4")
+;; (set-face-background 'flymake-warnline "dark slate blue")
 ;; Invoke ruby with '-c' to get syntax checking
-(defun flymake-ruby-init ()
-  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-         (local-file  (file-relative-name
-                       temp-file
-                       (file-name-directory buffer-file-name))))
-    (list "ruby" (list "-c" local-file))))
-  (add-to-list 'flymake-allowed-file-name-masks
-	       '("\\.rb\\'" flymake-ruby-init))
-  (add-to-list 'flymake-allowed-file-name-masks
-	       '("\\.ru\\'" flymake-ruby-init))
-  (add-to-list 'flymake-allowed-file-name-masks
-	       '("\\.gemspec\\'" flymake-ruby-init))
-  (add-to-list 'flymake-allowed-file-name-masks
-	       '("Rakefile$" flymake-ruby-init))
-(add-hook
- 'ruby-mode-hook
- '(lambda ()
-    ;; Don't want flymake mode for ruby regions in rhtml files
-    (if (not (null buffer-file-name)) (flymake-mode))))
+;; (defun flymake-ruby-init ()
+;;   (let* ((temp-file   (flymake-init-create-temp-buffer-copy
+;;                        'flymake-create-temp-inplace))
+;;          (local-file  (file-relative-name
+;;                        temp-file
+;;                        (file-name-directory buffer-file-name))))
+;;     (list "ruby" (list "-c" local-file))))
+;;   (add-to-list 'flymake-allowed-file-name-masks
+;; 	       '("\\.rb\\'" flymake-ruby-init))
+;;   (add-to-list 'flymake-allowed-file-name-masks
+;; 	       '("\\.ru\\'" flymake-ruby-init))
+;;   (add-to-list 'flymake-allowed-file-name-masks
+;; 	       '("\\.gemspec\\'" flymake-ruby-init))
+;;   (add-to-list 'flymake-allowed-file-name-masks
+;; 	       '("Rakefile$" flymake-ruby-init))
+;; (add-hook
+;;  'ruby-mode-hook
+;;  '(lambda ()
+;;     ;; Don't want flymake mode for ruby regions in rhtml files
+;;     (if (not (null buffer-file-name)) (flymake-mode))))
 
 
 ;;; python: flymake + pyflakes + pep8
-(add-hook 'find-file-hook 'flymake-find-file-hook)
-  (defun flymake-pyflakes-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-		       'flymake-create-temp-inplace))
-	   (local-file (file-relative-name
-			temp-file
-			(file-name-directory buffer-file-name))))
-      (list "~/.emacs.d/pycheckers"  (list local-file))
-      ))
-(add-to-list 'flymake-allowed-file-name-masks
-	     '("\\.py\\'" flymake-pyflakes-init))
+;; (add-hook 'find-file-hook 'flymake-find-file-hook)
+;;   (defun flymake-pyflakes-init ()
+;;     (let* ((temp-file (flymake-init-create-temp-buffer-copy
+;; 		       'flymake-create-temp-inplace))
+;; 	   (local-file (file-relative-name
+;; 			temp-file
+;; 			(file-name-directory buffer-file-name))))
+;;       (list "~/.emacs.d/pycheckers"  (list local-file))
+;;       ))
+;; (add-to-list 'flymake-allowed-file-name-masks
+;; 	     '("\\.py\\'" flymake-pyflakes-init))
 
-;;; jedi - python autocompletion
-(autoload 'jedi:setup "jedi" nil t)
-(add-hook 'python-mode-hook 'jedi:setup)
+;; ;;; jedi - python autocompletion
+;; (autoload 'jedi:setup "jedi" nil t)
+;; (add-hook 'python-mode-hook 'jedi:setup)
 
 
-(load-library "flymake-cursor")
+;; (load-library "flymake-cursor")
