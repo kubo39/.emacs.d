@@ -4,6 +4,9 @@
 ;;
 ;; =====================================
 
+(setq default-directory (expand-file-name "~/")) ; osx cocoa emacs workaround.
+
+
 ;; カレントディレクトリが / になる対策
 (setq inhibit-splash-screen t)
 (defun cd-to-homedir-all-buffers ()
