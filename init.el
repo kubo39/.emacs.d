@@ -187,9 +187,9 @@
        initial-frame-alist))
 
 ;; フォントの設定
-;(set-fontset-font (frame-parameter nil 'font)
-;		  'japanese-jisx0208
-;		  '("Takaoゴシック" . "unicode-bmp"))
+(set-fontset-font (frame-parameter nil 'font)
+                  'japanese-jisx0208
+                  '("Takaoゴシック" . "unicode-bmp"))
 
 ;;; undo-tree: Undo の履歴を視覚化
 (when (require 'undo-tree nil t)
