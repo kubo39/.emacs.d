@@ -307,39 +307,6 @@
 ;(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 
 
-;; =====================================================
-;;
-;; IRC-mode: ERC
-;;
-;; =====================================================
-
-;; (require 'erc)
-;; (require 'flyspell)
-;; (require 'ispell)
-;; (eval-when-compile (require 'cl))
-;; (defun start-irc ()
-;;   "Connect to IRC."
-;;   (interactive)
-;;   (lexical-let* ((nickname "kubo39"))
-;;     (setq erc-autojoin-channels-alist '(("mixiwatcher.lo.mixi.jp"
-;;                                          "#graduates2014" "#hegemony-dev"))
-;;           erc-nick (append `(,nickname)
-;;                            (loop for i from ?a upto ?z
-;;                                  for string = (char-to-string i)
-;;                                  if (string-match "[a-z]" string)
-;;                                  collect (concat nickname (capitalize string)))))
-;;     ;; (erc-tls :server "irc.oftc.net" :port 6697
-;;     ;;          :full-name "you")
-;;     (erc :server "mixiwatcher.lo.mixi.jp" :port 6667
-;;          :full-name "kubo39"))
-;;   )
-;; ;; auto spell checker
-
-;; (add-hook 'erc-mode-hook
-;;           'flyspell-mode-on)
-;; (global-set-key (kbd "C-c i") 'start-irc)
-
-
 
 ;; =====================================================
 ;;
