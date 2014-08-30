@@ -67,7 +67,7 @@
     ssh-config-mode
     smarty-mode
     go-mode
-    go-autocomplete
+    ;; go-autocomplete
     jade-mode
     coffee-mode
     haml-mode
@@ -144,7 +144,7 @@
 
 ; 自動略語補完
 (require 'auto-complete)
-(require 'go-autocomplete)
+;;(require 'go-autocomplete)
 (global-auto-complete-mode t)
 
 (defcustom ac-modes
@@ -313,38 +313,38 @@
 ;;
 ;; =====================================================
 
-(setq gtags-prefix-key "\C-c")
-(require 'gtags)
-;; (require 'anything-gtags)
+;; (setq gtags-prefix-key "\C-c")
+;; (require 'gtags)
+;; ;; (require 'anything-gtags)
 
-(setq gtags-mode-hook
-      '(lambda ()
-         (define-key gtags-mode-map "\C-ct" 'gtags-find-tag)
-         (define-key gtags-mode-map "\C-cr" 'gtags-find-rtag)
-         (define-key gtags-mode-map "\C-cs" 'gtags-find-symbol)
-         (define-key gtags-mode-map "\C-cf" 'gtags-parse-file)))
-;; gtags-mode を使いたい mode の hook に追加する
-(add-hook 'c-mode-common-hook
-          '(lambda()
-             (gtags-mode 1)))
+;; (setq gtags-mode-hook
+;;       '(lambda ()
+;;          (define-key gtags-mode-map "\C-ct" 'gtags-find-tag)
+;;          (define-key gtags-mode-map "\C-cr" 'gtags-find-rtag)
+;;          (define-key gtags-mode-map "\C-cs" 'gtags-find-symbol)
+;;          (define-key gtags-mode-map "\C-cf" 'gtags-parse-file)))
+;; ;; gtags-mode を使いたい mode の hook に追加する
+;; (add-hook 'c-mode-common-hook
+;;           '(lambda()
+;;              (gtags-mode 1)))
 
 
-;; update GTAGS
-(defun update-gtags (&optional prefix)
-  (interactive "P")
-  (let ((rootdir (gtags-get-rootpath))
-        (args (if prefix "-v" "-iv")))
-    (when rootdir
-      (let* ((default-directory rootdir)
-             (buffer (get-buffer-create "*update GTAGS*")))
-        (save-excursion
-          (set-buffer buffer)
-          (erase-buffer)
-          (let ((result (process-file "gtags" nil buffer nil args)))
-            (if (= 0 result)
-                (message "GTAGS successfully updated.")
-              (message "update GTAGS error with exit status %d" result))))))))
-(add-hook 'after-save-hook 'update-gtags)
+;; ;; update GTAGS
+;; (defun update-gtags (&optional prefix)
+;;   (interactive "P")
+;;   (let ((rootdir (gtags-get-rootpath))
+;;         (args (if prefix "-v" "-iv")))
+;;     (when rootdir
+;;       (let* ((default-directory rootdir)
+;;              (buffer (get-buffer-create "*update GTAGS*")))
+;;         (save-excursion
+;;           (set-buffer buffer)
+;;           (erase-buffer)
+;;           (let ((result (process-file "gtags" nil buffer nil args)))
+;;             (if (= 0 result)
+;;                 (message "GTAGS successfully updated.")
+;;               (message "update GTAGS error with exit status %d" result))))))))
+;; (add-hook 'after-save-hook 'update-gtags)
 
 
 
@@ -488,10 +488,10 @@
 
 
 ;; markdown-mode
-(require 'markdown-mode)
+;; (require 'markdown-mode)
 
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+;; (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+;; (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 
 ;; =====================================================
