@@ -7,6 +7,12 @@
 (setq default-directory (expand-file-name "~/")) ; osx cocoa emacs workaround.
 
 
+; 文字大きく
+(set-face-attribute 'default nil
+                    :family "Menlo" ;; font
+                    :height 150) ;; font size 
+
+
 ;; EmacsのWindowを一番上に表示
 (if (eq window-system 'ns)
     (x-focus-frame nil))
