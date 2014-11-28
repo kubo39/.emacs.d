@@ -445,6 +445,9 @@
   '("\\.pyx$" . python-mode) auto-mode-alist))
 
 
+;; go-mode
+(require 'go-mode)
+
 ;;haml-mode
 (require 'haml-mode)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
