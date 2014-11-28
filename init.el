@@ -148,6 +148,8 @@
 (setq eshell-cmpl-cycle-cutoff-length 5)
 
 
+(require 'julia-mode)
+
 ; 自動略語補完
 (require 'auto-complete)
 ;;(require 'go-autocomplete)
@@ -158,7 +160,7 @@
                     c-mode c++-mode java-mode go-mode d-mode
                     perl-mode cperl-mode python-mode ruby-mode
                     makefile-mode sh-mode fortran-mode f90-mode ada-mode
-                    xml-mode sgml-mode)
+                    xml-mode sgml-mode julia-mode rust-mode)
   "Majo modes `auto-complete-mode' can run on."
   :type '(list symbol)
   :group 'auto-complete)
@@ -353,30 +355,6 @@
 ;; (add-hook 'after-save-hook 'update-gtags)
 
 
-
-;; =====================================================
-;;
-;; org-mode
-;;
-;; =====================================================
-
-(require 'org-install)
-;; キーバインドの設定
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(define-key global-map "\C-cr" 'org-remember)
-;; 拡張子がorgのファイルを開いた時，自動的にorg-modeにする
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-;; org-modeでの強調表示を可能にする
-(add-hook 'org-mode-hook 'turn-on-font-lock)
-;; 見出しの余分な*を消す
-(setq org-hide-leading-stars t)
-;; org-default-notes-fileのディレクトリ
-(setq org-directory "~/org/")
-;; org-default-notes-fileのファイル名
-(setq org-default-notes-file "notes.org")
-
-
 ;; =====================================================
 ;;
 ;; root権限でファイルを開く設定
@@ -421,16 +399,8 @@
 (add-to-list 'load-path "~/.emacs.d/scala-mode")
 (require 'scala-mode-auto)
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
  )
 
 ;;; turn on syntax highlighting
@@ -487,17 +457,18 @@
 
 ;; rust-mode
 (require 'rust-mode)
+(add-to-list 'auto-mode-alist '("\\.rs$" . rust-mode))
 
 
 ;; julia-mode
-(require 'julia-mode)
+(add-to-list 'auto-mode-alist '("\\.jl$" . julia-mode))
 
 
 ;; markdown-mode
-;; (require 'markdown-mode)
+(require 'markdown-mode)
 
-;; (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-;; (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 
 ;; =====================================================
@@ -539,21 +510,21 @@
 
 
 ;;; python: flymake + pyflakes + pep8
-(add-hook 'find-file-hook 'flymake-find-file-hook)
-  (defun flymake-pyflakes-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-		       'flymake-create-temp-inplace))
-	   (local-file (file-relative-name
-			temp-file
-			(file-name-directory buffer-file-name))))
-      (list "~/.emacs.d/pycheckers"  (list local-file))
-      ))
-(add-to-list 'flymake-allowed-file-name-masks
-	     '("\\.py\\'" flymake-pyflakes-init))
+;; (add-hook 'find-file-hook 'flymake-find-file-hook)
+;;   (defun flymake-pyflakes-init ()
+;;     (let* ((temp-file (flymake-init-create-temp-buffer-copy
+;; 		       'flymake-create-temp-inplace))
+;; 	   (local-file (file-relative-name
+;; 			temp-file
+;; 			(file-name-directory buffer-file-name))))
+;;       (list "~/.emacs.d/pycheckers"  (list local-file))
+;;       ))
+;; (add-to-list 'flymake-allowed-file-name-masks
+;; 	     '("\\.py\\'" flymake-pyflakes-init))
 
 ;;; jedi - python autocompletion
-(autoload 'jedi:setup "jedi" nil t)
-(add-hook 'python-mode-hook 'jedi:setup)
+;; (autoload 'jedi:setup "jedi" nil t)
+;; (add-hook 'python-mode-hook 'jedi:setup)
 
 
 ;; (load-library "flymake-cursor")
