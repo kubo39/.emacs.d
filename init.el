@@ -466,6 +466,8 @@
 ;; julia-mode
 (add-to-list 'auto-mode-alist '("\\.jl$" . julia-mode))
 
+;; nim-mode
+(add-to-list 'auto-mode-alist '("\\.nim$" . nim-mode))
 
 ;; markdown-mode
 (require 'markdown-mode)
@@ -531,3 +533,5 @@
 
 
 ;; (load-library "flymake-cursor")
+
+(global-set-key (kbd "C-c C-v") 'uncomment-region)
