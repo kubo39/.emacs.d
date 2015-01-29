@@ -4,7 +4,9 @@
 ;;
 ;; =====================================
 
-(setq default-directory (expand-file-name "~/")) ; osx cocoa emacs workaround.
+;; ido-mode
+(ido-mode t)
+(require 'ido)
 
 
 ; 文字大きく
