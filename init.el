@@ -150,22 +150,26 @@
 (setq eshell-cmpl-cycle-cutoff-length 5)
 
 
-
 ; 自動略語補完
 (require 'auto-complete)
-;;(require 'go-autocomplete)
+(require 'go-autocomplete)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (global-auto-complete-mode t)
 
 (defcustom ac-modes
   '(emacs-lisp-mode lisp-interaction-mode
-                    c-mode c++-mode java-mode go-mode d-mode
+                    c-mode c++-mode java-mode go-mode
                     perl-mode cperl-mode python-mode ruby-mode
                     makefile-mode sh-mode fortran-mode f90-mode ada-mode
-                    xml-mode sgml-mode julia-mode rust-mode)
+                    xml-mode sgml-mode)
   "Majo modes `auto-complete-mode' can run on."
   :type '(list symbol)
   :group 'auto-complete)
+
+
+;; company-mode
+;; (require 'company)
+;; (global-company-mode 1)
 
 
 ;; 履歴で重複を無視する
