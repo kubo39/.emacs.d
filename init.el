@@ -139,7 +139,7 @@
 ;;   (select-window w2))
 ;; (add-hook 'after-init-hook (lambda()(split-window-and-run-term)))
 
-(eshell)
+;; (eshell)
 
 ;;; eshell関連
 ;; 確認なしでヒストリ保存
@@ -150,11 +150,11 @@
 (setq eshell-cmpl-cycle-cutoff-length 5)
 
 
-(require 'julia-mode)
 
 ; 自動略語補完
 (require 'auto-complete)
 ;;(require 'go-autocomplete)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (global-auto-complete-mode t)
 
 (defcustom ac-modes
@@ -232,13 +232,13 @@
 (setq linum-format "%4d")
 
 ;;; スクロールバーを消す
-(toggle-scroll-bar nil)
+(toggle-scroll-bar 0)
 
 ;;; メニューバーを消す
-(menu-bar-mode nil)
+(menu-bar-mode 0)
 
 ;;; アイコンバーを消す
-(tool-bar-mode nil)
+(tool-bar-mode 0)
 
 ;;; OccurをC-, にバインド
 (global-set-key (kbd "C-,") 'occur)
