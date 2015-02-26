@@ -30,6 +30,8 @@
 
 ;;; load-path を通す
 (setq load-path (cons "~/.emacs.d/elisp" load-path))
+(setq load-path (cons "~/DCD/bin" load-path))
+
 
 ;;; tabサイズを4スペースに
 (setq-default tab-width 4 indent-tabs-mode nil)
@@ -49,41 +51,6 @@
 ; 初期化
 (package-initialize)
 
-(defvar installing-package-list
-  '(
-    markdown-mode
-    scss-mode
-    js2-mode
-    ruby-block
-    google-c-style
-    yaml-mode
-    flycheck
-    yasnippet
-    dropdown-list
-    migemo
-    open-junk-file
-    recentf-ext
-    popwin
-    google-translate
-    auto-complete
-    foreign-regexp
-    auto-highlight-symbol
-    highlight-symbol
-    slim-mode
-    apache-mode
-    zenburn-theme
-    ssh-config-mode
-    smarty-mode
-    go-mode
-    ;; go-autocomplete
-    jade-mode
-    coffee-mode
-    haml-mode
-    ))
-
-
-;; melpa.el
-;; (require 'melpa)
 
 ;-------------------------------------------------------
 
@@ -153,14 +120,13 @@
 ; 自動略語補完
 (require 'auto-complete)
 (require 'go-autocomplete)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (global-auto-complete-mode t)
 
 (defcustom ac-modes
   '(emacs-lisp-mode lisp-interaction-mode
                     c-mode c++-mode java-mode go-mode
                     perl-mode cperl-mode python-mode ruby-mode
-                    makefile-mode sh-mode fortran-mode f90-mode ada-mode
+                    makefile-mode sh-mode
                     xml-mode sgml-mode)
   "Majo modes `auto-complete-mode' can run on."
   :type '(list symbol)
@@ -473,9 +439,6 @@
 ;; julia-mode
 (add-to-list 'auto-mode-alist '("\\.jl$" . julia-mode))
 
-;; nim-mode
-;; (require 'nim-mode)
-;; (add-to-list 'auto-mode-alist '("\\.nim$" . nim-mode))
 
 ;; markdown-mode
 (require 'markdown-mode)
