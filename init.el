@@ -397,8 +397,8 @@
 (setq auto-mode-alist (cons
 		       '("\\.d$" . d-mode) auto-mode-alist))
 ;;; ac-dcd
-;; (require 'ac-dcd)
-;; (add-hook 'd-mode-hook 'ac-dcd-setup)
+(require 'ac-dcd)
+(add-hook 'd-mode-hook 'ac-dcd-setup)
 
 
 ;;; *.ru *.gemspec Rakefile
