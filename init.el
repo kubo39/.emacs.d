@@ -36,6 +36,7 @@
 ;;; tabサイズを4スペースに
 (setq-default tab-width 4 indent-tabs-mode nil)
 
+
 ; server start for emacs-client
 (require 'server)
 (unless (server-running-p)
@@ -380,12 +381,19 @@
 
 
 ;;; D-Language
+(add-to-list 'load-path "~/.emacs.d/d-mode")
 (autoload 'd-mode "d-mode" "Major mode for editing D code." t)
 (setq auto-mode-alist (cons
 		       '("\\.d$" . d-mode) auto-mode-alist))
 ;;; ac-dcd
 (require 'ac-dcd)
 (add-hook 'd-mode-hook 'ac-dcd-setup)
+;; (add-hook 'd-mode-hook
+;;           '(lambda ()
+;;              (setq c-basic-offset 2)
+;;              (setq indent-tabs-mode nil)
+;;              (setq tab-width 2)
+;;              (local-set-key (kbd "\t") 'c-indent-line-or-region)))
 
 
 ;;; *.ru *.gemspec Rakefile
