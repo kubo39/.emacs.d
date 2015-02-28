@@ -4,8 +4,6 @@
 ;;
 ;; =====================================
 
-(setq-default indent-tabs-mode nil)
-
 ;; ido-mode
 (ido-mode t)
 (require 'ido)
@@ -124,15 +122,15 @@
 (require 'go-autocomplete)
 (global-auto-complete-mode t)
 
-(defcustom ac-modes
-  '(emacs-lisp-mode lisp-interaction-mode
-                    c-mode c++-mode java-mode go-mode
-                    perl-mode cperl-mode python-mode ruby-mode
-                    makefile-mode sh-mode
-                    xml-mode sgml-mode)
-  "Majo modes `auto-complete-mode' can run on."
-  :type '(list symbol)
-  :group 'auto-complete)
+;; (defcustom ac-modes
+;;   '(emacs-lisp-mode lisp-interaction-mode
+;;                     c-mode c++-mode java-mode go-mode
+;;                     perl-mode cperl-mode python-mode ruby-mode
+;;                     makefile-mode sh-mode
+;;                     xml-mode sgml-mode)
+;;   "Majo modes `auto-complete-mode' can run on."
+;;   :type '(list symbol)
+;;   :group 'auto-complete)
 
 ;; company-mode
 ;; (require 'company)
@@ -383,21 +381,18 @@
 ;;; D-Language
 (add-to-list 'load-path "~/.emacs.d/d-mode")
 (autoload 'd-mode "d-mode" "Major mode for editing D code." t)
-(setq auto-mode-alist (cons
-		       '("\\.d$" . d-mode) auto-mode-alist))
-(add-hook 'd-mode-hook
-          '(lambda ()
-             (c-set-style "linux")
-             (setq c-auto-newline t)
-             (setq c-basic-offset 2)
-             (setq indent-tabs-mode nil)
-             (setq tab-width 2)
-             (local-set-key (kbd "\t") 'c-indent-line-or-region)))
-
+(setq auto-mode-alist (cons '("\\.d$" . d-mode) auto-mode-alist))
 
 ;;; ac-dcd
 (require 'ac-dcd)
-(add-hook 'd-mode-hook 'ac-dcd-setup)
+(add-hook 'd-mode-hook
+          '(lambda ()
+             (c-set-style "linux")
+             (setq c-basic-offset 2)
+             (setq c-auto-newline t)
+             (setq indent-tabs-mode nil)
+             (setq tab-width 2)
+             (ac-dcd-setup)))
 
 
 ;;; *.ru *.gemspec Rakefile
