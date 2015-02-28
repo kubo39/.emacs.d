@@ -4,6 +4,8 @@
 ;;
 ;; =====================================
 
+(setq-default indent-tabs-mode nil)
+
 ;; ido-mode
 (ido-mode t)
 (require 'ido)
@@ -13,7 +15,6 @@
 (set-face-attribute 'default nil
                     :family "Menlo" ;; font
                     :height 150) ;; font size 
-
 
 ;; EmacsのWindowを一番上に表示
 (if (eq window-system 'ns)
@@ -89,10 +90,10 @@
    :box nil)
 
 ;;; auto-install.el
-(when (require 'auto-install nil t)
-  (setq auto-install-directory "~/.emacs.d/elisp/")
- ;(auto-install-update-emacswiki-package-name t)
-  (auto-install-compatibility-setup))
+;; (when (require 'auto-install nil t)
+;;   (setq auto-install-directory "~/.emacs.d/elisp/")
+;;   (auto-install-update-emacswiki-package-name t)
+;  ; (auto-install-compatibility-setup))
 
 ;;; ターミナルエミュレータのシェルを bash に設定
 ;; (when (require 'multi-term nil t)
@@ -132,7 +133,6 @@
   "Majo modes `auto-complete-mode' can run on."
   :type '(list symbol)
   :group 'auto-complete)
-
 
 ;; company-mode
 ;; (require 'company)
@@ -385,15 +385,19 @@
 (autoload 'd-mode "d-mode" "Major mode for editing D code." t)
 (setq auto-mode-alist (cons
 		       '("\\.d$" . d-mode) auto-mode-alist))
+(add-hook 'd-mode-hook
+          '(lambda ()
+             (c-set-style "linux")
+             (setq c-auto-newline t)
+             (setq c-basic-offset 2)
+             (setq indent-tabs-mode nil)
+             (setq tab-width 2)
+             (local-set-key (kbd "\t") 'c-indent-line-or-region)))
+
+
 ;;; ac-dcd
 (require 'ac-dcd)
 (add-hook 'd-mode-hook 'ac-dcd-setup)
-;; (add-hook 'd-mode-hook
-;;           '(lambda ()
-;;              (setq c-basic-offset 2)
-;;              (setq indent-tabs-mode nil)
-;;              (setq tab-width 2)
-;;              (local-set-key (kbd "\t") 'c-indent-line-or-region)))
 
 
 ;;; *.ru *.gemspec Rakefile
@@ -429,6 +433,19 @@
 ;; rust-mode
 (require 'rust-mode)
 (add-to-list 'auto-mode-alist '("\\.rs$" . rust-mode))
+;; (add-hook 'rust-mode-hook
+;;           '(lambda()
+;;              (setq indent-tabs-mode nil)
+;;              (setq c-basic-offset 4)
+;;              (setq c-auto-newline t)
+;;              (setq rust-indent-offset 4)))
+
+;; racer -- auto-compelte for rust
+(setq racer-rust-src-path "/home/kubo39/rust/src/")
+(setq racer-cmd "/home/kubo39/racer/target/release/racer")
+(add-to-list 'load-path "/home/kubo39/racer/editors")
+;; (eval-after-load "rust-mode" '(require 'racer))
+
 
 
 ;; julia-mode
