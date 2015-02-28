@@ -387,7 +387,7 @@
 (require 'ac-dcd)
 (add-hook 'd-mode-hook
           '(lambda ()
-             (c-set-style "linux")
+             (c-set-style "bsd")
              (setq c-basic-offset 2)
              (setq c-auto-newline t)
              (setq indent-tabs-mode nil)
