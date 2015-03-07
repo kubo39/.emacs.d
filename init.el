@@ -423,18 +423,11 @@
 ;; rust-mode
 (require 'rust-mode)
 (add-to-list 'auto-mode-alist '("\\.rs$" . rust-mode))
-;; (add-hook 'rust-mode-hook
-;;           '(lambda()
-;;              (setq indent-tabs-mode nil)
-;;              (setq c-basic-offset 4)
-;;              (setq c-auto-newline t)
-;;              (setq rust-indent-offset 4)))
 
 ;; racer -- auto-compelte for rust
 (setq racer-rust-src-path "/home/kubo39/rust/src/")
 (setq racer-cmd "/home/kubo39/racer/target/release/racer")
 (add-to-list 'load-path "/home/kubo39/racer/editors")
-;; (eval-after-load "rust-mode" '(require 'racer))
 
 
 ;; markdown-mode
