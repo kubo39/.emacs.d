@@ -114,7 +114,6 @@
 
 ; 自動略語補完
 (require 'auto-complete)
-(require 'go-autocomplete)
 (global-auto-complete-mode t)
 
 ;; (defcustom ac-modes
@@ -410,6 +409,9 @@
 
 ;; go-mode
 (require 'go-mode)
+(setq auto-mode-alist (cons
+  '("\\.go$" . go-mode) auto-mode-alist))
+(require 'go-autocomplete)
 
 
 ;;haml-mode
