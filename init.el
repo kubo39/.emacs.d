@@ -28,7 +28,7 @@
 (setq debug-on-error t)
 
 ;;; load-path を通す
-(setq load-path (cons "~/.emacs.d/elisp" load-path))
+;; (setq load-path (cons "~/.emacs.d/elisp" load-path))
 (setq load-path (cons "~/DCD/bin" load-path))
 
 
@@ -266,11 +266,15 @@
 ;(yas/load-directory "~/.emacs.d/elisp/snippets")
 ;(yas/global-mode t)
 
-;;; kill-summary
-; yankをべんりに
-; C-n とC-pが大事。「.」でyankポインタを変更。
-(require 'kill-summary) ;"kill-summary" nil t)
-(define-key global-map "\ey" 'kill-summary)
+
+;;; browse-kill-ring の設定
+(require 'browse-kill-ring)
+(global-set-key "\M-y" 'browse-kill-ring)
+;; C-g で終了
+(add-hook 'browse-kill-ring-hook
+          (lambda ()
+            (define-key browse-kill-ring-mode-map (kbd "\C-g") 'browse-kill-ring-quit)))
+
 
 ;; Emacsのkill-ringsをクリップボードに対応
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
