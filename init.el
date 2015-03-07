@@ -27,9 +27,6 @@
 ;;; 常時デバッグ状態
 (setq debug-on-error t)
 
-;;; load-path を通す
-;; (setq load-path (cons "~/.emacs.d/elisp" load-path))
-(setq load-path (cons "~/DCD/bin" load-path))
 
 
 ;;; tabサイズを4スペースに
@@ -126,9 +123,6 @@
 ;;   :type '(list symbol)
 ;;   :group 'auto-complete)
 
-;; company-mode
-;; (require 'company)
-;; (global-company-mode 1)
 
 
 ;; 履歴で重複を無視する
@@ -234,26 +228,6 @@
 ;;; yes と入力するのは面倒なので y でokにする
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;;; anything
-;; (require 'anything)
-;; (require 'anything-config)
-;; (require 'anything-match-plugin)
-;; (define-key global-map "\C-x\;" 'anything)
-;; (add-to-list 'anything-sources 'anything-c-source-emacs-commands)
-
-;; バッファ切り替えをanythingに
-;;(define-key global-map (kbd "\C-x b") 'anything)
-
-
-;;; anything-project
-;; (require 'anything-project)
-;; (global-set-key (kbd "M-t") 'anything-project)
-
-;; (ap:add-project
-;;  :name 'python
-;;  :look-for '(".git")
-;;  :include-regexp '("\\.c$" "\\.h$" "\\.js$" "\\.rb$" "\\.py$" "\\.html$")
-;;  )
 
 ;; ヘルプバッファや補完バッファをポップアップで表示
 (require 'popwin)
@@ -279,50 +253,6 @@
 ;; Emacsのkill-ringsをクリップボードに対応
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
 (global-set-key "\C-w" 'clipboard-kill-region)
-
-; wdired
-;(require 'wdired)
-;(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
-
-
-;; =====================================================
-;;
-;; gtags
-;;
-;; =====================================================
-
-;; (setq gtags-prefix-key "\C-c")
-;; (require 'gtags)
-;; ;; (require 'anything-gtags)
-
-;; (setq gtags-mode-hook
-;;       '(lambda ()
-;;          (define-key gtags-mode-map "\C-ct" 'gtags-find-tag)
-;;          (define-key gtags-mode-map "\C-cr" 'gtags-find-rtag)
-;;          (define-key gtags-mode-map "\C-cs" 'gtags-find-symbol)
-;;          (define-key gtags-mode-map "\C-cf" 'gtags-parse-file)))
-;; ;; gtags-mode を使いたい mode の hook に追加する
-;; (add-hook 'c-mode-common-hook
-;;           '(lambda()
-;;              (gtags-mode 1)))
-
-
-;; ;; update GTAGS
-;; (defun update-gtags (&optional prefix)
-;;   (interactive "P")
-;;   (let ((rootdir (gtags-get-rootpath))
-;;         (args (if prefix "-v" "-iv")))
-;;     (when rootdir
-;;       (let* ((default-directory rootdir)
-;;              (buffer (get-buffer-create "*update GTAGS*")))
-;;         (save-excursion
-;;           (set-buffer buffer)
-;;           (erase-buffer)
-;;           (let ((result (process-file "gtags" nil buffer nil args)))
-;;             (if (= 0 result)
-;;                 (message "GTAGS successfully updated.")
-;;               (message "update GTAGS error with exit status %d" result))))))))
-;; (add-hook 'after-save-hook 'update-gtags)
 
 
 ;; =====================================================
@@ -383,6 +313,8 @@
 (setq auto-mode-alist (cons '("\\.d$" . d-mode) auto-mode-alist))
 
 ;;; ac-dcd
+;;;   DCDに load-path を通す
+(setq load-path (cons "~/DCD/bin" load-path))
 (require 'ac-dcd)
 (add-hook 'd-mode-hook
           '(lambda ()
@@ -475,25 +407,6 @@
  '(lambda ()
     ;; Don't want flymake mode for ruby regions in rhtml files
     (if (not (null buffer-file-name)) (flymake-mode))))
-
-
-;;; python: flymake + pyflakes + pep8
-;; (add-hook 'find-file-hook 'flymake-find-file-hook)
-;;   (defun flymake-pyflakes-init ()
-;;     (let* ((temp-file (flymake-init-create-temp-buffer-copy
-;; 		       'flymake-create-temp-inplace))
-;; 	   (local-file (file-relative-name
-;; 			temp-file
-;; 			(file-name-directory buffer-file-name))))
-;;       (list "~/.emacs.d/pycheckers"  (list local-file))
-;;       ))
-;; (add-to-list 'flymake-allowed-file-name-masks
-;; 	     '("\\.py\\'" flymake-pyflakes-init))
-
-;;; jedi - python autocompletion
-;; (autoload 'jedi:setup "jedi" nil t)
-;; (add-hook 'python-mode-hook 'jedi:setup)
-
 
 ;; (load-library "flymake-cursor")
 
