@@ -437,14 +437,8 @@
 ;; (eval-after-load "rust-mode" '(require 'racer))
 
 
-
-;; julia-mode
-(add-to-list 'auto-mode-alist '("\\.jl$" . julia-mode))
-
-
 ;; markdown-mode
 (require 'markdown-mode)
-
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
