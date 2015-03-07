@@ -235,10 +235,10 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;;; anything
-(require 'anything)
-(require 'anything-config)
-(require 'anything-match-plugin)
-(define-key global-map "\C-x\;" 'anything)
+;; (require 'anything)
+;; (require 'anything-config)
+;; (require 'anything-match-plugin)
+;; (define-key global-map "\C-x\;" 'anything)
 ;; (add-to-list 'anything-sources 'anything-c-source-emacs-commands)
 
 ;; バッファ切り替えをanythingに
