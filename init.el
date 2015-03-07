@@ -410,14 +410,10 @@
 ;; go-mode
 (require 'go-mode)
 
+
 ;;haml-mode
 (require 'haml-mode)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
-
-
-;; clojure-mode
-(require 'clojure-mode)
-(add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
 
 
 ;; rust-mode
