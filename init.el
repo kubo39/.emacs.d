@@ -409,5 +409,3 @@
     (if (not (null buffer-file-name)) (flymake-mode))))
 
 ;; (load-library "flymake-cursor")
-
-(global-set-key (kbd "C-c C-v") 'uncomment-region)
