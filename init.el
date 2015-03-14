@@ -251,6 +251,11 @@
 (global-set-key "\C-w" 'clipboard-kill-region)
 
 
+;; flycheck
+(eval-after-load 'flycheck
+  '(custom-set-variables
+    '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
+
 ;; =====================================================
 ;;
 ;; root権限でファイルを開く設定
@@ -285,6 +290,7 @@
   (set-buffer (find-file (concat "/sudo::" file))))
 
 
+
 ;; =====================================================
 ;;
 ;; Languages mode(各言語モード)
@@ -306,11 +312,9 @@
 (add-to-list 'load-path "~/.emacs.d/d-mode")
 (autoload 'd-mode "d-mode" "Major mode for editing D code." t)
 (setq auto-mode-alist (cons '("\\.d$" . d-mode) auto-mode-alist))
-
-;;; ac-dcd
-;;;   DCDに load-path を通す
-(setq load-path (cons "~/DCD/bin" load-path))
-(require 'ac-dcd)
+(setup-flycheck-d-unittest)
+(setq load-path (cons "~/DCD/bin" load-path)) ;;;   DCDに load-path を通す
+(require 'ac-dcd)                             ;;; ac-dcd
 (add-hook 'd-mode-hook
           '(lambda ()
              (c-set-style "bsd")
@@ -318,6 +322,8 @@
              (setq c-auto-newline t)
              (setq indent-tabs-mode nil)
              (setq tab-width 2)
+             (local-set-key  (kbd "C-c C-p") 'flycheck-previous-error)
+             (local-set-key  (kbd "C-c C-n") 'flycheck-next-error)
              (ac-dcd-setup)))
 
 
@@ -373,34 +379,34 @@
 ;; =====================================================
 
 ;; GUIの警告は表示しない
-(setq flymake-gui-warnings-enabled nil)
+;; (setq flymake-gui-warnings-enabled nil)
 
-(load "flymake")
+;; (load "flymake")
 
 ;;;;  flymake for ruby
 ;; I don't like the default colors :)
-(set-face-background 'flymake-errline "red4")
-(set-face-background 'flymake-warnline "dark slate blue")
+;; (set-face-background 'flymake-errline "red4")
+;; (set-face-background 'flymake-warnline "dark slate blue")
 ;; Invoke ruby with '-c' to get syntax checking
-(defun flymake-ruby-init ()
-  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-         (local-file  (file-relative-name
-                       temp-file
-                       (file-name-directory buffer-file-name))))
-    (list "ruby" (list "-c" local-file))))
-  (add-to-list 'flymake-allowed-file-name-masks
-	       '("\\.rb\\'" flymake-ruby-init))
-  (add-to-list 'flymake-allowed-file-name-masks
-	       '("\\.ru\\'" flymake-ruby-init))
-  (add-to-list 'flymake-allowed-file-name-masks
-	       '("\\.gemspec\\'" flymake-ruby-init))
-  (add-to-list 'flymake-allowed-file-name-masks
-	       '("Rakefile$" flymake-ruby-init))
-(add-hook
- 'ruby-mode-hook
- '(lambda ()
-    ;; Don't want flymake mode for ruby regions in rhtml files
-    (if (not (null buffer-file-name)) (flymake-mode))))
+;; (defun flymake-ruby-init ()
+;;   (let* ((temp-file   (flymake-init-create-temp-buffer-copy
+;;                        'flymake-create-temp-inplace))
+;;          (local-file  (file-relative-name
+;;                        temp-file
+;;                        (file-name-directory buffer-file-name))))
+;;     (list "ruby" (list "-c" local-file))))
+;;   (add-to-list 'flymake-allowed-file-name-masks
+;; 	       '("\\.rb\\'" flymake-ruby-init))
+;;   (add-to-list 'flymake-allowed-file-name-masks
+;; 	       '("\\.ru\\'" flymake-ruby-init))
+;;   (add-to-list 'flymake-allowed-file-name-masks
+;; 	       '("\\.gemspec\\'" flymake-ruby-init))
+;;   (add-to-list 'flymake-allowed-file-name-masks
+;; 	       '("Rakefile$" flymake-ruby-init))
+;; (add-hook
+;;  'ruby-mode-hook
+;;  '(lambda ()
+;;     ;; Don't want flymake mode for ruby regions in rhtml files
+;;     (if (not (null buffer-file-name)) (flymake-mode))))
 
 ;; (load-library "flymake-cursor")
