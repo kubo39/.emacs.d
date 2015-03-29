@@ -194,11 +194,11 @@
 ;;; アイコンバーを消す
 (tool-bar-mode 0)
 
-;;; OccurをC-, にバインド
-(global-set-key (kbd "C-,") 'occur)
+;;; OccurをC-o にバインド
+(global-set-key (kbd "C-o") 'occur)
 
-;;; goto-line C-: に
-(global-set-key (kbd "C-:") 'goto-line)
+;;; goto-line C-l に
+(global-set-key (kbd "C-l") 'goto-line)
 
 ;;; バックアップファイルを作らない
 (setq backup-inhibited t)
