@@ -273,9 +273,6 @@
 (custom-set-faces
  )
 
-;;; turn on syntax highlighting
-(global-font-lock-mode 1)
-
 
 ;;; D-Language
 (add-to-list 'load-path "~/.emacs.d/d-mode")
@@ -305,12 +302,6 @@
  '("Rakefile$" . ruby-mode) auto-mode-alist))
 (setq interpreter-mode-alist (append
  '(("ruby" . ruby-mode)) interpreter-mode-alist)x)
-
-;;; *.tac, *.pyx
-(setq auto-mode-alist (cons
-  '("\\.tac$" . python-mode) auto-mode-alist))
-(setq auto-mode-alist (cons
-  '("\\.pyx$" . python-mode) auto-mode-alist))
 
 
 ;; go-mode
