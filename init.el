@@ -7,6 +7,8 @@
 ;; ido-mode
 (ido-mode t)
 (require 'ido)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 
 ; 文字大きく
