@@ -145,9 +145,6 @@
 ;;; 対応する括弧を強調
 (show-paren-mode t)
 
-;;; 透明度の設定
-;(set-frame-parameter nil 'alpha '80)
-
 ;;; C-c C-c でregionをコメントアウト
 (global-set-key (kbd "C-c C-c") 'comment-region)
 
@@ -194,12 +191,8 @@
 ;;; 文字列置換
 (global-set-key (kbd "C-r") 'replace-regexp)
 
-;;; shift+カーソルキーで分割ウィンドウの切り替え
-;(windmove-default-keybindings)
-
 ;;; yes と入力するのは面倒なので y でokにする
 (fset 'yes-or-no-p 'y-or-n-p)
-
 
 ;; ヘルプバッファや補完バッファをポップアップで表示
 (require 'popwin)
