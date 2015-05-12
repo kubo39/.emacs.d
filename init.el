@@ -87,21 +87,6 @@
    :box nil)
 
 
-;;; ターミナルエミュレータのシェルを bash に設定
-;; (when (require 'multi-term nil t)
-;;   (setq multi-term-program "/bin/bash"))
-
-;;; 起動時にバッファ２分割、左側に bash 表示
-;; (defun split-window-and-run-term()
-;;   (setq w (selected-window))
-;;   (setq w2 (split-window w nil t))
-;;   (select-window w)
-;;  (multi-term)
-;;   (select-window w2))
-;; (add-hook 'after-init-hook (lambda()(split-window-and-run-term)))
-
-;; (eshell)
-
 ;;; eshell関連
 ;; 確認なしでヒストリ保存
 (setq eshell-ask-to-save-history (quote always))
@@ -114,17 +99,6 @@
 ; 自動略語補完
 (require 'auto-complete)
 (global-auto-complete-mode t)
-
-;; (defcustom ac-modes
-;;   '(emacs-lisp-mode lisp-interaction-mode
-;;                     c-mode c++-mode java-mode go-mode
-;;                     perl-mode cperl-mode python-mode ruby-mode
-;;                     makefile-mode sh-mode
-;;                     xml-mode sgml-mode)
-;;   "Majo modes `auto-complete-mode' can run on."
-;;   :type '(list symbol)
-;;   :group 'auto-complete)
-
 
 
 ;; 履歴で重複を無視する
