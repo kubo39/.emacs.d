@@ -188,9 +188,6 @@
 ;;; バッテリー残量
 ;(display-battery-mode t)
 
-;;; 文字列置換
-(global-set-key (kbd "C-r") 'replace-regexp)
-
 ;;; yes と入力するのは面倒なので y でokにする
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -225,6 +222,16 @@
   '(custom-set-variables
     '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+
+;; anzu
+(global-anzu-mode +1)
+(custom-set-variables
+ '(anzu-mode-lighter "")
+ '(anzu-deactivate-region t)
+ '(anzu-search-threshold 1000))
+(global-set-key (kbd "C-r") 'anzu-query-replace-regexp)
+
 
 ;; =====================================================
 ;;
