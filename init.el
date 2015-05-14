@@ -233,6 +233,9 @@
 (global-set-key (kbd "C-r") 'anzu-query-replace-regexp)
 
 
+;; 行末の空白を表示
+(setq-default show-trailing-whitespace t)
+
 ;; =====================================================
 ;;
 ;; root権限でファイルを開く設定
