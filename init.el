@@ -341,3 +341,8 @@
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+
+;; nim-mode
+(require 'nim-mode)
+(add-to-list 'auto-mode-alist '("\\.nim$" . nim-mode))
