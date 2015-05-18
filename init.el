@@ -344,5 +344,5 @@
 
 
 ;; nim-mode
-(require 'nim-mode)
-(add-to-list 'auto-mode-alist '("\\.nim$" . nim-mode))
+(eval-after-load 'nim-mode
+  '(add-hook 'nim-mode-hook 'ac-nim-enable))
