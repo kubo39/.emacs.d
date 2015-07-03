@@ -346,3 +346,7 @@
 ;; nim-mode
 (eval-after-load 'nim-mode
   '(add-hook 'nim-mode-hook 'ac-nim-enable))
+
+
+;; crystal
+(add-to-list 'auto-mode-alist '("\\.cr$" . ruby-mode))
