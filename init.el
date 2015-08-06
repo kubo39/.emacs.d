@@ -10,6 +10,8 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
+;; el-get
+(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
 
 ; 文字大きく
 (set-face-attribute 'default nil
@@ -349,7 +351,8 @@
 
 
 ;; crystal
-(add-to-list 'auto-mode-alist '("\\.cr$" . ruby-mode))
+(el-get-bundle jpellerin/emacs-crystal-mode)
+(add-to-list 'auto-mode-alist '("\\.cr$" . crystal-mode))
 
 
 (add-hook
