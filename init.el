@@ -354,7 +354,7 @@
 (el-get-bundle jpellerin/emacs-crystal-mode)
 (add-to-list 'auto-mode-alist '("\\.cr$" . crystal-mode))
 
-
+;; pony
 (add-hook
   'ponylang-mode-hook
   (lambda ()
