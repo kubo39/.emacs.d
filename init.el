@@ -40,7 +40,7 @@
 (require 'init-flycheck)
 (require 'init-tramp)
 (require 'init-kill-ring)
-
+(require 'init-powerline)
 
 ;;; eshell関連
 ;; 確認なしでヒストリ保存
