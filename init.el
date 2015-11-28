@@ -62,10 +62,6 @@
 (setq auto-save-buffers-enhanced-interval 0.5)
 (auto-save-buffers-enhanced t)
 
-;;; region の色
-(set-face-background 'region "SkyBlue")
-(set-face-foreground 'region "black")
-
 ;;; 初期フレームの設定
 (setq initial-frame-alist
       (append
@@ -185,7 +181,7 @@
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
  '(package-selected-packages
    (quote
-    (powerline racer flycheck-rust dts-mode d-mode undo-tree tabbar smex scala-mode rust-mode quickrun popwin ponylang-mode markdown-mode julia-mode haml-mode go-mode go-autocomplete git-rebase-mode flycheck-pos-tip flycheck-d-unittest el-get company browse-kill-ring auto-save-buffers-enhanced anzu ac-nim ac-dcd)))
+    (moe-theme powerline flycheck-rust d-mode undo-tree tabbar smex scala-mode rust-mode quickrun popwin ponylang-mode markdown-mode julia-mode haml-mode go-mode go-autocomplete git-rebase-mode flycheck-pos-tip flycheck-d-unittest el-get company browse-kill-ring auto-save-buffers-enhanced ac-nim ac-dcd)))
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
