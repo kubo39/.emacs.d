@@ -138,6 +138,9 @@
 ;;; バッテリー残量
 ;(display-battery-mode t)
 
+;;; 文字列置換
+(global-set-key (kbd "C-r") 'replace-regexp)
+
 ;;; yes と入力するのは面倒なので y でokにする
 (fset 'yes-or-no-p 'y-or-n-p)
 
