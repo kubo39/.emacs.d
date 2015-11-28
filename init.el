@@ -4,14 +4,12 @@
 ;;
 ;; =====================================
 
-;; ido-mode
-(ido-mode t)
-(require 'ido)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-;; el-get
-(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
+(package-initialize)
+
+(add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
+(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))  ;; el-get
+
 
 ; 文字大きく
 (set-face-attribute 'default nil
@@ -31,62 +29,17 @@
 ;;; 常時デバッグ状態
 (setq debug-on-error t)
 
-
-
 ;;; tabサイズを4スペースに
 (setq-default tab-width 4 indent-tabs-mode nil)
 
 
-; server start for emacs-client
-(require 'server)
-(unless (server-running-p)
-  (server-start))
-
-
-;package.el
-(require 'package)
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t) ;; meplaを追加
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t) ;;
-(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t) ;; elpaを追加
-; 初期化
-(package-initialize)
-
-
-;-------------------------------------------------------
-
-;;; tabbar
-(require 'tabbar)
-(tabbar-mode)
-(global-set-key "\M-]" 'tabbar-forward)  ; 次のタブ
-(global-set-key "\M-[" 'tabbar-backward) ; 前のタブ
-;; タブ上でマウスホイールを使わない
-(tabbar-mwheel-mode nil)
-;; グループを使わない
-(setq tabbar-buffer-groups-function nil)
-;; 左側のボタンを消す
-(dolist (btn '(tabbar-buffer-home-button
-               tabbar-scroll-left-button
-               tabbar-scroll-right-button))
-  (set btn (cons (cons "" nil)
-                 (cons "" nil))))
-;; tabber色設定
-(set-face-attribute ; バー自体の色
-  'tabbar-default nil
-   :background "black"
-   :family "Inconsolata"
-   :height 1.0)
-(set-face-attribute ; アクティブなタブ
-  'tabbar-selected nil
-   :background "black"
-   :foreground "green"
-   :weight 'bold
-   :box nil)
-(set-face-attribute ; 非アクティブなタブ
-  'tabbar-unselected nil
-   :background "black"
-   :foreground "red"
-   :box nil)
+(require 'init-elpa)
+(require 'init-ido)
+(require 'init-tabbar)
+(require 'init-autocomplete)
+(require 'init-flycheck)
+(require 'init-tramp)
+(require 'init-kill-ring)
 
 
 ;;; eshell関連
@@ -96,11 +49,6 @@
 (setq eshell-cmpl-cycle-completions t)
 ;;補完候補がこの数値以下だとサイクルせずに候補表示
 (setq eshell-cmpl-cycle-cutoff-length 5)
-
-
-; 自動略語補完
-(require 'auto-complete)
-(global-auto-complete-mode t)
 
 
 ;; 履歴で重複を無視する
@@ -197,166 +145,35 @@
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
 
-;;; yasnippet
-;(add-to-list 'load-path "~/.emacs.d/yasnippet/")
-;(require 'yasnippet)
-;(yas/initialize)
-;(yas/load-directory "~/.emacs.d/snippets")
-;(yas/global-mode t)
-
-
-;;; browse-kill-ring の設定
-(require 'browse-kill-ring)
-(global-set-key "\M-y" 'browse-kill-ring)
-;; C-g で終了
-(add-hook 'browse-kill-ring-hook
-          (lambda ()
-            (define-key browse-kill-ring-mode-map (kbd "\C-g") 'browse-kill-ring-quit)))
-
-
-;; Emacsのkill-ringsをクリップボードに対応
-(global-set-key "\M-w" 'clipboard-kill-ring-save)
-(global-set-key "\C-w" 'clipboard-kill-region)
-
-
-;; flycheck
-(eval-after-load 'flycheck
-  '(custom-set-variables
-    '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
-(add-hook 'after-init-hook #'global-flycheck-mode)
-
-
-;; anzu
-(global-anzu-mode +1)
-(custom-set-variables
- '(anzu-mode-lighter "")
- '(anzu-deactivate-region t)
- '(anzu-search-threshold 1000))
-(global-set-key (kbd "C-r") 'anzu-query-replace-regexp)
-
 
 ;; 行末の空白を表示
 (setq-default show-trailing-whitespace t)
 
-;; =====================================================
-;;
-;; root権限でファイルを開く設定
-;;
-;; =====================================================
-
-;;; sudo とか ssh とか ubuntu用
-(require 'tramp)
-
-(defun th-rename-tramp-buffer ()
-  (when (file-remote-p (buffer-file-name))
-    (rename-buffer
-     (format "%s:%s"
-             (file-remote-p (buffer-file-name) 'method)
-             (buffer-name)))))
-
-(add-hook 'find-file-hook
-          'th-rename-tramp-buffer)
-
-(defadvice find-file (around th-find-file activate)
-  "Open FILENAME using tramp's sudo method if it's read-only."
-  (if (and (not (file-writable-p (ad-get-arg 0)))
-           (y-or-n-p (concat "File "
-                             (ad-get-arg 0)
-                             " is read-only.  Open it as root? ")))
-      (th-find-file-sudo (ad-get-arg 0))
-    ad-do-it))
-
-(defun th-find-file-sudo (file)
-  "Opens FILE with root privileges."
-  (interactive "F")
-  (set-buffer (find-file (concat "/sudo::" file))))
+;-------------------------------------------------------
 
 
 
-;; =====================================================
-;;
-;; Languages mode(各言語モード)
-;;
-;; =====================================================
-
-;;; Scala
-(require 'scala-mode-auto)
-(custom-set-variables
- '(safe-local-variable-values (quote ((encoding . utf-8)))))
-(custom-set-faces
- )
-
-
-;;; D-Language
-(add-to-list 'load-path "~/.emacs.d/d-mode")
-(autoload 'd-mode "d-mode" "Major mode for editing D code." t)
-(setq auto-mode-alist (cons '("\\.d$" . d-mode) auto-mode-alist))
-(setup-flycheck-d-unittest)
-(setq load-path (cons "~/DCD/bin" load-path)) ;;;   DCDに load-path を通す
-(require 'ac-dcd)                             ;;; ac-dcd
-(add-hook 'd-mode-hook
-          '(lambda ()
-             (c-set-style "bsd")
-             (setq c-basic-offset 2)
-             (setq c-auto-newline t)
-             (setq indent-tabs-mode nil)
-             (setq tab-width 2)
-             (local-set-key  (kbd "C-c C-p") 'flycheck-previous-error)
-             (local-set-key  (kbd "C-c C-n") 'flycheck-next-error)
-             (ac-dcd-setup)))
+;; 言語系
+(require 'init-d)
+(require 'init-markdown)
+(require 'init-ruby)
+(require 'init-rust)
+(require 'init-go)
+(require 'init-nim)
+(require 'init-crystal)
+(require 'init-scala)
+(require 'init-pony)
+(require 'init-haml)
 
 
-;;; *.ru *.gemspec Rakefile
-(setq auto-mode-alist (cons
- '("\\.ru$" . ruby-mode) auto-mode-alist))
-(setq auto-mode-alist (cons
- '("\\.gemspec$" . ruby-mode) auto-mode-alist))
-(setq auto-mode-alist (cons
- '("Rakefile$" . ruby-mode) auto-mode-alist))
-(setq interpreter-mode-alist (append
- '(("ruby" . ruby-mode)) interpreter-mode-alist)x)
+;;----------------------------------------------------------------------------
+;; Allow access from emacsclient
+;;----------------------------------------------------------------------------
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 
-;; go-mode
-(require 'go-mode)
-(setq auto-mode-alist (cons
-  '("\\.go$" . go-mode) auto-mode-alist))
-(require 'go-autocomplete)
+(provide 'init)
 
-
-;;haml-mode
-(require 'haml-mode)
-(add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
-
-
-;; rust-mode
-(require 'rust-mode)
-(add-to-list 'auto-mode-alist '("\\.rs$" . rust-mode))
-
-;; racer -- auto-compelte for rust
-(setq racer-rust-src-path "/home/kubo39/rust/src/")
-(setq racer-cmd "/home/kubo39/racer/target/release/racer")
-(add-to-list 'load-path "/home/kubo39/racer/editors")
-
-
-;; markdown-mode
-(require 'markdown-mode)
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
-
-;; nim-mode
-(eval-after-load 'nim-mode
-  '(add-hook 'nim-mode-hook 'ac-nim-enable))
-
-
-;; crystal
-(el-get-bundle jpellerin/emacs-crystal-mode)
-(add-to-list 'auto-mode-alist '("\\.cr$" . crystal-mode))
-
-;; pony
-(add-hook
-  'ponylang-mode-hook
-  (lambda ()
-    (set-variable 'indent-tabs-mode nil)
-    (set-variable 'tab-width 2)))
+;; End:
