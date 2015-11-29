@@ -33,7 +33,6 @@
 (setq-default tab-width 4 indent-tabs-mode nil)
 
 
-(require 'init-elpa)
 (require 'init-ido)
 (require 'init-tabbar)
 (require 'init-autocomplete)
