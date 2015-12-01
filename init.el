@@ -48,14 +48,14 @@
 (setq initial-frame-alist
       (append
        '((width    . 120)  ; フレーム幅(文字数)
-	 (height   . 40)   ; フレーム高(文字数)
-	 (top      . 60)   ; 表示位置
-	 (left     . 80)   ; 表示位置
-	 (foreground-color . "azure3") ; 文字が白
-	 (background-color . "black")  ; 背景は黒
-	 (border-color     . "black")
-	 (mouse-color      . "white")
-	 (cursor-color     . "green"))
+         (height   . 40)   ; フレーム高(文字数)
+         (top      . 60)   ; 表示位置
+         (left     . 80)   ; 表示位置
+         (foreground-color . "azure3") ; 文字が白
+         (background-color . "black")  ; 背景は黒
+         (border-color     . "black")
+         (mouse-color      . "white")
+         (cursor-color     . "green"))
        initial-frame-alist))
 
 (require 'moe-theme)
@@ -162,7 +162,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
+ (if window-system
+     '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages)))
  '(package-selected-packages
    (quote
     (neotree moe-theme powerline flycheck-rust d-mode undo-tree tabbar smex scala-mode rust-mode quickrun popwin ponylang-mode markdown-mode julia-mode haml-mode go-mode go-autocomplete git-rebase-mode flycheck-pos-tip flycheck-d-unittest el-get company browse-kill-ring auto-save-buffers-enhanced ac-nim ac-dcd)))
