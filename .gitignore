@@ -8,3 +8,4 @@ session.*
 smex-items
 el-get
 *.data
+eshell/
