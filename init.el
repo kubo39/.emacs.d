@@ -10,6 +10,12 @@
 (require 'init-elpa)
 (package-initialize)
 
+(defun kill-buffer-if-exist (BUFFER-OR-NAME)
+  (when (get-buffer BUFFER-OR-NAME)
+    (kill-buffer BUFFER-OR-NAME)))
+
+(kill-buffer-if-exist "*Compile-Log*")
+(kill-buffer-if-exist "*scratch*")
 
 ; 文字大きく
 (set-face-attribute 'default nil
