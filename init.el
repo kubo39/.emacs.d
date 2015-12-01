@@ -139,6 +139,7 @@
 ;; 言語系
 (require 'init-d)
 (require 'init-markdown)
+(require 'init-perl)
 (require 'init-ruby)
 (require 'init-rust)
 (require 'init-go)
