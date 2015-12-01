@@ -31,6 +31,8 @@
 
 ;;; 極力 utf-8 とする
 (prefer-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
 
 ;;; 常時デバッグ状態
 (setq debug-on-error t)
