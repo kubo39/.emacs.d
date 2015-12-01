@@ -64,8 +64,9 @@
          (cursor-color     . "green"))
        initial-frame-alist))
 
-(require 'moe-theme)
-(moe-dark)
+(when window-system
+  (require 'moe-theme)
+  (moe-dark))
 
 ;;; undo-tree: Undo の履歴を視覚化
 (when (require 'undo-tree nil t)
