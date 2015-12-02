@@ -48,6 +48,7 @@
 (require 'init-tramp)
 (require 'init-kill-ring)
 (require 'init-powerline)
+(require 'init-multi-term)
 (require 'init-eshell)
 (require 'init-auto-save-buffers)
 
