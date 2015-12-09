@@ -160,6 +160,9 @@
 (require 'init-haml)
 (require 'init-nemerle)
 
+;;----------------------------------------------------------------------------
+
+(load-library "ox-reveal")
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
@@ -177,7 +180,7 @@
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
  '(package-selected-packages
    (quote
-    (nemerle neotree moe-theme powerline flycheck-rust d-mode undo-tree tabbar smex scala-mode rust-mode quickrun popwin ponylang-mode markdown-mode julia-mode haml-mode go-mode go-autocomplete git-rebase-mode flycheck-pos-tip flycheck-d-unittest el-get company browse-kill-ring auto-save-buffers-enhanced ac-nim ac-dcd)))
+    (ox-reveal nemerle neotree moe-theme powerline flycheck-rust d-mode undo-tree tabbar smex scala-mode rust-mode quickrun popwin ponylang-mode markdown-mode julia-mode haml-mode go-mode go-autocomplete git-rebase-mode flycheck-pos-tip flycheck-d-unittest el-get company browse-kill-ring auto-save-buffers-enhanced ac-nim ac-dcd)))
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
