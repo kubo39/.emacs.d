@@ -51,7 +51,7 @@
 (require 'init-multi-term)
 (require 'init-eshell)
 (require 'init-auto-save-buffers)
-
+(require 'init-yasnippet)
 
 ;;; 初期フレームの設定
 (setq initial-frame-alist
@@ -138,7 +138,6 @@
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
 
-
 ;; 行末の空白を表示
 (setq-default show-trailing-whitespace t)
 
@@ -178,7 +177,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
+ (when window-system
+   '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages)))
  '(package-selected-packages
    (quote
     (ox-reveal nemerle neotree moe-theme powerline flycheck-rust d-mode undo-tree tabbar smex scala-mode rust-mode quickrun popwin ponylang-mode markdown-mode julia-mode haml-mode go-mode go-autocomplete git-rebase-mode flycheck-pos-tip flycheck-d-unittest el-get company browse-kill-ring auto-save-buffers-enhanced ac-nim ac-dcd)))
