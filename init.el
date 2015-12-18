@@ -1,3 +1,4 @@
+
 ;; =====================================
 ;;
 ;;  基本設定
@@ -40,6 +41,11 @@
 ;;; tabサイズを4スペースに
 (setq-default tab-width 4 indent-tabs-mode nil)
 
+;; suspendを無効に
+8(define-key global-map (kbd "C-x C-z") nil)
+9
+10;; Emacsの終了コマンドを無効に
+11(define-key global-map (kbd "C-x C-c") nil)
 
 (require 'init-ido)
 (require 'init-tabbar)
