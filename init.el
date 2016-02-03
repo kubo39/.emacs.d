@@ -44,9 +44,6 @@
 ;; suspendを無効に
 (define-key global-map (kbd "C-x C-z") nil)
 
-;; Emacsの終了コマンドを無効に
-(define-key global-map (kbd "C-x C-c") nil)
-
 (require 'init-ido)
 (require 'init-tabbar)
 (require 'init-autocomplete)
