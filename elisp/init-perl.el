@@ -27,7 +27,6 @@
     (setq cperl-close-paren-offset -4)
     (setq cperl-tab-always-indent t)
     (setq cperl-highlight-variables-indiscriminately t)
-  )
-)
+    (global-set-key (kbd "C-c C-v") 'uncomment-region)))
 
 (provide 'init-perl)
