@@ -20,6 +20,4 @@
              (local-set-key  (kbd "C-c C-n") 'flycheck-next-error)
              (ac-dcd-setup)))
 
-
 (provide 'init-d)
-
