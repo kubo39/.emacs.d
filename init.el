@@ -26,6 +26,7 @@
 (if (eq window-system 'ns)
     (x-focus-frame nil))
 
+
 ;; Language.
 (set-language-environment 'Japanese)
 
@@ -51,7 +52,7 @@
 (require 'init-multi-term)
 (require 'init-eshell)
 (require 'init-auto-save-buffers)
-(require 'init-yasnippet)
+;(require 'init-yasnippet)
 
 ;;; 初期フレームの設定
 (setq initial-frame-alist
@@ -159,10 +160,6 @@
 (require 'init-haml)
 (require 'init-nemerle)
 
-;;----------------------------------------------------------------------------
-
-(when window-system
-  (load-library "ox-reveal"))
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
