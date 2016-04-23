@@ -1,3 +1,4 @@
+
 ;; =====================================
 ;;
 ;;  基本設定
@@ -41,6 +42,8 @@
 ;;; tabサイズを4スペースに
 (setq-default tab-width 4 indent-tabs-mode nil)
 
+;; suspendを無効に
+(define-key global-map (kbd "C-x C-z") nil)
 
 (require 'init-ido)
 (require 'init-tabbar)
@@ -144,6 +147,11 @@
 
 ;-------------------------------------------------------
 
+;; typescript
+(require 'typescript-mode)
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+(require 'tss)
+(tss-config-default)
 
 
 ;; 言語系
