@@ -8,7 +8,7 @@
 (setq auto-mode-alist (cons '("\\.d$" . d-mode) auto-mode-alist))
 (setup-flycheck-d-unittest)
 (setq load-path (cons "~/DCD/bin" load-path)) ;;;   DCDに load-path を通す
-;; (require 'ac-dcd)                             ;;; ac-dcd
+(require 'ac-dcd)                             ;;; ac-dcd
 (add-hook 'd-mode-hook
           '(lambda ()
              (c-set-style "bsd")
