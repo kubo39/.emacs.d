@@ -147,13 +147,6 @@
 
 ;-------------------------------------------------------
 
-;; typescript
-(require 'typescript-mode)
-(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
-(require 'tss)
-(tss-config-default)
-
-
 ;; 言語系
 (require 'init-d)
 (require 'init-markdown)
@@ -167,7 +160,7 @@
 (require 'init-pony)
 (require 'init-haml)
 (require 'init-nemerle)
-
+(require 'init-ts)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
