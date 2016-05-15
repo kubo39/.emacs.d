@@ -178,7 +178,7 @@
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
  '(package-selected-packages
    (quote
-    (rustfmt ac-racer yaml-mode cargo ox-reveal nemerle neotree moe-theme powerline flycheck-rust d-mode undo-tree tabbar smex scala-mode rust-mode quickrun popwin ponylang-mode markdown-mode julia-mode haml-mode go-mode go-autocomplete git-rebase-mode flycheck-pos-tip flycheck-d-unittest el-get company browse-kill-ring auto-save-buffers-enhanced ac-nim ac-dcd)))
+    (toml-mode magit typescript-mode tss rustfmt ac-racer yaml-mode ox-reveal nemerle neotree moe-theme powerline undo-tree tabbar smex scala-mode quickrun popwin markdown-mode julia-mode haml-mode git-rebase-mode flycheck-pos-tip flycheck-d-unittest el-get company browse-kill-ring auto-save-buffers-enhanced ac-nim)))
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
