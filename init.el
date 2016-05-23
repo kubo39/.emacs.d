@@ -15,9 +15,6 @@
 ;;   (when (get-buffer BUFFER-OR-NAME)
 ;;     (kill-buffer BUFFER-OR-NAME)))
 
-;(kill-buffer-if-exist "*Compile-Log*")
-;(kill-buffer-if-exist "*scratch*")
-
 ; 文字大きく
 (set-face-attribute 'default nil
                     :family "Menlo" ;; font
@@ -157,9 +154,6 @@
 (require 'init-nim)
 (require 'init-crystal)
 (require 'init-scala)
-(require 'init-pony)
-(require 'init-haml)
-(require 'init-nemerle)
 (require 'init-ts)
 
 ;;----------------------------------------------------------------------------
@@ -178,7 +172,7 @@
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
  '(package-selected-packages
    (quote
-    (toml-mode magit typescript-mode tss rustfmt ac-racer yaml-mode ox-reveal nemerle neotree moe-theme powerline undo-tree tabbar smex scala-mode quickrun popwin markdown-mode julia-mode haml-mode git-rebase-mode flycheck-pos-tip flycheck-d-unittest el-get company browse-kill-ring auto-save-buffers-enhanced ac-nim)))
+    (toml-mode magit typescript-mode tss rustfmt ac-racer yaml-mode ox-reveal neotree moe-theme powerline undo-tree tabbar smex scala-mode quickrun popwin markdown-mode julia-mode haml-mode git-rebase-mode flycheck-pos-tip el-get company browse-kill-ring auto-save-buffers-enhanced ac-nim)))
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
