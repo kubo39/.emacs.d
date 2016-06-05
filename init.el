@@ -145,6 +145,7 @@
 ;-------------------------------------------------------
 
 ;; 言語系
+(require 'init-c)
 (require 'init-d)
 (require 'init-markdown)
 (require 'init-perl)
@@ -171,7 +172,7 @@
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
  '(package-selected-packages
    (quote
-    (toml-mode magit typescript-mode tss rustfmt ac-racer yaml-mode ox-reveal moe-theme powerline undo-tree tabbar smex popwin git-rebase-mode flycheck-pos-tip el-get company browse-kill-ring auto-save-buffers-enhanced ac-nim)))
+    (auto-complete-clang auto-complete-c-headers toml-mode magit typescript-mode tss rustfmt ac-racer yaml-mode ox-reveal moe-theme powerline undo-tree tabbar smex popwin git-rebase-mode flycheck-pos-tip el-get company browse-kill-ring auto-save-buffers-enhanced ac-nim)))
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
