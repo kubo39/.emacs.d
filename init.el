@@ -15,6 +15,10 @@
 ;;   (when (get-buffer BUFFER-OR-NAME)
 ;;     (kill-buffer BUFFER-OR-NAME)))
 
+(require 'mozc)
+(set-language-environment "Japanese")
+(setq default-input-method "japanese-mozc")
+
 ; 文字大きく
 (set-face-attribute 'default nil
                     :family "Menlo" ;; font
@@ -24,6 +28,8 @@
 (if (eq window-system 'ns)
     (x-focus-frame nil))
 
+;; 半角/全角でも変換できるように
+(define-key global-map [zenkaku-hankaku] 'toggle-input-method)
 
 ;; Language.
 (set-language-environment 'Japanese)
@@ -172,7 +178,7 @@
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
  '(package-selected-packages
    (quote
-    (auto-complete-clang auto-complete-c-headers toml-mode magit typescript-mode tss rustfmt ac-racer yaml-mode ox-reveal moe-theme powerline undo-tree tabbar smex popwin git-rebase-mode flycheck-pos-tip el-get company browse-kill-ring auto-save-buffers-enhanced ac-nim)))
+    (cargo flycheck-rust racer rust-mode async ac-dcd d-mode flymake-rust markdown-mode mozc-im mozc-popup mozc auto-complete-clang auto-complete-c-headers toml-mode magit typescript-mode tss rustfmt yaml-mode ox-reveal moe-theme powerline undo-tree tabbar smex popwin git-rebase-mode flycheck-pos-tip el-get company browse-kill-ring auto-save-buffers-enhanced ac-nim)))
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
