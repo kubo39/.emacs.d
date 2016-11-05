@@ -18,6 +18,7 @@
              (setq tab-width 4)
              (local-set-key  (kbd "C-c C-p") 'flycheck-previous-error)
              (local-set-key  (kbd "C-c C-n") 'flycheck-next-error)
+             ('ac-etags-ac-setup)
              (ac-dcd-setup)))
 
 (provide 'init-d)
