@@ -15,7 +15,6 @@
           '(lambda ()
              (c-set-style "bsd")
              (setq c-basic-offset 4)
-             (setq c-auto-newline t)
              (setq indent-tabs-mode nil)
              (setq tab-width 4)
              (local-set-key  (kbd "C-c C-p") 'flycheck-previous-error)
