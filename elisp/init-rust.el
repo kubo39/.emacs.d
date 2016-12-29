@@ -6,11 +6,8 @@
 
 (add-hook 'rust-mode-hook
           '(lambda ()
-             (cargo-minor-mode)
-             (racer-mode)
-             (ac-etags-ac-setup)
-             (local-set-key (kbd "C-c <tab>") 'rust-format-buffer)))
-
+             (racer-mode)))
+;
 (add-hook 'racer-mode
           '(lambda ()
              (eldoc-mode)
