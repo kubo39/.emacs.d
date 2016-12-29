@@ -1,11 +1,8 @@
 ;; rust-mode
 
 (require 'rust-mode)
-(add-to-list 'auto-mode-alist '("\\.rs$" . rust-mode))
 
-;; racer -- auto-compelte for rust
-(setq racer-cmd "~/.cargo/bin/racer")
-(setq racer-rust-src-path "~/rust/src/")
+(add-to-list 'exec-path (expand-file-name "~/.cargo/bin/"))
 
 (add-hook 'rust-mode-hook
           '(lambda ()
