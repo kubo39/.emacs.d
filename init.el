@@ -1,4 +1,5 @@
 
+
 ;; =====================================
 ;;
 ;;  基本設定
@@ -66,6 +67,10 @@
     (dolist (pkg not-installed)
         (package-install pkg))))
 
+(require 'mozc)
+(set-language-environment "Japanese")
+(setq default-input-method "japanese-mozc")
+
 ; 文字大きく
 (set-face-attribute 'default nil
                     :family "Menlo" ;; font
@@ -75,6 +80,8 @@
 (if (eq window-system 'ns)
     (x-focus-frame nil))
 
+;; 半角/全角でも変換できるように
+(define-key global-map [zenkaku-hankaku] 'toggle-input-method)
 
 ;; Language.
 (set-language-environment 'Japanese)
@@ -100,7 +107,6 @@
 (require 'init-tramp)
 (require 'init-kill-ring)
 (require 'init-powerline)
-(require 'init-multi-term)
 (require 'init-eshell)
 (require 'init-auto-save-buffers)
 ;(require 'init-yasnippet)
@@ -196,13 +202,13 @@
 ;-------------------------------------------------------
 
 ;; 言語系
+(require 'init-nasm)
 (require 'init-c)
 (require 'init-d)
 (require 'init-markdown)
 (require 'init-perl)
 (require 'init-ruby)
 (require 'init-rust)
-(require 'init-go)
 (require 'init-ts)
 
 ;;----------------------------------------------------------------------------
