@@ -29,7 +29,11 @@
     el-get
     browse-kill-ring
     multi-term
+    ;; mozc
+    ac-etags
 
+    ; nasm
+    nasm-mode
     ; c
     auto-complete-c-headers
     auto-complete-clang
@@ -67,9 +71,9 @@
     (dolist (pkg not-installed)
         (package-install pkg))))
 
-(require 'mozc)
-(set-language-environment "Japanese")
-(setq default-input-method "japanese-mozc")
+;; (require 'mozc)
+;; (set-language-environment "Japanese")
+;; (setq default-input-method "japanese-mozc")
 
 ; 文字大きく
 (set-face-attribute 'default nil
