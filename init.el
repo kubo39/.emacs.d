@@ -231,7 +231,7 @@
  '(package-selected-packages
    (quote
     (toml-mode typescript-mode tss rustfmt ac-racer yaml-mode moe-theme powerline undo-tree tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced))
- '(safe-local-variable-values (quote ((encoding . utf-8)))))
+ '(safe-local-variable-values (quote ((encoding . utf-8))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
