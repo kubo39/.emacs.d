@@ -11,9 +11,60 @@
 (require 'init-elpa)
 (package-initialize)
 
-;; (defun kill-buffer-if-exist (BUFFER-OR-NAME)
-;;   (when (get-buffer BUFFER-OR-NAME)
-;;     (kill-buffer BUFFER-OR-NAME)))
+;; 自動インストール設定
+(require 'cl)
+
+(defvar installing-package-list
+  '(
+    smex
+    undo-tree
+    auto-save-buffers-enhanced
+    company
+    tabbar
+    flycheck
+    powerline
+    moe-theme
+    popwin
+    el-get
+    browse-kill-ring
+    multi-term
+
+    ; c
+    auto-complete-c-headers
+    auto-complete-clang
+    google-c-style
+    ; d
+    d-mode
+    ac-dcd
+    flycheck-d-unittest
+    ; rust
+    rust-mode
+    rustfmt
+    flycheck-rust
+    cargo
+    ac-racer
+    ; go
+    go-mode
+    go-autocomplete
+    ; typescript
+    typescript-mode
+    tss
+    ; toml
+    toml-mode
+    ; yaml
+    yaml-mode
+    ; markdown
+    markdown-mode
+    ; json
+    json-mode
+    ))
+(let ((not-installed (loop for x in installing-package-list
+                            when (not (package-installed-p x))
+                            collect x)))
+  (when not-installed
+    (package-refresh-contents)
+    (dolist (pkg not-installed)
+        (package-install pkg))))
 
 ; 文字大きく
 (set-face-attribute 'default nil
@@ -152,8 +203,6 @@
 (require 'init-ruby)
 (require 'init-rust)
 (require 'init-go)
-(require 'init-nim)
-(require 'init-crystal)
 (require 'init-ts)
 
 ;;----------------------------------------------------------------------------
@@ -169,10 +218,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
  '(package-selected-packages
    (quote
-    (auto-complete-clang auto-complete-c-headers toml-mode magit typescript-mode tss rustfmt ac-racer yaml-mode ox-reveal moe-theme powerline undo-tree tabbar smex popwin git-rebase-mode flycheck-pos-tip el-get company browse-kill-ring auto-save-buffers-enhanced ac-nim)))
+    (toml-mode typescript-mode tss rustfmt ac-racer yaml-mode moe-theme powerline undo-tree tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced))
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
