@@ -163,13 +163,13 @@
 (setq linum-format "%4d")
 
 ;;; スクロールバーを消す
-(toggle-scroll-bar 0)
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 ;;; メニューバーを消す
-(menu-bar-mode 0)
+(if (fboundp 'scroll-bar-mode) (menu-bar-mode -1))
 
 ;;; アイコンバーを消す
-(tool-bar-mode 0)
+(if (fboundp 'scroll-bar-mode) (tool-bar-mode -1))
 
 ;;; OccurをC-o にバインド
 (global-set-key (kbd "C-o") 'occur)
