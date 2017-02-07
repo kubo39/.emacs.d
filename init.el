@@ -44,7 +44,6 @@
     flycheck-d-unittest
     ; rust
     rust-mode
-    rustfmt
     flycheck-rust
     cargo
     ac-racer
