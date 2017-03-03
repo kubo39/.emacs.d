@@ -10,7 +10,6 @@
 ;
 (add-hook 'racer-mode
           '(lambda ()
-             (eldoc-mode)
-             (company-mode)))
+             (eldoc-mode)))
 
 (provide 'init-rust)

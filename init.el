@@ -105,9 +105,12 @@
 ;; suspendを無効に
 (define-key global-map (kbd "C-x C-z") nil)
 
+(require 'company)
+(global-company-mode)
+
 (require 'init-ido)
 (require 'init-tabbar)
-(require 'init-autocomplete)
+;; (require 'init-autocomplete)
 (require 'init-flycheck)
 (require 'init-tramp)
 (require 'init-kill-ring)
@@ -234,7 +237,7 @@
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
  '(package-selected-packages
    (quote
-    (ponylang-mode toml-mode typescript-mode tss rustfmt ac-racer yaml-mode moe-theme powerline undo-tree tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced))))
+    (company-dcd ponylang-mode toml-mode typescript-mode tss rustfmt ac-racer yaml-mode moe-theme powerline undo-tree tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
