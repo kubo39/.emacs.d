@@ -3,7 +3,7 @@
 ;;----------------------
 
 (require 'auto-complete)
-(global-auto-complete-mode t)
+;; (global-auto-complete-mode t)
 
 (require 'ac-etags)
 
