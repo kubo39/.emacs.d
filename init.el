@@ -47,6 +47,8 @@
     flycheck-rust
     cargo
     ac-racer
+    ; ocaml
+    tuareg
     ; go
     go-mode
     go-autocomplete
@@ -213,6 +215,7 @@
 (require 'init-nasm)
 (require 'init-c)
 (require 'init-d)
+(require 'init-ocaml)
 (require 'init-pony)
 (require 'init-markdown)
 (require 'init-perl)
