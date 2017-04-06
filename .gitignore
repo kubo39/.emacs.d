@@ -10,3 +10,5 @@ el-get
 *.data
 eshell/
 kkcrc
+*~
+ido.last
