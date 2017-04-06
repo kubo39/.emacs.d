@@ -113,7 +113,7 @@
 (require 'init-ido)
 (require 'init-tabbar)
 (require 'init-autocomplete)
-(require 'init-flycheck)
+;; (require 'init-flycheck)
 (require 'init-tramp)
 (require 'init-kill-ring)
 (require 'init-powerline)
@@ -237,7 +237,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ac-etags-requires 1)
- '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
  '(package-selected-packages
    (quote
     (ponylang-mode toml-mode typescript-mode tss rustfmt ac-racer yaml-mode moe-theme powerline undo-tree tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced))))
