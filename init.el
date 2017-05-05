@@ -98,6 +98,9 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
+;; 警告音もフラッシュも全て無効
+(setq ring-bell-function 'ignore)
+
 ;;; 常時デバッグ状態
 (setq debug-on-error t)
 
