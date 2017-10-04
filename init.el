@@ -40,13 +40,12 @@
     google-c-style
     ; d
     d-mode
-    ac-dcd
+    company-dcd
     flycheck-d-unittest
     ; rust
     rust-mode
     flycheck-rust
     cargo
-    ac-racer
     ; ocaml
     tuareg
     ; go
