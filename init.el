@@ -42,6 +42,8 @@
     d-mode
     company-dcd
     flycheck-d-unittest
+    ; elm
+    elm-mode
     ; rust
     rust-mode
     flycheck-rust
