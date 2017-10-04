@@ -116,7 +116,7 @@
 (require 'init-ido)
 (require 'init-tabbar)
 (require 'init-autocomplete)
-;; (require 'init-flycheck)
+(require 'init-flycheck)
 (require 'init-tramp)
 (require 'init-kill-ring)
 (require 'init-powerline)
@@ -218,7 +218,8 @@
 (require 'init-nasm)
 (require 'init-c)
 (require 'init-d)
-(require 'init-ocaml)
+(require 'init-elm)
+;; (require 'init-ocaml)
 (require 'init-pony)
 (require 'init-markdown)
 (require 'init-perl)
@@ -242,7 +243,7 @@
  '(ac-etags-requires 1)
  '(package-selected-packages
    (quote
-    (ponylang-mode toml-mode typescript-mode tss rustfmt ac-racer yaml-mode moe-theme powerline undo-tree tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced))))
+    (flycheck-elm elm-mode haskell-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode typescript-mode tss rustfmt ac-racer yaml-mode moe-theme powerline undo-tree tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

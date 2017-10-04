@@ -1,9 +1,6 @@
 ;; flycheck
 
-(eval-after-load 'flycheck
-  ;; '(custom-set-variables
-  ;;   (if window-system
-  ;;       (flycheck-pos-tip-mode t))))
-  )
+(with-eval-after-load 'flycheck
+  (flycheck-pos-tip-mode))
 
 (provide 'init-flycheck)
