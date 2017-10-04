@@ -5,7 +5,9 @@
 (require 'd-mode)
 
 (setq auto-mode-alist (cons '("\\.d$" . d-mode) auto-mode-alist))
-(setq load-path (cons "~/DCD/bin" load-path)) ;;;   DCDに load-path を通す
+
+(add-to-list 'exec-path "~/dlang/dmd-2.076.0/linux/bin64/")
+(add-to-list 'exec-path "~/DCD/bin/")
 
 (require 'company-dcd)
 (add-hook 'd-mode-hook
