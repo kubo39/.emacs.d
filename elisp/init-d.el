@@ -6,7 +6,7 @@
 
 (setq auto-mode-alist (cons '("\\.d$" . d-mode) auto-mode-alist))
 
-(add-to-list 'exec-path "~/dlang/dmd-2.076.0/linux/bin64/")
+(add-to-list 'exec-path "~/dlang/dmd-2.076.1/linux/bin64/")
 (add-to-list 'exec-path "~/DCD/bin/")
 
 (require 'company-dcd)
