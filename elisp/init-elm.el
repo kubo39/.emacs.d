@@ -2,6 +2,8 @@
 
 (require 'elm-mode)
 
+(add-to-list 'exec-path "~/.anyenv/envs/ndenv/shims")
+
 (setq auto-mode-alist (cons '("\\.elm$" . elm-mode) auto-mode-alist))
 
 (with-eval-after-load 'company
