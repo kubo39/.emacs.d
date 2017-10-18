@@ -32,41 +32,41 @@
     ;; mozc
     ac-etags
 
-    ; nasm
+    ;; nasm
     nasm-mode
-    ; c
+    ;; c
     auto-complete-c-headers
     auto-complete-clang
     google-c-style
-    ; d
+    ;; d
     d-mode
     company-dcd
     flycheck-d-unittest
-    ; elm
+    ;; elm
     elm-mode
-    ; rust
+    ;; rust
     rust-mode
     flycheck-rust
     cargo
-    ; ocaml
+    ;; ocaml
     tuareg
-    ; haskell
+    ;; haskell
     haskell-mode
-    ; go
+    ;; go
     go-mode
     go-autocomplete
-    ; ponylang
+    ;; ponylang
     ponylang-mode
-    ; typescript
+    ;; typescript
     typescript-mode
     tss
-    ; toml
+    ;; toml
     toml-mode
-    ; yaml
+    ;; yaml
     yaml-mode
-    ; markdown
+    ;; markdown
     markdown-mode
-    ; json
+    ;; json
     json-mode
     ))
 (let ((not-installed (loop for x in installing-package-list
