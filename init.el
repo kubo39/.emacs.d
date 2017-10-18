@@ -50,6 +50,8 @@
     cargo
     ; ocaml
     tuareg
+    ; haskell
+    haskell-mode
     ; go
     go-mode
     go-autocomplete
@@ -220,6 +222,7 @@
 (require 'init-c)
 (require 'init-d)
 (require 'init-elm)
+(require 'init-haskell)
 ;; (require 'init-ocaml)
 (require 'init-pony)
 (require 'init-markdown)
