@@ -21,10 +21,16 @@
 
 (add-hook 'c-mode-hook
           (lambda ()
+            (setq c-basic-offset 4)
+            (setq indent-tabs-mode nil)
+            (setq tab-width 4)
             (add-to-list 'ac-sources
                          'ac-source-c-headers t)))
 (add-hook 'c++-mode-hook
           (lambda ()
+            (setq c-basic-offset 4)
+            (setq indent-tabs-mode nil)
+            (setq tab-width 4)
             (add-to-list 'ac-sources
                          'ac-source-c-headers t)))
 
