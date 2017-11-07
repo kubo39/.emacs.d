@@ -55,6 +55,8 @@
     ;; go
     go-mode
     go-autocomplete
+    ;; nim
+    nim-mode
     ;; ponylang
     ponylang-mode
     ;; idris
@@ -226,6 +228,7 @@
 (require 'init-elm)
 (require 'init-haskell)
 (require 'init-idris)
+(require 'init-nim)
 ;; (require 'init-ocaml)
 (require 'init-pony)
 (require 'init-markdown)
