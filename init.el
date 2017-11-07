@@ -41,7 +41,8 @@
     ;; d
     d-mode
     company-dcd
-    flycheck-d-unittest
+    dfmt
+    ;;; flycheck-d-unittest
     ;; elm
     elm-mode
     ;; rust
@@ -253,7 +254,7 @@
  '(ac-etags-requires 1)
  '(package-selected-packages
    (quote
-    (idris-mode flymake-hlint company-dcd flycheck-elm elm-mode haskell-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode typescript-mode tss rustfmt moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced))))
+    (dfmt idris-mode flymake-hlint company-dcd flycheck-elm elm-mode haskell-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode typescript-mode tss rustfmt moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
