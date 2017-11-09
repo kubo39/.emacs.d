@@ -1,6 +1,6 @@
 ;; idris-mode
 
 (require 'idris-mode)
-(setq auto-mode-alist (cons '("\\.idr$" . idris-mode) auto-mode-alist))
+(setq idris-interpreter-path "~/.local/bin/idris")
 
 (provide 'init-idris)
