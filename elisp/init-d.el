@@ -19,6 +19,9 @@
             (setq indent-tabs-mode nil)
             (setq tab-width 4)
             (company-dcd-mode)
-            (dfmt-setup-keys)))
+            (dfmt-setup-keys)
+            (define-key company-dcd-mode-map (kbd "M-.") 'company-dcd-goto-definition)
+            (define-key company-dcd-mode-map (kbd "M-,") 'company-dcd-goto-def-pop-marker)
+            ))
 
 (provide 'init-d)
