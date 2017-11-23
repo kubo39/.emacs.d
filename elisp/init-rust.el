@@ -7,7 +7,8 @@
 
 (add-hook 'rust-mode-hook
           (lambda ()
-            (racer-mode)))
+            (racer-mode)
+            (local-set-key (kbd "C-c <tab>") #'rust-format-buffer)))
 
 ;
 (add-hook 'racer-mode #'eldoc-mode)
