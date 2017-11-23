@@ -1,6 +1,16 @@
-;;;-------------------------------------
-;;; D-Language
-;;;-------------------------------------
+;;; init-d --- Settings for editing D source code
+
+;;; Commentary:
+;;
+
+;; C-c ?   -- company-dcd-show-ddoc-with-buffer
+;; C-c ,   -- company-dcd-goto-definition
+;; C-c ,   -- company-dcd-def-pop-marker
+;; C-c s   -- company-dcd-ivy-search-symbol
+;; C-c F b -- dfmt-buffer
+;; C-c F f -- dfmt-file
+
+;;; Code:
 
 (require 'd-mode)
 
@@ -18,9 +28,6 @@
             (setq c-basic-offset 4)
             (setq tab-width 4)
             (company-dcd-mode)
-            (dfmt-setup-keys)
-            (define-key company-dcd-mode-map (kbd "M-.") 'company-dcd-goto-definition)
-            (define-key company-dcd-mode-map (kbd "M-,") 'company-dcd-goto-def-pop-marker)
-            ))
+            (dfmt-setup-keys)))
 
 (provide 'init-d)
