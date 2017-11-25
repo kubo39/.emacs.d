@@ -4,7 +4,7 @@
 ;;
 
 ;; C-c ?   -- company-dcd-show-ddoc-with-buffer
-;; C-c ,   -- company-dcd-goto-definition
+;; C-c .   -- company-dcd-goto-definition
 ;; C-c ,   -- company-dcd-def-pop-marker
 ;; C-c s   -- company-dcd-ivy-search-symbol
 ;; C-c F b -- dfmt-buffer
@@ -31,3 +31,4 @@
             (dfmt-setup-keys)))
 
 (provide 'init-d)
+;;; init-d.el ends here
