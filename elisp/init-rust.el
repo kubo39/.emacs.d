@@ -13,7 +13,11 @@
 
 (add-to-list 'exec-path (expand-file-name "~/.cargo/bin/"))
 
-(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'rust-mode-hook
+          (lambda ()
+            (racer-mode)
+            (cargo-minor-mode)))
+
 (add-hook 'racer-mode-hook #'eldoc-mode)
 
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
