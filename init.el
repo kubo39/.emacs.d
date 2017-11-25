@@ -7,7 +7,7 @@
 ;; =====================================
 
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
-(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))  ;; el-get
+;; (add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))  ;; el-get
 
 (require 'init-elpa)
 (package-initialize)
@@ -260,7 +260,7 @@
  '(ac-etags-requires 1)
  '(package-selected-packages
    (quote
-    (crystal-mode ghc jedi dfmt idris-mode flymake-hlint company-dcd flycheck-elm elm-mode haskell-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode typescript-mode tss rustfmt moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced))))
+    (crystal-mode ghc jedi dfmt idris-mode flymake-hlint company-dcd flycheck-elm elm-mode haskell-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode typescript-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
