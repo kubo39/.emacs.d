@@ -44,13 +44,12 @@
     d-mode
     company-dcd
     dfmt
-    ;;; flycheck-d-unittest
     ;; elm
     elm-mode
     ;; rust
     rust-mode
     flycheck-rust
-    cargo
+    racer
     ;; ocaml
     tuareg
     ;; haskell

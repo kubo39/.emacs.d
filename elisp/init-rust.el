@@ -16,5 +16,7 @@
 (add-hook 'rust-mode-hook #'racer-mode)
 (add-hook 'racer-mode-hook #'eldoc-mode)
 
+(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+
 (provide 'init-rust)
 ;;; init-rust ends here
