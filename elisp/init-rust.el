@@ -7,6 +7,10 @@
 ;; M-.      -- racer-find-definition
 ;; M-,      -- pop-tag-mark
 
+;; rust-compile -- alias `cargo build`.
+;; rus-playgen-buffer -- create shorten URL for Rust Playgen.
+;; rust-run-clippy -- Run with Clippy.
+
 ;;; Code:
 
 (require 'rust-mode)
