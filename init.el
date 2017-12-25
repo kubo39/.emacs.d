@@ -119,6 +119,9 @@
 ;; suspendを無効に
 (define-key global-map (kbd "C-x C-z") nil)
 
+;; スクロール1行ごとに
+(setq scroll-step 1)
+
 (require 'company)
 (global-company-mode)
 
