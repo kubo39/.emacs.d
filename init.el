@@ -56,7 +56,7 @@
     haskell-mode
     ;; go
     go-mode
-    go-autocomplete
+    company-go
     ;; nim
     nim-mode
     ;; ponylang
@@ -234,6 +234,7 @@
 (require 'init-crystal)
 (require 'init-d)
 (require 'init-elm)
+(require 'init-go)
 (require 'init-haskell)
 (require 'init-idris)
 (require 'init-nim)
