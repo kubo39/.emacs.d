@@ -74,6 +74,8 @@
     markdown-mode
     ;; json
     json-mode
+    ;; review
+    review-mode
     ))
 (let ((not-installed (loop for x in installing-package-list
                             when (not (package-installed-p x))
