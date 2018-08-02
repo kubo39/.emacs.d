@@ -12,6 +12,9 @@
 (require 'init-elpa)
 (package-initialize)
 
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 ;; 自動インストール設定
 (require 'cl)
 
@@ -76,6 +79,11 @@
     json-mode
     ;; review
     review-mode
+
+    ;; GNU gobal
+    ggtags
+    ;; utils
+    exec-path-from-shell
     ))
 (let ((not-installed (loop for x in installing-package-list
                             when (not (package-installed-p x))
@@ -88,6 +96,18 @@
 ;; (require 'mozc)
 ;; (set-language-environment "Japanese")
 ;; (setq default-input-method "japanese-mozc")
+
+;; ruby macicomment off
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ac-etags-requires 1)
+ '(package-selected-packages
+   (quote
+    (exec-path-from-shell ggtags swift-mode rubocopfmt review-mode crystal-mode ghc jedi dfmt idris-mode flymake-hlint company-dcd flycheck-elm elm-mode haskell-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode typescript-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
+ '(ruby-insert-encoding-magic-comment nil))
 
 ; 文字大きく
 (set-face-attribute 'default nil
@@ -258,15 +278,7 @@
   (server-start))
 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ac-etags-requires 1)
- '(package-selected-packages
-   (quote
-    (review-mode crystal-mode ghc jedi dfmt idris-mode flymake-hlint company-dcd flycheck-elm elm-mode haskell-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode typescript-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
