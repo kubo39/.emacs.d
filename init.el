@@ -155,7 +155,7 @@
 (require 'init-kill-ring)
 (require 'init-powerline)
 (require 'init-eshell)
-(require 'init-auto-save-buffers)
+;(require 'init-auto-save-buffers)
 ;(require 'init-yasnippet)
 
 ;;; 初期フレームの設定
