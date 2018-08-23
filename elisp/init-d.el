@@ -17,7 +17,7 @@
 
 (require 'd-mode)
 
-(add-to-list 'exec-path "~/dlang/dmd-2.080.0/linux/bin64/")
+(add-to-list 'exec-path "~/dlang/dmd-2.081.2/linux/bin64/")
 (add-to-list 'exec-path "~/.dub/packages/dfmt-master/dfmt/")
 (add-to-list 'exec-path "~/DCD/bin/")
 
@@ -32,7 +32,8 @@
             (dfmt-setup-keys)
             (define-key company-dcd-mode-map (kbd "M-.") 'company-dcd-goto-definition)
             (define-key company-dcd-mode-map (kbd "M-,") 'company-dcd-goto-def-pop-marker)
-            (local-set-key (kbd "C-c C-f") 'dfmt-buffer)))
+            (local-set-key (kbd "C-c C-f") 'dfmt-buffer)
+            ))
 
 (provide 'init-d)
 ;;; init-d.el ends here
