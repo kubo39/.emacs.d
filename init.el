@@ -6,6 +6,9 @@
 ;;
 ;; =====================================
 
+
+;;; Code:
+
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
 ;; (add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))  ;; el-get
 
@@ -287,3 +290,4 @@
  )
 
 (provide 'init)
+;;; init.el ends here
