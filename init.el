@@ -87,6 +87,7 @@
     ggtags
     ;; utils
     exec-path-from-shell
+    xclip
     ))
 (let ((not-installed (loop for x in installing-package-list
                             when (not (package-installed-p x))
@@ -109,7 +110,7 @@
  '(ac-etags-requires 1)
  '(package-selected-packages
    (quote
-    (exec-path-from-shell ggtags swift-mode rubocopfmt review-mode crystal-mode ghc jedi dfmt idris-mode flymake-hlint company-dcd flycheck-elm elm-mode haskell-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode typescript-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
+    (xclip exec-path-from-shell ggtags swift-mode rubocopfmt review-mode crystal-mode ghc jedi dfmt idris-mode flymake-hlint company-dcd flycheck-elm elm-mode haskell-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode typescript-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
  '(ruby-insert-encoding-magic-comment nil))
 
 ; 文字大きく
@@ -143,6 +144,10 @@
 
 ;; suspendを無効に
 (define-key global-map (kbd "C-x C-z") nil)
+
+;; xclip
+(require 'xclip)
+(xclip-mode t)
 
 ;; スクロール1行ごとに
 (setq scroll-step 1)
