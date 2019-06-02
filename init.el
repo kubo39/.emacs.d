@@ -35,6 +35,7 @@
     el-get
     browse-kill-ring
     multi-term
+    dimmer
     ;; mozc
     ac-etags
 
@@ -148,10 +149,10 @@
 (define-key global-map (kbd "C-x C-z") nil)
 
 ;; xsel --  M-x x-clipboard-copy
-(defun x-clipboard-copy ()
-  (interactive)
-  (when (region-active-p)
-    (shell-command-on-region (region-beginning) (region-end) "xsel -ib" nil nil)))
+;; (defun x-clipboard-copy ()
+;;   (interactive)
+;;   (when (region-active-p)
+;;     (shell-command-on-region (region-beginning) (region-end) "xsel -ib" nil nil)))
 
 ;; スクロール1行ごとに
 (setq scroll-step 1)
@@ -240,7 +241,7 @@
 (setq inhibit-startup-message t)
 
 ;;; Emacs が保持する terminfo を利用する
-(setq system-uses-terminfo nil)
+;(setq system-uses-terminfo nil)
 
 ;;; バッテリー残量
 ;(display-battery-mode t)
@@ -257,6 +258,10 @@
 
 ;; 行末の空白を表示
 (setq-default show-trailing-whitespace t)
+
+;; 非アクティブなウィンドウを暗くする
+(require 'dimmer)
+(dimmer-mode)
 
 ;-------------------------------------------------------
 
