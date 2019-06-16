@@ -17,10 +17,8 @@
 
 (require 'd-mode)
 
-(add-to-list 'exec-path "~/dlang/dmd-2.086.0/linux/bin64/")
+(add-to-list 'exec-path "~/dlang/dmd-2.086.1/linux/bin64/")
 (add-to-list 'exec-path "~/.dub/bin/")
-;(add-to-list 'exec-path "~/.dub/packages/dcd-0.11.1/dcd/bin/")
-;(add-to-list 'exec-path "~/.dub/packages/dfmt-0.10.1/dfmt/bin/")
 
 (require 'company-dcd)
 
