@@ -42,8 +42,7 @@
     ;; nasm
     nasm-mode
     ;; c
-    auto-complete-c-headers
-    auto-complete-clang
+    company-c-headers
     google-c-style
     ;; crystal
     crystal-mode
