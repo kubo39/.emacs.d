@@ -27,12 +27,13 @@
             (c-set-style "bsd")
             (setq c-basic-offset 4)
             (setq tab-width 4)
-            (company-dcd-mode)
+            #'company-dcd-mode
             (dfmt-setup-keys)
             (define-key company-dcd-mode-map (kbd "M-.") 'company-dcd-goto-definition)
             (define-key company-dcd-mode-map (kbd "M-,") 'company-dcd-goto-def-pop-marker)
             (local-set-key (kbd "C-c C-f") 'dfmt-buffer)
             ))
+
 
 (provide 'init-d)
 ;;; init-d.el ends here
