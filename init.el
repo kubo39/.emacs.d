@@ -112,7 +112,7 @@
  '(ac-etags-requires 1)
  '(package-selected-packages
    (quote
-    (vala-mode company-coq fsharp-mode proof-general xclip exec-path-from-shell ggtags swift-mode rubocopfmt review-mode crystal-mode ghc jedi dfmt idris-mode flymake-hlint company-dcd flycheck-elm elm-mode haskell-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode typescript-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
+    (vala-mode company-coq fsharp-mode xclip exec-path-from-shell ggtags rubocopfmt review-mode crystal-mode ghc jedi dfmt idris-mode flymake-hlint company-dcd flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
  '(ruby-insert-encoding-magic-comment nil))
 
 ; 文字大きく
