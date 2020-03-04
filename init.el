@@ -114,7 +114,7 @@
  '(ac-etags-requires 1)
  '(package-selected-packages
    (quote
-    (gnu-elpa-keyring-update vala-mode company-coq fsharp-mode xclip exec-path-from-shell ggtags rubocopfmt review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
+    (racer-mode gnu-elpa-keyring-update vala-mode company-coq fsharp-mode xclip exec-path-from-shell ggtags rubocopfmt review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -330,6 +330,9 @@
   (add-hook 'rust-mode-hook #'racer-mode)
   :commands (rust-mode)
   :config
+  (use-package racer
+    :defer t
+    :ensure t)
   (use-package lsp-mode
     :ensure t)
   )
