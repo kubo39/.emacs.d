@@ -292,7 +292,9 @@
                #'lsp
                ))
   :commands (d-mode)
-  :config nil
+  :config
+  (use-package lsp-mode
+    :ensure t)
   )
 
 (lsp-register-client
