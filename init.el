@@ -288,9 +288,8 @@
             '(lambda ()
                (c-set-style "bsd")
                (setq c-basic-offset 4)
-               (setq tab-width 4)
-               #'lsp
-               ))
+               (setq tab-width 4)))
+  (add-hook 'd-mode-hook #'lsp-mode)
   :commands (d-mode)
   :config
   (use-package lsp-mode
@@ -341,6 +340,11 @@
          ("\\.gemspec$" . ruby-mode)
          ("Rakefile$" . ruby-mode))
   :interpreter (("ruby" . ruby-mode))
+  :init
+  (add-hook 'ruby-mode-hook #'lsp-mode)
+  :config
+  (use-package lsp-mode
+    :ensure t)
   )
 
 (use-package rust-mode
