@@ -267,6 +267,9 @@
 ;-------------------------------------------------------
 
 ;; 言語系
+
+(require 'lsp-mode)
+
 (require 'init-editorconfig)
 
 (require 'init-nasm)

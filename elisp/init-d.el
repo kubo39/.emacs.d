@@ -6,7 +6,6 @@
 ;;; Code:
 
 (require 'd-mode)
-(require 'lsp-mode)
 
 (add-to-list 'exec-path "~/dlang/dmd-2.090.1/linux/bin64/")
 (add-to-list 'exec-path "~/.dub/bin/")
