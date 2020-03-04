@@ -114,7 +114,7 @@
  '(ac-etags-requires 1)
  '(package-selected-packages
    (quote
-    (vala-mode company-coq fsharp-mode xclip exec-path-from-shell ggtags rubocopfmt review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
+    (gnu-elpa-keyring-update vala-mode company-coq fsharp-mode xclip exec-path-from-shell ggtags rubocopfmt review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -312,7 +312,16 @@
 (require 'init-python)
 (require 'init-markdown)
 (require 'init-perl)
-(require 'init-ruby)
+
+
+(use-package ruby-mode
+  :ensure t
+  :commands (ruby-mode)
+  :mode (("\\.ru$" . ruby-mode)
+         ("\\.gemspec$" . ruby-mode)
+         ("Rakefile$" . ruby-mode))
+  :interpreter (("ruby" . ruby-mode))
+  )
 
 (use-package rust-mode
   :ensure t
