@@ -289,7 +289,7 @@
                (c-set-style "bsd")
                (setq c-basic-offset 4)
                (setq tab-width 4)))
-  (add-hook 'd-mode-hook #'lsp-mode)
+;  (add-hook 'd-mode-hook #'lsp)
   :commands (d-mode)
   :config
   (use-package lsp-mode
@@ -298,7 +298,7 @@
 
 (lsp-register-client
  (make-lsp-client
-  :new-connection (lsp-stdio-connection '("$HOME/.dub/bin"))
+  :new-connection (lsp-stdio-connection '("~/.dub/bin/dls"))
   :major-modes '(d-mode)
   :server-id 'dls))
 
