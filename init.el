@@ -278,9 +278,6 @@
 (require 'init-c)
 (require 'init-crystal)
 
-(use-package company-dcd
-  :after d-mode)
-
 (use-package d-mode
   :ensure t
   :defer t
@@ -295,9 +292,6 @@
                #'lsp
                ))
   :commands (d-mode)
-  :bind
-  (("M-." . company-dcd-goto-definition)
-   ("M-," . company-dcd-goto-def-pop-marker))
   :config
   (use-package lsp-mode
     :ensure t)
