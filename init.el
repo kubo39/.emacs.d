@@ -313,7 +313,18 @@
 (require 'init-markdown)
 (require 'init-perl)
 (require 'init-ruby)
-(require 'init-rust)
+
+(use-package rust-mode
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'rust-mode-hook #'racer-mode)
+  :commands (rust-mode)
+  :config
+  (use-package lsp-mode
+    :ensure t)
+  )
+
 (require 'init-ts)
 (require 'init-review)
 
