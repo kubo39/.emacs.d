@@ -64,7 +64,7 @@
     haskell-mode
     ;; go
     go-mode
-    company-go
+    go-guru
     ;; nim
     nim-mode
     ;; ponylang
@@ -114,7 +114,7 @@
  '(ac-etags-requires 1)
  '(package-selected-packages
    (quote
-    (racer-mode gnu-elpa-keyring-update vala-mode company-coq fsharp-mode xclip exec-path-from-shell ggtags rubocopfmt review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
+    (racer-mode gnu-elpa-keyring-update vala-mode company-coq fsharp-mode xclip exec-path-from-shell review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -305,7 +305,25 @@
 
 
 (require 'init-elm)
-(require 'init-go)
+
+(use-package go-guru
+  :after go-mode)
+
+(use-package go-mode
+  :ensure t
+  :defer t
+  :init
+  (add-to-list 'exec-path "~/go/bin/")
+  (add-hook 'go-mode-hook 'lsp-deferred)
+  :commands (go-mode)
+  :bind
+  (:map go-mode-map
+        ("M-." . go-guru-definition))
+  :config
+  (use-package lsp-mode
+    :ensure t)
+  )
+
 (require 'init-haskell)
 (require 'init-idris)
 (require 'init-nim)
