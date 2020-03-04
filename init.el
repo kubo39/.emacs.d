@@ -52,6 +52,7 @@
     crystal-mode
     ;; d
     d-mode
+    company-dcd
     ;; elm
     elm-mode
     ;; rust
@@ -114,7 +115,7 @@
  '(ac-etags-requires 1)
  '(package-selected-packages
    (quote
-    (racer-mode gnu-elpa-keyring-update vala-mode company-coq fsharp-mode xclip exec-path-from-shell review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
+    (company-dcd racer-mode gnu-elpa-keyring-update vala-mode company-coq fsharp-mode xclip exec-path-from-shell review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -277,6 +278,8 @@
 (require 'init-c)
 (require 'init-crystal)
 
+(use-package company-dcd
+  :after d-mode)
 
 (use-package d-mode
   :ensure t
@@ -292,6 +295,9 @@
                #'lsp
                ))
   :commands (d-mode)
+  :bind
+  (("M-." . company-dcd-goto-definition)
+   ("M-," . company-dcd-goto-def-pop-marker))
   :config
   (use-package lsp-mode
     :ensure t)
