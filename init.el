@@ -49,7 +49,7 @@
     ;; crystal
     crystal-mode
     ;; d
-    d-mode
+    ;; d-mode ;; d-mode never works well in emacs 26.2, see https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode/pull/93/
     ;; elm
     elm-mode
     ;; rust
@@ -110,7 +110,7 @@
  '(ac-etags-requires 1)
  '(package-selected-packages
    (quote
-    (python-mode company-dcd racer-mode gnu-elpa-keyring-update vala-mode company-coq fsharp-mode exec-path-from-shell review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring)))
+    (python-mode racer-mode gnu-elpa-keyring-update vala-mode company-coq fsharp-mode exec-path-from-shell review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -296,27 +296,29 @@
 
 (require 'init-crystal)
 
-(use-package d-mode
-  :ensure t
-  :defer t
-  :init
-  (add-to-list 'lsp-language-id-configuration '(d-mode . "d"))
-  (add-hook 'd-mode-hook
-            '(lambda ()
-               (c-set-style "bsd")
-               (setq c-basic-offset 4)
-               (setq tab-width 4)))
-  (add-hook 'd-mode-hook #'lsp)
-  :commands (d-mode)
-  :config
-  (use-package lsp-mode
-    :ensure t)
-  )
-(lsp-register-client
- (make-lsp-client
-  :new-connection (lsp-stdio-connection '("~/.dub/packages/.bin/dls-latest/dls"))
-  :major-modes '(d-mode)
-  :server-id 'dls))
+
+;; ;; d-mode never works well in emacs 26.2, see https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode/pull/93/
+;; (use-package d-mode
+;;   :ensure t
+;;   :defer t
+;;   :init
+;;   (add-to-list 'lsp-language-id-configuration '(d-mode . "d"))
+;;   (add-hook 'd-mode-hook
+;;             '(lambda ()
+;;                (c-set-style "bsd")
+;;                (setq c-basic-offset 4)
+;;                (setq tab-width 4)))
+;;   (add-hook 'd-mode-hook #'lsp)
+;;   :commands (d-mode)
+;;   :config
+;;   (use-package lsp-mode
+;;     :ensure t)
+;;   )
+;; (lsp-register-client
+;;  (make-lsp-client
+;;   :new-connection (lsp-stdio-connection '("~/.dub/packages/.bin/dls-latest/dls"))
+;;   :major-modes '(d-mode)
+;;   :server-id 'dls))
 
 
 (require 'init-elm)
