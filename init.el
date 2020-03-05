@@ -53,7 +53,7 @@
     ;; elm
     elm-mode
     ;; rust
-    rust-mode
+    rustic
     ;; ocaml
     tuareg
     ;; haskell
@@ -376,15 +376,10 @@
     :ensure t)
   )
 
-(use-package rust-mode
+(use-package rustic
   :ensure t
   :defer t
-  :init
-  (add-hook 'rust-mode-hook #'lsp)
-  :commands (rust-mode)
-  :config
-  (use-package lsp-mode
-    :ensure t)
+  :commands rustic
   )
 
 (require 'init-ts)
