@@ -44,9 +44,8 @@
 
     ;; nasm
     nasm-mode
-    ;; c
-    company-c-headers
-    google-c-style
+    ;; C/C++
+    ccls
     ;; crystal
     crystal-mode
     ;; d
@@ -87,8 +86,6 @@
     proof-general
     company-coq
 
-    ;; GNU gobal
-    ggtags
     ;; utils
     exec-path-from-shell
     ))
@@ -272,7 +269,31 @@
 (require 'init-editorconfig)
 
 (require 'init-nasm)
-(require 'init-c)
+
+(use-package ccls
+  :ensure t
+  :custom
+  (ccls-executable "~/ccls/Release/ccls")
+  :init
+  (add-hook 'c++-mode-hook
+            '(lambda ()
+               (setq c-basic-offset 4)
+               (setq indent-tabs-mode nil)
+               (setq tab-width 4)
+               (require 'ccls)
+               (lsp)
+               ))
+  (add-hook 'c-mode-hook
+            '(lambda ()
+               (setq c-basic-offset 4)
+               (setq indent-tabs-mode nil)
+               (setq tab-width 4)
+               (require 'ccls)
+               (lsp)
+               ))
+  )
+
+
 (require 'init-crystal)
 
 (use-package d-mode
