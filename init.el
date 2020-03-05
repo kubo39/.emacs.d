@@ -334,7 +334,7 @@
          ("Rakefile$" . ruby-mode))
   :interpreter (("ruby" . ruby-mode))
   :init
-  (add-hook 'ruby-mode-hook #'lsp-mode)
+  (add-hook 'ruby-mode-hook #'lsp)
   :config
   (use-package lsp-mode
     :ensure t)
