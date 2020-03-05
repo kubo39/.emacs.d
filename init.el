@@ -365,7 +365,20 @@
   :commands rustic
   )
 
-(require 'init-ts)
+
+(use-package typescript-mode
+  :ensure t
+  :commands (typescript-mode)
+  :mode (("\\.ts$" . typescript-mode)
+         ("\\.tsx$" . typescript-mode))
+  :init
+  (add-hook 'typescript-mode-hook
+            '(lambda ()
+               (require 'tss)
+               (tss-config-default)))
+  (add-hook 'typescript-mode-hook #'lsp)
+  )
+
 (require 'init-review)
 
 ;;----------------------------------------------------------------------------
