@@ -66,6 +66,8 @@
     nim-mode
     ;; ponylang
     ponylang-mode
+    ;; python
+    python-mode
     ;; idris
     idris-mode
     ;; typescript
@@ -111,7 +113,7 @@
  '(ac-etags-requires 1)
  '(package-selected-packages
    (quote
-    (flycheck company-dcd racer-mode gnu-elpa-keyring-update vala-mode company-coq fsharp-mode xclip exec-path-from-shell review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring)))
+    (python-mode company-dcd racer-mode gnu-elpa-keyring-update vala-mode company-coq fsharp-mode exec-path-from-shell review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -321,9 +323,20 @@
 (require 'init-nim)
 ;; (require 'init-ocaml)
 (require 'init-pony)
-(require 'init-python)
 (require 'init-markdown)
 (require 'init-perl)
+
+(use-package python-mode
+  :ensure t
+  :defer t
+  :init
+  ;; (add-hook 'python-mode-hook #'lsp)
+  :commands (python-mode)
+  :interpreter (("python" . python-mode))
+  ;; :config
+  ;; (use-package lsp-mode
+  ;;   :ensure t)
+  )
 
 
 (use-package ruby-mode
