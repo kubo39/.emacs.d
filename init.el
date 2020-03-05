@@ -56,8 +56,6 @@
     elm-mode
     ;; rust
     rust-mode
-    flycheck-rust
-    racer
     ;; ocaml
     tuareg
     ;; haskell
@@ -352,12 +350,9 @@
   :ensure t
   :defer t
   :init
-  (add-hook 'rust-mode-hook #'racer-mode)
+  (add-hook 'rust-mode-hook #'lsp)
   :commands (rust-mode)
   :config
-  (use-package racer
-    :defer t
-    :ensure t)
   (use-package lsp-mode
     :ensure t)
   )
