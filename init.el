@@ -277,8 +277,6 @@
   :ensure t
   :defer t
   :init
-  (add-to-list 'exec-path "~/dlang/dmd-2.090.1/linux/bin64/")
-  (add-to-list 'exec-path "~/.dub/bin/")
   (add-to-list 'lsp-language-id-configuration '(d-mode . "d"))
   (add-hook 'd-mode-hook
             '(lambda ()
@@ -291,11 +289,9 @@
   (use-package lsp-mode
     :ensure t)
   )
-
-
 (lsp-register-client
  (make-lsp-client
-  :new-connection (lsp-stdio-connection '("~/.dub/bin/dls"))
+  :new-connection (lsp-stdio-connection '("~/.dub/packages/.bin/dls-latest/dls"))
   :major-modes '(d-mode)
   :server-id 'dls))
 
