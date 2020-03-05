@@ -37,7 +37,6 @@
     dimmer
     use-package
     ;; mozc
-    ac-etags
 
     ;; lsp
     lsp-mode
@@ -46,8 +45,6 @@
     nasm-mode
     ;; C/C++
     ccls
-    ;; crystal
-    crystal-mode
     ;; d
     ;; d-mode ;; d-mode never works well in emacs 26.2, see https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode/pull/93/
     ;; elm
@@ -61,14 +58,8 @@
     ;; go
     go-mode
     go-guru
-    ;; nim
-    nim-mode
-    ;; ponylang
-    ponylang-mode
     ;; python
     python-mode
-    ;; idris
-    idris-mode
     ;; typescript
     typescript-mode
     tss
@@ -107,10 +98,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ac-etags-requires 1)
  '(package-selected-packages
    (quote
-    (python-mode racer-mode gnu-elpa-keyring-update vala-mode company-coq fsharp-mode exec-path-from-shell review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring)))
+    (python-mode gnu-elpa-keyring-update company-coq fsharp-mode exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -160,7 +150,6 @@
 
 (require 'init-ido)
 (require 'init-tabbar)
-(require 'init-autocomplete)
 (require 'init-flycheck)
 (require 'init-tramp)
 (require 'init-kill-ring)
@@ -294,9 +283,6 @@
   )
 
 
-(require 'init-crystal)
-
-
 ;; ;; d-mode never works well in emacs 26.2, see https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode/pull/93/
 ;; (use-package d-mode
 ;;   :ensure t
@@ -342,10 +328,7 @@
   )
 
 (require 'init-haskell)
-(require 'init-idris)
-(require 'init-nim)
 ;; (require 'init-ocaml)
-(require 'init-pony)
 (require 'init-markdown)
 (require 'init-perl)
 
