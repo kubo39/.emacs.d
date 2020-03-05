@@ -52,7 +52,6 @@
     crystal-mode
     ;; d
     d-mode
-    company-dcd
     ;; elm
     elm-mode
     ;; rust
@@ -115,7 +114,7 @@
  '(ac-etags-requires 1)
  '(package-selected-packages
    (quote
-    (company-dcd racer-mode gnu-elpa-keyring-update vala-mode company-coq fsharp-mode xclip exec-path-from-shell review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
+    (flycheck company-dcd racer-mode gnu-elpa-keyring-update vala-mode company-coq fsharp-mode xclip exec-path-from-shell review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -284,17 +283,19 @@
   :init
   (add-to-list 'exec-path "~/dlang/dmd-2.090.1/linux/bin64/")
   (add-to-list 'exec-path "~/.dub/bin/")
+  (add-to-list 'lsp-language-id-configuration '(d-mode . "d"))
   (add-hook 'd-mode-hook
             '(lambda ()
                (c-set-style "bsd")
                (setq c-basic-offset 4)
                (setq tab-width 4)))
-;  (add-hook 'd-mode-hook #'lsp)
+  (add-hook 'd-mode-hook #'lsp)
   :commands (d-mode)
   :config
   (use-package lsp-mode
     :ensure t)
   )
+
 
 (lsp-register-client
  (make-lsp-client
