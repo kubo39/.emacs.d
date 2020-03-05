@@ -25,7 +25,6 @@
   '(
     smex
     undo-tree
-    auto-save-buffers-enhanced
     company
     tabbar
     flycheck
@@ -112,7 +111,7 @@
  '(ac-etags-requires 1)
  '(package-selected-packages
    (quote
-    (flycheck company-dcd racer-mode gnu-elpa-keyring-update vala-mode company-coq fsharp-mode xclip exec-path-from-shell review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring auto-save-buffers-enhanced)))
+    (flycheck company-dcd racer-mode gnu-elpa-keyring-update vala-mode company-coq fsharp-mode xclip exec-path-from-shell review-mode crystal-mode ghc jedi idris-mode flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode erlang ponylang-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -168,7 +167,6 @@
 (require 'init-kill-ring)
 (require 'init-powerline)
 (require 'init-eshell)
-;(require 'init-auto-save-buffers)
 ;(require 'init-yasnippet)
 
 ;;; 初期フレームの設定
