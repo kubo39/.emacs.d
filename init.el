@@ -289,12 +289,12 @@
   :ensure t
   :init
   (add-to-list 'lsp-language-id-configuration '(d-mode . "d"))
-  (add-hook 'd-mode-hook
-            '(lambda ()
-               (c-set-style "bsd")
-               (setq c-basic-offset 4)
-               (setq tab-width 4)))
-  (add-hook 'd-mode-hook #'lsp)
+  :hook
+  (d-mode . (lambda ()
+              (c-set-style "bsd")
+              (setq c-basic-offset 4)
+              (setq tab-width 4)
+              (lsp)))
   :commands d-mode
   )
 (lsp-register-client
