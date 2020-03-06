@@ -41,42 +41,44 @@
     ;; lsp
     lsp-mode
 
-    ;; nasm
-    nasm-mode
     ;; C/C++
     ccls
+    ;; coq
+    proof-general
+    company-coq
     ;; d
     d-mode
     ;; elm
     elm-mode
     ;; go
     go-mode
+    ;; haskell
+    haskell-mode
+    ;; json
+    json-mode
+    ;; markdown
+    markdown-mode
+    ;; nasm
+    nasm-mode
+    ;; ocaml
+    tuareg
+    ;; perl
+    perl-mode
+    ;; python
+    python-mode
+    ;; review
+    review-mode
     ;; ruby
     ruby-mode
     ;; rust
     rustic
-    ;; ocaml
-    tuareg
-    ;; haskell
-    haskell-mode
-    ;; python
-    python-mode
+    ;; toml
+    toml-mode
     ;; typescript
     typescript-mode
     tss
-    ;; toml
-    toml-mode
     ;; yaml
     yaml-mode
-    ;; markdown
-    markdown-mode
-    ;; json
-    json-mode
-    ;; review
-    review-mode
-    ;; coq
-    proof-general
-    company-coq
 
     ;; utils
     exec-path-from-shell
