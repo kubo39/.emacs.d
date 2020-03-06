@@ -49,6 +49,8 @@
     d-mode
     ;; elm
     elm-mode
+    ;; go
+    go-mode
     ;; ruby
     ruby-mode
     ;; rust
@@ -57,9 +59,6 @@
     tuareg
     ;; haskell
     haskell-mode
-    ;; go
-    go-mode
-    go-guru
     ;; python
     python-mode
     ;; typescript
@@ -306,23 +305,16 @@
 
 (require 'init-elm)
 
-(use-package go-guru
-  :after go-mode)
 
 (use-package go-mode
   :ensure t
-  :defer t
   :init
   (add-to-list 'exec-path "~/go/bin/")
-  (add-hook 'go-mode-hook 'lsp-deferred)
-  :commands (go-mode)
-  :bind
-  (:map go-mode-map
-        ("M-." . go-guru-definition))
-  :config
-  (use-package lsp-mode
-    :ensure t)
+  :hook
+  (go-mode . lsp)
+  :commands go-mode
   )
+
 
 (require 'init-haskell)
 ;; (require 'init-ocaml)
