@@ -41,41 +41,18 @@
     ;; lsp
     lsp-mode
 
-    ;; C/C++
-    ccls
     ;; coq
     proof-general
     company-coq
-    ;; d
-    d-mode
     ;; elm
     elm-mode
-    ;; go
-    go-mode
-    ;; haskell
-    haskell-mode
     ;; json
     json-mode
-    ;; markdown
-    markdown-mode
-    ;; nasm
-    nasm-mode
-    ;; ocaml
-    tuareg
-    ;; perl
-    perl-mode
-    ;; python
-    python-mode
     ;; review
     review-mode
-    ;; ruby
-    ruby-mode
-    ;; rust
-    rustic
     ;; toml
     toml-mode
     ;; typescript
-    typescript-mode
     tss
     ;; yaml
     yaml-mode
@@ -103,7 +80,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (d-mode python-mode gnu-elpa-keyring-update company-coq fsharp-mode exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring)))
+    (haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq fsharp-mode exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode tss moe-theme powerline tabbar smex popwin el-get company browse-kill-ring)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -258,7 +235,15 @@
 
 (require 'lsp-mode)
 
-(require 'init-editorconfig)
+
+(use-package editorconfig
+  :ensure t
+  :init
+  (setq editorconfig-exec-path "/usr/bin/editorconfig")
+  :config
+  (editorconfig-mode 1)
+  )
+
 
 (use-package ccls
   :ensure t
@@ -316,7 +301,9 @@
   )
 
 
-(require 'init-haskell)
+(use-package haskell-mode
+  :ensure t
+  )
 
 
 (use-package tuareg
@@ -327,7 +314,9 @@
   )
 
 
-(require 'init-markdown)
+(use-package markdown-mode
+  :ensure t
+  )
 
 
 (use-package nasm-mode
@@ -361,6 +350,7 @@
   :hook
   (ruby-mode . lsp)
   )
+
 
 (use-package rustic
   :ensure t
