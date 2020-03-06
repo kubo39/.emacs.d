@@ -44,8 +44,6 @@
     ;; coq
     proof-general
     company-coq
-    ;; elm
-    elm-mode
     ;; typescript
     tss
 
