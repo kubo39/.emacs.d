@@ -46,16 +46,8 @@
     company-coq
     ;; elm
     elm-mode
-    ;; json
-    json-mode
-    ;; review
-    review-mode
-    ;; toml
-    toml-mode
     ;; typescript
     tss
-    ;; yaml
-    yaml-mode
 
     ;; utils
     exec-path-from-shell
@@ -128,6 +120,7 @@
 (require 'company)
 (global-company-mode)
 
+
 (require 'init-ido)
 (require 'init-tabbar)
 (require 'init-flycheck)
@@ -135,7 +128,7 @@
 (require 'init-kill-ring)
 (require 'init-powerline)
 (require 'init-eshell)
-;(require 'init-yasnippet)
+
 
 ;;; 初期フレームの設定
 (setq initial-frame-alist
@@ -288,7 +281,24 @@
   :server-id 'dls))
 
 
-(require 'init-elm)
+(use-package dockerfile-mode
+  :ensure t
+  )
+
+
+(use-package elm-mode
+  :ensure t
+  :mode (("\\.elm$" . elm-mode))
+  :hook
+  (elm-mode . (lambda ()
+                (setq company-backends '(company-elm))
+                (elm-oracle-setup-completion)
+                ))
+  :config
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-elm))
+  :commands elm-mode
+  )
 
 
 (use-package go-mode
@@ -302,6 +312,11 @@
 
 
 (use-package haskell-mode
+  :ensure t
+  )
+
+
+(use-package json-mode
   :ensure t
   )
 
@@ -340,6 +355,11 @@
   )
 
 
+(use-package review-mode
+  :ensure t
+  )
+
+
 (use-package ruby-mode
   :ensure t
   :commands (ruby-mode)
@@ -358,6 +378,11 @@
   )
 
 
+(use-package toml-mode
+  :ensure t
+  )
+
+
 (use-package typescript-mode
   :ensure t
   :commands typescript-mode
@@ -368,7 +393,6 @@
                        (lsp)))
   )
 
-(require 'init-review)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
