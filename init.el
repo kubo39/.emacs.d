@@ -49,6 +49,8 @@
     d-mode
     ;; elm
     elm-mode
+    ;; ruby
+    ruby-mode
     ;; rust
     rustic
     ;; ocaml
@@ -327,16 +329,13 @@
 (require 'init-markdown)
 (require 'init-perl)
 
+
 (use-package python-mode
   :ensure t
-  :defer t
-  :init
-  ;; (add-hook 'python-mode-hook #'lsp)
-  :commands (python-mode)
+  ;; :hook
+  ;; (python-mode . lsp)
+  :commands python-mode
   :interpreter (("python" . python-mode))
-  ;; :config
-  ;; (use-package lsp-mode
-  ;;   :ensure t)
   )
 
 
@@ -347,16 +346,12 @@
          ("\\.gemspec$" . ruby-mode)
          ("Rakefile$" . ruby-mode))
   :interpreter (("ruby" . ruby-mode))
-  :init
-  (add-hook 'ruby-mode-hook #'lsp)
-  :config
-  (use-package lsp-mode
-    :ensure t)
+  :hook
+  (ruby-mode . lsp)
   )
 
 (use-package rustic
   :ensure t
-  :defer t
   :commands rustic
   )
 
