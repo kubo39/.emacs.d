@@ -321,8 +321,11 @@
 (require 'init-haskell)
 ;; (require 'init-ocaml)
 (require 'init-markdown)
-(require 'init-perl)
 
+(use-package perl-mode
+  :ensure t
+  :commands perl-mode
+  )
 
 (use-package python-mode
   :ensure t
