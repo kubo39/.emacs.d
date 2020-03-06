@@ -260,8 +260,6 @@
 
 (require 'init-editorconfig)
 
-(require 'init-nasm)
-
 (use-package ccls
   :ensure t
   :custom
@@ -322,10 +320,18 @@
 ;; (require 'init-ocaml)
 (require 'init-markdown)
 
+
+(use-package nasm-mode
+  :ensure t
+  :mode (("\\.asm$" . nasm-mode))
+  )
+
+
 (use-package perl-mode
   :ensure t
   :commands perl-mode
   )
+
 
 (use-package python-mode
   :ensure t
