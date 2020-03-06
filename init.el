@@ -317,7 +317,16 @@
 
 
 (require 'init-haskell)
-;; (require 'init-ocaml)
+
+
+(use-package tuareg
+  :ensure t
+  :mode (("\\.ml$" . tuareg-mode))
+  :hook
+  (tuareg-mode . lsp)
+  )
+
+
 (require 'init-markdown)
 
 
