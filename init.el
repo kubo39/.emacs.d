@@ -56,7 +56,12 @@
   (when not-installed
     (package-refresh-contents)
     (dolist (pkg not-installed)
-        (package-install pkg))))
+      (package-install pkg))))
+
+
+(use-package use-package-ensure-system-package
+  :ensure t)
+
 
 ;; (require 'mozc)
 ;; (set-language-environment "Japanese")
@@ -367,6 +372,8 @@
   :interpreter (("ruby" . ruby-mode))
   :hook
   (ruby-mode . lsp)
+  :ensure-system-package
+  (solargraph . "gem install solargraph")
   )
 
 
