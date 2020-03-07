@@ -120,6 +120,7 @@
 
 ;;; smex
 (use-package smex
+  :ensure t
   :config
   (global-set-key (kbd "M-x") 'smex)
   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
@@ -128,6 +129,7 @@
 
 ;;; ido-mode
 (use-package ido
+  :ensure t
   :init
   (ido-mode t)
   :hook
