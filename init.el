@@ -38,8 +38,6 @@
     ;; coq
     proof-general
     company-coq
-    ;; typescript
-    tss
     ))
 (let ((not-installed (loop for x in installing-package-list
                             when (not (package-installed-p x))
@@ -69,7 +67,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq fsharp-mode exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode tss moe-theme powerline tabbar smex popwin company browse-kill-ring)))
+    (nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq fsharp-mode exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode moe-theme powerline tabbar smex popwin company browse-kill-ring)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -474,10 +472,7 @@
   :ensure t
   :commands typescript-mode
   :hook
-  (typescript-mode . (lambda ()
-                       (require 'tss)
-                       (tss-config-default)
-                       (lsp)))
+  (typescript-mode . lsp)
   )
 
 
