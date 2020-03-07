@@ -41,9 +41,6 @@
     company-coq
     ;; typescript
     tss
-
-    ;; utils
-    exec-path-from-shell
     ))
 (let ((not-installed (loop for x in installing-package-list
                             when (not (package-installed-p x))
@@ -53,6 +50,9 @@
     (dolist (pkg not-installed)
       (package-install pkg))))
 
+
+(use-package exec-path-from-shell
+  :ensure t)
 
 (use-package use-package-ensure-system-package
   :ensure t)
@@ -119,13 +119,86 @@
 (global-company-mode)
 
 
-(require 'init-ido)
-(require 'init-tabbar)
-(require 'init-flycheck)
-(require 'init-tramp)
-(require 'init-kill-ring)
-(require 'init-powerline)
-(require 'init-eshell)
+;;; ido-mode
+(ido-mode t)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(add-hook 'ido-setup-hook (lambda ()
+                            (define-key ido-completion-map [up] 'previous-history-element)))
+
+
+;;; tabber
+(require 'tabbar)
+(tabbar-mode)
+(global-set-key "\M-]" 'tabbar-forward)  ; 次のタブ
+(global-set-key "\M-[" 'tabbar-backward) ; 前のタブ
+;; タブ上でマウスホイールを使わない
+(tabbar-mwheel-mode nil)
+;; グループを使わない
+(setq tabbar-buffer-groups-function nil)
+;; 左側のボタンを消す
+(dolist (btn '(tabbar-buffer-home-button
+               tabbar-scroll-left-button
+               tabbar-scroll-right-button))
+  (set btn (cons (cons "" nil)
+                 (cons "" nil))))
+;; tabber色設定
+(set-face-attribute ; バー自体の色
+  'tabbar-default nil
+   :background "black"
+   :family "Inconsolata"
+   :height 1.0)
+(set-face-attribute ; アクティブなタブ
+  'tabbar-selected nil
+   :background "black"
+   :foreground "green"
+   :weight 'bold
+   :box nil)
+(set-face-attribute ; 非アクティブなタブ
+  'tabbar-unselected nil
+   :background "black"
+   :foreground "red"
+   :box nil)
+
+
+;;; flycheck
+(with-eval-after-load 'flycheck
+  (flycheck-pos-tip-mode))
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+
+;;; tramp
+(require 'tramp)
+(setq tramp-default-method "ssh")
+
+
+;;; kill-ring
+(require 'browse-kill-ring)
+(global-set-key "\M-y" 'browse-kill-ring)
+;; C-g で終了
+(add-hook 'browse-kill-ring-hook
+          (lambda ()
+            (define-key browse-kill-ring-mode-map (kbd "\C-g") 'browse-kill-ring-quit)))
+;; Emacsのkill-ringsをクリップボードに対応
+(global-set-key "\M-w" 'clipboard-kill-ring-save)
+(global-set-key "\C-w" 'clipboard-kill-region)
+
+
+;;; powerline
+(require 'powerline)
+(powerline-default-theme)
+
+
+;;; eshell関連
+;;
+;; 確認なしでヒストリ保存
+(setq eshell-ask-to-save-history (quote always))
+;; 補完時にサイクルする
+(setq eshell-cmpl-cycle-completions t)
+;;補完候補がこの数値以下だとサイクルせずに候補表示
+(setq eshell-cmpl-cycle-cutoff-length 5)
+;; 履歴で重複を無視する
+(setq eshell-hist-ignoredups t)
 
 
 ;;; 初期フレームの設定
