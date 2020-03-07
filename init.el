@@ -324,14 +324,6 @@
   )
 
 
-(use-package tuareg
-  :ensure t
-  :mode (("\\.ml$" . tuareg-mode))
-  :hook
-  (tuareg-mode . lsp)
-  )
-
-
 (use-package markdown-mode
   :ensure t
   )
@@ -385,6 +377,14 @@
 
 (use-package toml-mode
   :ensure t
+  )
+
+
+(use-package tuareg
+  :ensure t
+  :mode (("\\.ml$" . tuareg-mode))
+  :hook
+  (tuareg-mode . lsp)
   )
 
 
