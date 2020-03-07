@@ -36,10 +36,6 @@
     dimmer
     use-package
     ;; mozc
-
-    ;; coq
-    proof-general
-    company-coq
     ))
 (let ((not-installed (loop for x in installing-package-list
                             when (not (package-installed-p x))
@@ -333,6 +329,16 @@
                (require 'ccls)
                (lsp)
                ))
+  )
+
+
+(use-package company-coq
+  :ensure t
+  )
+(use-package proof-general
+  :ensure t
+  :hook
+  (coq-mode . company-coq-mode)
   )
 
 
