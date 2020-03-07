@@ -229,15 +229,6 @@
   )
 
 
-(use-package editorconfig
-  :ensure t
-  :init
-  (setq editorconfig-exec-path "/usr/bin/editorconfig")
-  :config
-  (editorconfig-mode 1)
-  )
-
-
 (use-package ccls
   :ensure t
   :custom
@@ -283,6 +274,15 @@
 
 (use-package dockerfile-mode
   :ensure t
+  )
+
+
+(use-package editorconfig
+  :ensure t
+  :init
+  (setq editorconfig-exec-path "/usr/bin/editorconfig")
+  :config
+  (editorconfig-mode 1)
   )
 
 
