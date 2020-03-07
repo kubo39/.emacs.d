@@ -1,4 +1,6 @@
+;;; package --- Summary
 
+;;; Commentary:
 
 ;; =====================================
 ;;
@@ -51,10 +53,6 @@
   :ensure t)
 
 
-;; (require 'mozc)
-;; (set-language-environment "Japanese")
-;; (setq default-input-method "japanese-mozc")
-
 ;; ruby macicomment off
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -98,12 +96,6 @@
 
 ;; suspendを無効に
 (define-key global-map (kbd "C-x C-z") nil)
-
-;; xsel --  M-x x-clipboard-copy
-;; (defun x-clipboard-copy ()
-;;   (interactive)
-;;   (when (region-active-p)
-;;     (shell-command-on-region (region-beginning) (region-end) "xsel -ib" nil nil)))
 
 ;; スクロール1行ごとに
 (setq scroll-step 1)
