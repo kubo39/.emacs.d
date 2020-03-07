@@ -126,8 +126,8 @@
 ;;; tabber
 (require 'tabbar)
 (tabbar-mode)
-(global-set-key "\M-]" 'tabbar-forward)  ; 次のタブ
-(global-set-key "\M-[" 'tabbar-backward) ; 前のタブ
+(global-set-key (kbd "M-]") 'tabbar-forward)  ; 次のタブ
+(global-set-key (kbd "M-[") 'tabbar-backward) ; 前のタブ
 ;; タブ上でマウスホイールを使わない
 (tabbar-mwheel-mode nil)
 ;; グループを使わない
@@ -170,14 +170,14 @@
 
 ;;; kill-ring
 (require 'browse-kill-ring)
-(global-set-key "\M-y" 'browse-kill-ring)
+(global-set-key (kbd "M-y") 'browse-kill-ring)
 ;; C-g で終了
 (add-hook 'browse-kill-ring-hook
           (lambda ()
             (define-key browse-kill-ring-mode-map (kbd "\C-g") 'browse-kill-ring-quit)))
 ;; Emacsのkill-ringsをクリップボードに対応
-(global-set-key "\M-w" 'clipboard-kill-ring-save)
-(global-set-key "\C-w" 'clipboard-kill-region)
+(global-set-key (kbd "M-w") 'clipboard-kill-ring-save)
+(global-set-key (kbd "C-w") 'clipboard-kill-region)
 
 
 ;;; powerline
