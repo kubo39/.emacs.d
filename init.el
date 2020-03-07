@@ -291,16 +291,8 @@
 
 (use-package elm-mode
   :ensure t
-  :mode (("\\.elm$" . elm-mode))
   :hook
-  (elm-mode . (lambda ()
-                (setq company-backends '(company-elm))
-                (elm-oracle-setup-completion)
-                ))
-  :config
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-elm))
-  :commands elm-mode
+  (elm-mode . lsp)
   )
 
 
