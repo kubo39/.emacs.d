@@ -10,7 +10,6 @@
 ;;; Code:
 
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
-;; (add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))  ;; el-get
 
 (require 'init-elpa)
 (package-initialize)
@@ -31,15 +30,11 @@
     powerline
     moe-theme
     popwin
-    el-get
     browse-kill-ring
     multi-term
     dimmer
     use-package
     ;; mozc
-
-    ;; lsp
-    lsp-mode
 
     ;; coq
     proof-general
@@ -229,7 +224,9 @@
 
 ;; 言語系
 
-(require 'lsp-mode)
+(use-package lsp-mode
+  :ensure t
+  )
 
 
 (use-package editorconfig
