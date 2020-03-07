@@ -22,7 +22,6 @@
 
 (defvar installing-package-list
   '(
-    smex
     undo-tree
     company
     tabbar
@@ -119,12 +118,22 @@
 (global-company-mode)
 
 
+;;; smex
+(use-package smex
+  :config
+  (global-set-key (kbd "M-x") 'smex)
+  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+  )
+
+
 ;;; ido-mode
-(ido-mode t)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(add-hook 'ido-setup-hook (lambda ()
-                            (define-key ido-completion-map [up] 'previous-history-element)))
+(use-package ido
+  :init
+  (ido-mode t)
+  :hook
+  (ido-setup . (lambda ()
+                 (define-key ido-completion-map [up] 'previous-history-element)))
+  )
 
 
 ;;; tabber
