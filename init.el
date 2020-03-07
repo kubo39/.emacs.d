@@ -356,7 +356,7 @@
 
 (use-package ruby-mode
   :ensure t
-  :commands (ruby-mode)
+  :commands ruby-mode
   :mode (("\\.ru$" . ruby-mode)
          ("\\.gemspec$" . ruby-mode)
          ("Rakefile$" . ruby-mode))
@@ -381,7 +381,6 @@
 
 (use-package tuareg
   :ensure t
-  :mode (("\\.ml$" . tuareg-mode))
   :hook
   (tuareg-mode . lsp)
   )
