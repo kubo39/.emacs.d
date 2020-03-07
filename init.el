@@ -116,15 +116,6 @@
 (global-company-mode)
 
 
-;;; smex
-(use-package smex
-  :ensure t
-  :config
-  (global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-  )
-
-
 ;;; ido-mode
 (use-package ido
   :ensure t
@@ -133,6 +124,14 @@
   :hook
   (ido-setup . (lambda ()
                  (define-key ido-completion-map [up] 'previous-history-element)))
+  )
+
+
+(use-package smex
+  :ensure t
+  :config
+  (global-set-key (kbd "M-x") 'smex)
+  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
   )
 
 
