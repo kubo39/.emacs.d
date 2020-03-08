@@ -377,9 +377,10 @@
   :ensure t
   :init
   (add-to-list 'exec-path "~/go/bin/")
-  (require 'lsp-go)
   :hook
-  (go-mode . lsp)
+  (go-mode . (lambda ()
+               (require 'lsp-go)
+               (lsp)))
   :commands go-mode
   )
 
