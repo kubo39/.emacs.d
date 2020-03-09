@@ -49,9 +49,6 @@
 (use-package exec-path-from-shell
   :ensure t)
 
-(use-package use-package-ensure-system-package
-  :ensure t)
-
 
 ;; ruby macicomment off
 (custom-set-variables
@@ -415,8 +412,6 @@
   :hook
   (nim-mode . lsp)
   :commands nim-mode
-  :ensure-system-package
-  (nimlsp . "nimble install nimlsp")
   )
 
 
@@ -449,8 +444,6 @@
   :interpreter (("ruby" . ruby-mode))
   :hook
   (ruby-mode . lsp)
-  :ensure-system-package
-  (solargraph . "gem install solargraph")
   )
 
 
