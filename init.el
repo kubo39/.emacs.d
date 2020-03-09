@@ -307,6 +307,11 @@
   :commands lsp-ui-mode
   )
 
+(use-package lsp-treemacs
+  :ensure t
+  :commands lsp-treemacs-errors-list
+  )
+
 (use-package ccls
   :ensure t
   :custom
