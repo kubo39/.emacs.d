@@ -384,9 +384,7 @@
   :init
   (add-to-list 'exec-path "~/go/bin/")
   :hook
-  (go-mode . (lambda ()
-               (require 'lsp-go)
-               (lsp)))
+  (go-mode . lsp)
   :commands go-mode
   )
 
