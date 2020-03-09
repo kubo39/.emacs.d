@@ -463,6 +463,10 @@
   )
 
 
+; tex
+(add-hook 'latex-mode-hook #'lsp)
+
+
 (use-package toml-mode
   :ensure t
   )
