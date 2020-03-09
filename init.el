@@ -61,7 +61,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (dap-mode sdlang-mode magit quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode moe-theme powerline tabbar smex popwin company browse-kill-ring)))
+    (lsp-ui dap-mode sdlang-mode magit quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode moe-theme powerline tabbar smex popwin company browse-kill-ring)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -303,6 +303,11 @@
 
 (use-package lsp-mode
   :ensure t
+  )
+
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode
   )
 
 (use-package dap-mode
