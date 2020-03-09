@@ -41,7 +41,6 @@
                             when (not (package-installed-p x))
                             collect x)))
   (when not-installed
-    (package-refresh-contents)
     (dolist (pkg not-installed)
       (package-install pkg))))
 
