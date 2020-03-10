@@ -19,11 +19,6 @@
   :type 'string
   :group 'lsp-perl)
 
-(defcustom lsp-perl-lang-server-args nil
-  "Add Perl::LanguageServer initialization options."
-  :type '(repeat string)
-  :group 'lsp-perl)
-
 (lsp-register-client
  (make-lsp-client :new-connection (lsp-stdio-connection
                                    (lambda ()
