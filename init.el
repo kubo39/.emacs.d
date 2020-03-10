@@ -15,6 +15,8 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.milkbox.net/packages/") t) ;; meplaを追加
 (package-initialize)
 
+(add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
+
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
