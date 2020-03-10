@@ -404,7 +404,7 @@
 
 (use-package nasm-mode
   :ensure t
-  :mode (("\\.asm$" . nasm-mode))
+  :mode (("\\.asm\\" . nasm-mode))
   )
 
 
@@ -439,9 +439,9 @@
 (use-package ruby-mode
   :ensure t
   :commands ruby-mode
-  :mode (("\\.ru$" . ruby-mode)
-         ("\\.gemspec$" . ruby-mode)
-         ("Rakefile$" . ruby-mode))
+  :mode (("\\.ru\\" . ruby-mode)
+         ("\\.gemspec\\" . ruby-mode)
+         ("Rakefile\\" . ruby-mode))
   :interpreter (("ruby" . ruby-mode))
   :hook
   (ruby-mode . lsp)
