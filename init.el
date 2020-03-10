@@ -406,7 +406,7 @@
 
 (use-package nasm-mode
   :ensure t
-  :mode (("\\.asm\\" . nasm-mode))
+  :mode (("\\.asm$" . nasm-mode))
   )
 
 
@@ -421,6 +421,10 @@
 (use-package perl-mode
   :ensure t
   :commands perl-mode
+  :hook (perl-mode . (lambda ()
+                       (setq lsp-perl-path "~/.anyenv/envs/plenv/versions/5.26.2/bin/perl")
+                       (require 'lsp-perl)
+                       (lsp)))
   )
 
 
@@ -441,9 +445,9 @@
 (use-package ruby-mode
   :ensure t
   :commands ruby-mode
-  :mode (("\\.ru\\" . ruby-mode)
-         ("\\.gemspec\\" . ruby-mode)
-         ("Rakefile\\" . ruby-mode))
+  :mode (("\\.ru$" . ruby-mode)
+         ("\\.gemspec$" . ruby-mode)
+         ("Rakefile$" . ruby-mode))
   :interpreter (("ruby" . ruby-mode))
   :hook
   (ruby-mode . lsp)
