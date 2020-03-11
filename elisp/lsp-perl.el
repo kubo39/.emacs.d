@@ -2,7 +2,7 @@
 
 ;;; Commentary:
 
-;; Installl: `cpanm Perl::LanguageServer`
+;; Install: `cpanm Perl::LanguageServer`
 
 ;;; Code:
 
