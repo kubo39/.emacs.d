@@ -11,7 +11,7 @@
 (defgroup lsp-perl nil
   "LSP support for Perl"
   :group 'lsp-mode
-  :link '(url-link "https://github.com/richterger/Perl-LangServer"))
+  :link '(url-link "https://github.com/richterger/Perl-LanguageServer"))
 
 (defcustom lsp-perl-path "perl"
   "Path to perl interpreter."
