@@ -58,7 +58,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (crystal-mode zig-mode lsp-ui sdlang-mode magit quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode moe-theme powerline tabbar smex popwin company browse-kill-ring)))
+    (company-dcd crystal-mode zig-mode lsp-ui sdlang-mode magit quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode moe-theme powerline tabbar smex popwin company browse-kill-ring)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -351,14 +351,18 @@
   )
 
 
+(use-package company-dcd
+  :ensure t
+  )
 (use-package d-mode
   :ensure t
+  :init
+  (setq load-path (cons "~/.dub/packages/dcd-0.12.0/dcd/bin/" load-path))
   :hook
   (d-mode . (lambda ()
               (c-set-style "bsd")
               (setq c-basic-offset 4)
-              (setq tab-width 4)
-              (lsp)))
+              (setq tab-width 4)))
   :commands d-mode
   )
 
