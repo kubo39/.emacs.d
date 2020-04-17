@@ -357,12 +357,16 @@
 (use-package d-mode
   :ensure t
   :init
-  (setq load-path (cons "~/.dub/packages/dcd-0.12.0/dcd/bin/" load-path))
+  (add-to-list 'exec-path "~/dlang/dmd-2.091.0/linux/bin64/")
+  (add-to-list 'exec-path "~/.dub/packages/dcd-0.12.0/dcd/bin/")
   :hook
   (d-mode . (lambda ()
               (c-set-style "bsd")
               (setq c-basic-offset 4)
-              (setq tab-width 4)))
+              (setq tab-width 4)
+              (company-dcd-mode)
+              (define-key company-dcd-mode-map (kbd "M-.") 'company-dcd-goto-definition)
+              (define-key company-dcd-mode-map (kbd "M-,") 'company-dcd--goto-def-pop-marker)))
   :commands d-mode
   )
 
