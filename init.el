@@ -366,7 +366,7 @@
               (setq tab-width 4)
               (company-dcd-mode)
               (define-key company-dcd-mode-map (kbd "M-.") 'company-dcd-goto-definition)
-              (define-key company-dcd-mode-map (kbd "M-,") 'company-dcd--goto-def-pop-marker)))
+              (define-key company-dcd-mode-map (kbd "M-,") 'company-dcd-goto-def-pop-marker)))
   :commands d-mode
   )
 
