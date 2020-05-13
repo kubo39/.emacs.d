@@ -357,7 +357,7 @@
 (use-package d-mode
   :ensure t
   :init
-  (add-to-list 'exec-path "~/dlang/dmd-2.091.1/linux/bin64/")
+  (add-to-list 'exec-path "~/dlang/dmd-2.092.0/linux/bin64/")
   (add-to-list 'exec-path "~/.dub/packages/dcd-0.12.0/dcd/bin/")
   :hook
   (d-mode . (lambda ()
