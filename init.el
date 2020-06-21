@@ -58,7 +58,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-dcd crystal-mode zig-mode lsp-ui sdlang-mode magit quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode moe-theme powerline tabbar smex popwin company browse-kill-ring)))
+    (zen-mode company-dcd crystal-mode zig-mode lsp-ui sdlang-mode magit quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode moe-theme powerline tabbar smex popwin company browse-kill-ring)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -357,8 +357,9 @@
 (use-package d-mode
   :ensure t
   :init
-  (add-to-list 'exec-path "~/dlang/dmd-2.092.1/linux/bin64/")
-  (add-to-list 'exec-path "~/.dub/packages/dcd-0.12.0/dcd/bin/")
+  (setq company-dcd-compiler "~/dlang/ldc-1.22.0/bin/ldc2")
+  (setq company-dcd-client-executable "~/.dub/packages/dcd-0.12.0/dcd/bin/dcd-client")
+  (setq company-dcd-server-executable "~/.dub/packages/dcd-0.12.0/dcd/bin/dcd-server")
   :hook
   (d-mode . (lambda ()
               (c-set-style "bsd")
