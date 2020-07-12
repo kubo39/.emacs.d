@@ -302,6 +302,7 @@
 (use-package lsp-mode
   :ensure t
   :init
+  ;; プロジェクト毎に `cmake -DCMAKE_EXPORT_COMPILE_COMMADS=ON` しておく
   (setq lsp-clients-clangd-executable "/usr/bin/clangd-10")
   :hook
   (c-mode . (lambda ()
