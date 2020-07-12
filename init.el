@@ -27,6 +27,7 @@
   '(
     undo-tree
     company
+    company-lsp
     tabbar
     flycheck
     powerline
@@ -58,7 +59,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (zen-mode company-dcd crystal-mode zig-mode lsp-ui sdlang-mode magit quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode moe-theme powerline tabbar smex popwin company browse-kill-ring)))
+    (company-lsp zen-mode company-dcd crystal-mode zig-mode lsp-ui sdlang-mode magit quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode moe-theme powerline tabbar smex popwin company browse-kill-ring)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -300,7 +301,21 @@
 
 (use-package lsp-mode
   :ensure t
-  )
+  :init
+  (setq lsp-clients-clangd-executable "/usr/bin/clangd-10")
+  :hook
+  (c-mode . (lambda ()
+                (setq c-basic-offset 2)
+                (setq indent-tabs-mode nil)
+                (setq tab-width 2)
+                (company-mode)
+                (lsp)))
+  (c++-mode . (lambda ()
+                (setq c-basic-offset 2)
+                (setq indent-tabs-mode nil)
+                (setq tab-width 2)
+                (company-mode)
+                (lsp))))
 
 (use-package lsp-ui
   :ensure t
@@ -312,34 +327,9 @@
   :commands lsp-treemacs-errors-list
   )
 
-(use-package ccls
-  :ensure t
-  :custom
-  (ccls-executable "~/ccls/Release/ccls")
-  :init
-  (add-hook 'c++-mode-hook
-            '(lambda ()
-               (setq c-basic-offset 2)
-               (setq indent-tabs-mode nil)
-               (setq tab-width 2)
-               (require 'ccls)
-               (lsp)
-               ))
-  (add-hook 'c-mode-hook
-            '(lambda ()
-               (setq c-basic-offset 2)
-               (setq indent-tabs-mode nil)
-               (setq tab-width 2)
-               (require 'ccls)
-               (lsp)
-               ))
-  )
-
-
 (use-package crystal-mode
   :ensure t
   )
-
 
 (use-package company-coq
   :ensure t
