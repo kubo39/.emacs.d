@@ -59,7 +59,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-lsp zen-mode company-dcd crystal-mode zig-mode lsp-ui sdlang-mode magit quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode moe-theme powerline tabbar smex popwin company browse-kill-ring)))
+    (cmake-mode company-lsp zen-mode company-dcd crystal-mode zig-mode lsp-ui sdlang-mode magit quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode moe-theme powerline tabbar smex popwin company browse-kill-ring)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -306,17 +306,23 @@
   (setq lsp-clients-clangd-executable "/usr/bin/clangd-10")
   :hook
   (c-mode . (lambda ()
-                (setq c-basic-offset 2)
+                (setq c-basic-offset 4)
                 (setq indent-tabs-mode nil)
-                (setq tab-width 2)
+                (setq tab-width 4)
                 (company-mode)
                 (lsp)))
   (c++-mode . (lambda ()
-                (setq c-basic-offset 2)
+                (setq c-basic-offset 4)
                 (setq indent-tabs-mode nil)
-                (setq tab-width 2)
+                (setq tab-width 4)
                 (company-mode)
                 (lsp))))
+
+(lsp-register-client
+ (make-lsp-client :new-connection (lsp-tramp-connection "/usr/bin/clangd-10")
+                  :major-modes '(c++-mode)
+                  :remote? t
+                  :server-id 'clangd-remote))
 
 (use-package lsp-ui
   :ensure t
