@@ -446,9 +446,6 @@
 (use-package perl-mode
   :ensure t
   :commands perl-mode
-  :hook (perl-mode . (lambda ()
-                       (setq lsp-perl-language-server-path "~/.anyenv/envs/plenv/versions/5.26.2/bin/perl")
-                       (lsp)))
   )
 
 
