@@ -171,7 +171,9 @@
 
 ;;; flycheck
 (with-eval-after-load 'flycheck
-  (flycheck-pos-tip-mode))
+  (flycheck-pos-tip-mode)
+  (setq-default flycheck-disabled-checkers '(d))
+  )
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 
