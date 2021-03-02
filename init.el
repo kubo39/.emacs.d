@@ -370,7 +370,7 @@
 (use-package d-mode
   :ensure t
   :init
-  (setq company-dcd-compiler "~/dlang/ldc-1.25.0/bin/ldc2")
+  (setq company-dcd-compiler "~/dlang/ldc-1.25.1/bin/ldc2")
   (setq company-dcd-client-executable "~/.dub/packages/dcd-0.13.1/dcd/bin/dcd-client")
   (setq company-dcd-server-executable "~/.dub/packages/dcd-0.13.1/dcd/bin/dcd-server")
   :hook
