@@ -71,9 +71,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-hidden-regexps (quote ("\\`zen-mode")))
  '(package-selected-packages
    (quote
-    (cmake-mode company-lsp zen-mode company-dcd crystal-mode zig-mode lsp-ui sdlang-mode magit quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode moe-theme powerline tabbar smex popwin company browse-kill-ring)))
+    (cmake-mode company-lsp crystal-mode zig-mode lsp-ui sdlang-mode magit quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode moe-theme powerline tabbar smex popwin company browse-kill-ring)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -363,26 +364,20 @@
   (coq-mode . company-coq-mode)
   )
 
-
-(use-package company-dcd
-  :ensure t
-  )
 (use-package d-mode
   :ensure t
-  :init
-  (setq company-dcd-compiler "~/dlang/ldc-1.25.1/bin/ldc2")
-  (setq company-dcd-client-executable "~/.dub/packages/dcd-0.13.1/dcd/bin/dcd-client")
-  (setq company-dcd-server-executable "~/.dub/packages/dcd-0.13.1/dcd/bin/dcd-server")
   :hook
   (d-mode . (lambda ()
               (c-set-style "bsd")
               (setq c-basic-offset 4)
-              (setq tab-width 4)
-              (company-dcd-mode)
-              (define-key company-dcd-mode-map (kbd "M-.") 'company-dcd-goto-definition)
-              (define-key company-dcd-mode-map (kbd "M-,") 'company-dcd-goto-def-pop-marker)))
-  :commands d-mode
-  )
+              (setq tab-width 4)))
+  :commands d-mode)
+(lsp-register-client
+ (make-lsp-client
+  :new-connection (lsp-stdio-connection "~/dev/dlang/serve-d/serve-d")
+  :major-modes '(d-mode)
+  :priority -1
+  :server-id 'serve-d))
 
 
 (use-package dockerfile-mode
