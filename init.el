@@ -370,14 +370,9 @@
   (d-mode . (lambda ()
               (c-set-style "bsd")
               (setq c-basic-offset 4)
-              (setq tab-width 4)))
+              (setq tab-width 4)
+              (lsp)))
   :commands d-mode)
-(lsp-register-client
- (make-lsp-client
-  :new-connection (lsp-stdio-connection "~/dev/dlang/serve-d/serve-d")
-  :major-modes '(d-mode)
-  :priority -1
-  :server-id 'serve-d))
 
 
 (use-package dockerfile-mode
