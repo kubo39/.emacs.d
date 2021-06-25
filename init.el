@@ -375,6 +375,7 @@
               (c-set-style "bsd")
               (setq c-basic-offset 4)
               (setq tab-width 4)
+              (electric-pair-mode t)
               (company-dcd-mode)
               (define-key company-dcd-mode-map (kbd "M-.") 'company-dcd-goto-definition)
               (define-key company-dcd-mode-map (kbd "M-,") 'company-dcd-goto-def-pop-marker)))
