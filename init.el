@@ -74,7 +74,7 @@
  '(package-hidden-regexps (quote ("\\`zen-mode")))
  '(package-selected-packages
    (quote
-    (meson-mode company-dcd cmake-mode company-lsp crystal-mode zig-mode lsp-ui sdlang-mode magit quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update company-coq exec-path-from-shell review-mode ghc jedi flymake-hlint flycheck-elm elm-mode bison-mode editorconfig dockerfile-mode toml-mode moe-theme powerline tabbar smex popwin company browse-kill-ring)))
+    (company-dcd cmake-mode company-lsp crystal-mode lsp-ui sdlang-mode quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update exec-path-from-shell ghc jedi flymake-hlint flycheck-elm bison-mode toml-mode moe-theme tabbar smex popwin company browse-kill-ring)))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
 
@@ -309,8 +309,8 @@
   :ensure t)
 
 ;;; magit
-(use-package magit
-  :ensure t)
+;; (use-package magit
+;;   :ensure t)
 
 ;-------------------------------------------------------
 
@@ -322,47 +322,50 @@
   ;; プロジェクト毎に `cmake -DCMAKE_EXPORT_COMPILE_COMMADS=ON` しておく
   (setq lsp-clients-clangd-executable "/usr/bin/clangd-10")
   :hook
-  (c-mode . (lambda ()
-                (setq c-basic-offset 4)
-                (setq indent-tabs-mode nil)
-                (setq tab-width 4)
-                (company-mode)
-                (lsp)))
-  (c++-mode . (lambda ()
-                (setq c-basic-offset 4)
-                (setq indent-tabs-mode nil)
-                (setq tab-width 4)
-                (company-mode)
-                (lsp))))
+  (
+   (c-mode . (lambda ()
+               (setq c-basic-offset 4)
+               (setq indent-tabs-mode nil)
+               (setq tab-width 4)
+               (company-mode)
+               (lsp)))
+   (c++-mode . (lambda ()
+                 (setq c-basic-offset 4)
+                 (setq indent-tabs-mode nil)
+                 (setq tab-width 4)
+                 (company-mode)
+                 (lsp))))
+  :commands lsp)
 
-(lsp-register-client
- (make-lsp-client :new-connection (lsp-tramp-connection "/usr/bin/clangd-10")
-                  :major-modes '(c++-mode)
-                  :remote? t
-                  :server-id 'clangd-remote))
+;; (lsp-register-client
+;;  (make-lsp-client :new-connection (lsp-tramp-connection "/usr/bin/clangd-10")
+;;                   :major-modes '(c++-mode)
+;;                   :remote? t
+;;                   :server-id 'clangd-remote))
+
 
 (use-package lsp-ui
   :ensure t
-  :commands lsp-ui-mode
-  )
+  :commands lsp-ui-mode)
+
 
 (use-package lsp-treemacs
   :ensure t
-  :commands lsp-treemacs-errors-list
-  )
+  :commands lsp-treemacs-errors-list)
+
 
 (use-package crystal-mode
   :ensure t
-  )
+  :commands crystal-mode)
+
 
 (use-package company-coq
-  :ensure t
-  )
+  :ensure t)
 (use-package proof-general
   :ensure t
   :hook
-  (coq-mode . company-coq-mode)
-  )
+  ((coq-mode . company-coq-mode)))
+
 
 (use-package d-mode
   :ensure t
@@ -371,22 +374,21 @@
   (setq company-dcd-client-executable "~/.dub/packages/dcd-0.13.1/dcd/bin/dcd-client")
   (setq company-dcd-server-executable "~/.dub/packages/dcd-0.13.1/dcd/bin/dcd-server")
   :hook
-  (d-mode . (lambda ()
-              (c-set-style "bsd")
-              (setq c-basic-offset 4)
-              (setq tab-width 4)
-              (electric-pair-mode t)
-              (company-dcd-mode)
-              (define-key company-dcd-mode-map (kbd "M-.") 'company-dcd-goto-definition)
-              (define-key company-dcd-mode-map (kbd "M-,") 'company-dcd-goto-def-pop-marker)))
+  ((d-mode . (lambda ()
+               (c-set-style "bsd")
+               (setq c-basic-offset 4)
+               (setq tab-width 4)
+               (electric-pair-mode t)
+               (company-dcd-mode)
+               (define-key company-dcd-mode-map (kbd "M-.") 'company-dcd-goto-definition)
+               (define-key company-dcd-mode-map (kbd "M-,") 'company-dcd-goto-def-pop-marker))))
   :commands d-mode)
 (use-package company-dcd
   :ensure t)
 
 
 (use-package dockerfile-mode
-  :ensure t
-  )
+  :ensure t)
 
 
 (use-package editorconfig
@@ -394,15 +396,13 @@
   :init
   (setq editorconfig-exec-path "/usr/bin/editorconfig")
   :config
-  (editorconfig-mode 1)
-  )
+  (editorconfig-mode 1))
 
 
 (use-package elm-mode
   :ensure t
   :hook
-  (elm-mode . lsp)
-  )
+  ((elm-mode . lsp)))
 
 
 (use-package go-mode
@@ -410,44 +410,38 @@
   :init
   (add-to-list 'exec-path "~/go/bin/")
   :hook
-  (go-mode . lsp)
-  :commands go-mode
-  )
+  ((go-mode . lsp))
+  :commands go-mode)
 
 
 (use-package haskell-mode
   :ensure t
-  )
+  :commands haskell-mode)
 
 
 (use-package json-mode
-  :ensure t
-  )
+  :ensure t)
 
 
 (use-package markdown-mode
-  :ensure t
-  )
+  :ensure t)
 
 
 (use-package nasm-mode
   :ensure t
-  :mode (("\\.asm$" . nasm-mode))
-  )
+  :mode (("\\.asm$" . nasm-mode)))
 
 
 (use-package nim-mode
   :ensure t
   :hook
-  (nim-mode . lsp)
-  :commands nim-mode
-  )
+  ((nim-mode . lsp))
+  :commands nim-mode)
 
 
 (use-package perl-mode
   :ensure t
-  :commands perl-mode
-  )
+  :commands perl-mode)
 
 
 (use-package python-mode
@@ -455,13 +449,11 @@
   ;; :hook
   ;; (python-mode . lsp)
   :commands python-mode
-  :interpreter (("python" . python-mode))
-  )
+  :interpreter (("python" . python-mode)))
 
 
 (use-package review-mode
-  :ensure t
-  )
+  :ensure t)
 
 
 (use-package ruby-mode
@@ -472,8 +464,7 @@
          ("Rakefile$" . ruby-mode))
   :interpreter (("ruby" . ruby-mode))
   :hook
-  (ruby-mode . lsp)
-  )
+  ((ruby-mode . lsp)))
 
 
 (use-package rustic
@@ -482,8 +473,7 @@
 
 
 (use-package sdlang-mode
-  :ensure t
-  )
+  :ensure t)
 
 
 ; tex
@@ -491,33 +481,28 @@
 
 
 (use-package toml-mode
-  :ensure t
-  )
+  :ensure t)
 
 
 (use-package tuareg
   :ensure t
   :hook
-  (tuareg-mode . lsp)
-  )
+  (tuareg-mode . lsp))
 
 
 (use-package typescript-mode
   :ensure t
   :commands typescript-mode
   :hook
-  (typescript-mode . lsp)
-  )
+  ((typescript-mode . lsp)))
 
 
 (use-package yaml-mode
-  :ensure t
-  )
+  :ensure t)
 
 
 (use-package zig-mode
-  :ensure t
-  )
+  :ensure t)
 
 
 ;;----------------------------------------------------------------------------
