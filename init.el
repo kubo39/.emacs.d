@@ -65,13 +65,11 @@
     (setq interprogram-paste-function 'xclip-paste-function)
     ))
 
-;; ruby macicomment off
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-hidden-regexps (quote ("\\`zen-mode")))
  '(package-selected-packages
    (quote
     (company-dcd cmake-mode company-lsp crystal-mode lsp-ui sdlang-mode quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update exec-path-from-shell ghc jedi flymake-hlint flycheck-elm bison-mode toml-mode moe-theme tabbar smex popwin company browse-kill-ring)))
