@@ -71,10 +71,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (company-dcd cmake-mode company-lsp crystal-mode lsp-ui sdlang-mode quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update exec-path-from-shell ghc jedi flymake-hlint flycheck-elm bison-mode toml-mode moe-theme tabbar smex popwin company browse-kill-ring)))
+   '(racket-mode company-dcd cmake-mode company-lsp crystal-mode lsp-ui sdlang-mode quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update exec-path-from-shell ghc jedi flymake-hlint flycheck-elm bison-mode toml-mode moe-theme tabbar smex popwin company browse-kill-ring))
  '(ruby-insert-encoding-magic-comment nil)
- '(safe-local-variable-values (quote ((whitespace-line-column . 80)))))
+ '(safe-local-variable-values '((whitespace-line-column . 80))))
 
 ; 文字大きく
 (set-face-attribute 'default nil
@@ -368,7 +367,7 @@
 (use-package d-mode
   :ensure t
   :init
-  (setq company-dcd-compiler "~/dlang/ldc-1.28.0/bin/ldc2")
+  (setq company-dcd-compiler "~/dlang/ldc-1.28.1/bin/ldc2")
   (setq company-dcd-client-executable "~/.dub/packages/dcd-0.13.1/dcd/bin/dcd-client")
   (setq company-dcd-server-executable "~/.dub/packages/dcd-0.13.1/dcd/bin/dcd-server")
   :hook
