@@ -71,7 +71,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(racket-mode company-dcd cmake-mode company-lsp crystal-mode lsp-ui sdlang-mode quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update exec-path-from-shell ghc jedi flymake-hlint flycheck-elm bison-mode toml-mode moe-theme tabbar smex popwin company browse-kill-ring))
+   '(dart-mode swift-mode racket-mode company-dcd cmake-mode company-lsp crystal-mode lsp-ui sdlang-mode quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update exec-path-from-shell ghc jedi flymake-hlint flycheck-elm bison-mode toml-mode moe-theme tabbar smex popwin company browse-kill-ring))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values '((whitespace-line-column . 80))))
 
