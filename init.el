@@ -371,9 +371,11 @@
               (c-set-style "bsd")
               (setq c-basic-offset 4)
               (setq tab-width 4)
-              (lsp))))
+              (lsp)
+              (lsp-register-custom-settings
+               '(("d.stdlibPath" ("/home/kubo39/dlang/dmd-2.099.0/src/phobos"
+                                  "/home/kubo39/dlang/dmd-2.099.0/src/druntime/src")))))))
   :commands d-mode)
-
 
 (use-package dockerfile-mode
   :ensure t)
