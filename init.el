@@ -371,6 +371,7 @@
               (c-set-style "bsd")
               (setq c-basic-offset 4)
               (setq tab-width 4)
+              (electric-pair-mode t)
               (lsp)
               (lsp-register-custom-settings
                '(("d.stdlibPath" ("/home/kubo39/dlang/dmd-2.099.0/src/phobos"
