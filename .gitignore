@@ -17,3 +17,4 @@ url/
 .python-environments/
 .lsp-session-*
 transient/
+eln-cache/

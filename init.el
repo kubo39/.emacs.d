@@ -27,9 +27,8 @@
   '(
     undo-tree
     company
-    company-lsp
     tabbar
-    flycheck
+    ;; flycheck
     powerline
     moe-theme
     popwin
@@ -51,19 +50,19 @@
   :ensure t)
 
 ;; use xclip to copy/paste in emacs-nox
-(unless window-system
-  (when (getenv "DISPLAY")
-    (defun xclip-cut-function (text &optional push)
-      (with-temp-buffer
-        (insert text)
-        (call-process-region (point-min) (point-max) "xclip" nil 0 nil "-i" "-selection" "clipboard")))
-    (defun xclip-paste-function()
-      (let ((xclip-output (shell-command-to-string "xclip -o -selection clipboard")))
-        (unless (string= (car kill-ring) xclip-output)
-          xclip-output )))
-    (setq interprogram-cut-function 'xclip-cut-function)
-    (setq interprogram-paste-function 'xclip-paste-function)
-    ))
+;; (unless window-system
+;;   (when (getenv "DISPLAY")
+;;     (defun xclip-cut-function (text &optional push)
+;;       (with-temp-buffer
+;;         (insert text)
+;;         (call-process-region (point-min) (point-max) "xclip" nil 0 nil "-i" "-selection" "clipboard")))
+;;     (defun xclip-paste-function()
+;;       (let ((xclip-output (shell-command-to-string "xclip -o -selection clipboard")))
+;;         (unless (string= (car kill-ring) xclip-output)
+;;           xclip-output )))
+;;     (setq interprogram-cut-function 'xclip-cut-function)
+;;     (setq interprogram-paste-function 'xclip-paste-function)
+;;     ))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -71,7 +70,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(dart-mode swift-mode racket-mode cmake-mode company-lsp crystal-mode lsp-ui sdlang-mode quickrun nim-mode haskell-mode d-mode python-mode gnu-elpa-keyring-update exec-path-from-shell ghc jedi flymake-hlint flycheck-elm bison-mode toml-mode moe-theme tabbar smex popwin company browse-kill-ring))
+   '(d-mode dart-mode swift-mode racket-mode cmake-mode lsp-ui sdlang-mode quickrun nim-mode haskell-mode python-mode gnu-elpa-keyring-update exec-path-from-shell ghc jedi flymake-hlint bison-mode toml-mode moe-theme tabbar smex popwin company browse-kill-ring))
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values '((whitespace-line-column . 80))))
 
@@ -168,11 +167,11 @@
 
 
 ;;; flycheck
-(with-eval-after-load 'flycheck
-  (flycheck-pos-tip-mode)
-  (setq-default flycheck-disabled-checkers '(d))
-  )
-(add-hook 'after-init-hook #'global-flycheck-mode)
+;; (with-eval-after-load 'flycheck
+;;   (flycheck-pos-tip-mode)
+;;   (setq-default flycheck-disabled-checkers '(d))
+;;   )
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
 
 
 ;;; tramp
@@ -251,8 +250,7 @@
 (column-number-mode t)
 
 ;; 行番号表示
-(global-linum-mode)
-(setq linum-format "%4d")
+(global-display-line-numbers-mode t)
 
 ;;; スクロールバーを消す
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -317,7 +315,7 @@
   :ensure t
   :init
   ;; プロジェクト毎に `cmake -DCMAKE_EXPORT_COMPILE_COMMADS=ON` しておく
-  (setq lsp-clients-clangd-executable "/usr/bin/clangd-10")
+  (setq lsp-clients-clangd-executable "/usr/bin/clangd")
   :hook
   (
    (c-mode . (lambda ()
@@ -334,12 +332,6 @@
                  (lsp))))
   :commands lsp)
 
-;; (lsp-register-client
-;;  (make-lsp-client :new-connection (lsp-tramp-connection "/usr/bin/clangd-10")
-;;                   :major-modes '(c++-mode)
-;;                   :remote? t
-;;                   :server-id 'clangd-remote))
-
 
 (use-package lsp-ui
   :ensure t
@@ -349,19 +341,6 @@
 (use-package lsp-treemacs
   :ensure t
   :commands lsp-treemacs-errors-list)
-
-
-(use-package crystal-mode
-  :ensure t
-  :commands crystal-mode)
-
-
-(use-package company-coq
-  :ensure t)
-(use-package proof-general
-  :ensure t
-  :hook
-  ((coq-mode . company-coq-mode)))
 
 
 (use-package d-mode
@@ -374,8 +353,8 @@
               (electric-pair-mode t)
               (lsp)
               (lsp-register-custom-settings
-               '(("d.stdlibPath" ("/home/kubo39/dlang/dmd-2.099.0/src/phobos"
-                                  "/home/kubo39/dlang/dmd-2.099.0/src/druntime/src")))))))
+               '(("d.stdlibPath" ("/home/kubo39/dlang/dmd-2.107.0/src/phobos"
+                                  "/home/kubo39/dlang/dmd-2.107.0/src/druntime/src")))))))
   :commands d-mode)
 
 (use-package dockerfile-mode
@@ -441,10 +420,6 @@
   ;; (python-mode . lsp)
   :commands python-mode
   :interpreter (("python" . python-mode)))
-
-
-(use-package review-mode
-  :ensure t)
 
 
 (use-package ruby-mode
